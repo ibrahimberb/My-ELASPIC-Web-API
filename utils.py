@@ -1,11 +1,20 @@
 from bs4 import BeautifulSoup as BS
 from input.scrap_record import process_single_error
 import logging
-from pathlib import Path
 from chunk import Chunk
 import os
+import time
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
+
+
+def wait(duration):
+    time_elasped = 0
+    while time_elasped < duration:
+        print('.', end='')
+        time.sleep(0.1)
+        time_elasped += 0.1
+    print()
 
 
 def is_valid_file(filepath):
