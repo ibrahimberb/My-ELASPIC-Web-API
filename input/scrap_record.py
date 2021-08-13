@@ -7,6 +7,9 @@ def split_pair_occurrence(input_str):
     Q9HD36.A79T (x11) → (Q9HD36.A79T, 11)
     TODO: fill doc string.
     """
+    if '(x' not in input_str:
+        return input_str, 1
+
     pair, occurrence = [item.strip() for item in input_str.split()]
     occurrence = int(occurrence[2:-1])
 
