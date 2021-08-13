@@ -19,5 +19,6 @@ while i < 50 or a != 3:
     i = i + 1
     # if a == 3:
     #     print(f'a={a}')
-pbar.update(pbar.g)
+# pbar.update(pbar.g)
+pbar.clear()
 pbar.close()
