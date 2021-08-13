@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 import logging
 from selenium.common.exceptions import TimeoutException
 from config import COMPUTATION_TIME_ALLOWED
+from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -21,6 +22,12 @@ def click_button_by_xpath(driver, element_xpath):
     driver.find_element_by_xpath(element_xpath).click()
 
 
+def click_button_by_id(driver, element_id):
+    click_button_wait = WebDriverWait(driver, 3)
+    click_button_wait.until(EC.visibility_of_element_located((By.XPATH, element_id)))
+    driver.find_element_by_id(element_id).click()
+
+
 def page_computation(driver):
     wait_results_page_load = WebDriverWait(driver, 10)  # 10 seconds to load
     try:
@@ -28,20 +35,20 @@ def page_computation(driver):
         if check_exists_by_id(driver, 'notreadyyet'):
             computation_time_elasped_seconds = 0
             job_completed = False
-            check_frequency = 5  # check in every 5 seconds.
+            check_cooldown = 1  # check in every 5 seconds.
 
             # mutations are still being processed.
             print(driver.find_element_by_id('notreadyyet').find_element_by_tag_name('p').text)
 
-            while computation_time_elasped_seconds < (COMPUTATION_TIME_ALLOWED * 60) and not job_completed:
-                computation_time_elasped_seconds += check_frequency
-                time.sleep(check_frequency)
+            pbar = tqdm(total=COMPUTATION_TIME_ALLOWED, desc='still not completed. waiting', position=0, leave=True)
+            while computation_time_elasped_seconds < COMPUTATION_TIME_ALLOWED and not job_completed:
+                computation_time_elasped_seconds += check_cooldown
+                time.sleep(check_cooldown)
                 if not check_exists_by_id(driver, 'notreadyyet'):
                     logging.info('JOB COMPLETED.')
                     job_completed = True
-                else:
-                    logging.info(
-                        'still not completed. waiting .. [time elapsed: {}]'.format(computation_time_elasped_seconds))
+
+                pbar.update(check_cooldown)
 
             if not job_completed:
                 logging.info("I had enough.. can't wait any longer.")
