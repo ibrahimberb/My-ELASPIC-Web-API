@@ -2,21 +2,50 @@ from chunk import Chunk
 import pandas as pd
 import os
 import logging
+import sys
 
 logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
 
-def has_recorded(chunk_file_path, records_folder_path):
+class RecordStatuses:
+    NOT_RECORDED = "NOT_RECORDED"
+    RECORDED_NOT_DOWNLOADED = "RECORDED_NOT_DOWNLOADED"
+    RECORDED_DOWNLOADED = "RECORDED_DOWNLOADED"
+
+
+# def is_subchunk_completed(self):
+#     completed_condition = (self.chunk.ELASPIC_URL is not None and
+#                            self.chunk.uploaded_status is True and
+#                            self.chunk.downloaded_status is True)
+#
+#     return completed_condition
+
+
+
+def get_chunk_record_status(chunk_file_path, records_folder_path):
     record = Record(records_folder_path, Chunk(chunk_file_path))
     logging.info(f"record_data shape: {record.record_data.shape}")
-    return record.chunk.file_name in record.record_data.index
+    if record.chunk.file_name not in record.record_data.index:
+        return RecordStatuses.NOT_RECORDED, None
+
+    data_entry = record.record_data.loc[[record.chunk.file_name]]
+    if (
+            data_entry.loc[record.chunk.file_name, 'UPLOADED_STATUS'] == 1 and
+            data_entry.loc[record.chunk.file_name, 'DOWNLOADED_STATUS'] == 1
+    ):
+        return RecordStatuses.RECORDED_DOWNLOADED, None
+
+    elif (
+            data_entry.loc[record.chunk.file_name, 'UPLOADED_STATUS'] == 1 and
+            data_entry.loc[record.chunk.file_name, 'DOWNLOADED_STATUS'] == 0
+    ):
+        return RecordStatuses.RECORDED_NOT_DOWNLOADED, data_entry.loc[record.chunk.file_name, 'ELASPIC_URL']
 
 
 class Record:
     COLUMN_NAMES_TO_CHUNK_ATTR = \
         {
             'SUBCHUNK': "file_name",
-            'ELASPIC_URL': "ELASPIC_URL",
             'NUM_CORR_INPUT_MUTS': "num_correctly_input_mutations",
             'INVALID_SYNTAX': "invalid_syntax",
             'NUM_INVALID_SYNTAX': "num_invalid_syntax",
@@ -29,7 +58,10 @@ class Record:
             'OUTSIDE_STRUCT_DOMAIN': "outside_of_structural_domain",
             'NUM_OUTSIDE_STRUCT_DOMAIN': "num_outside_of_structural_domain",
             'NUM_ACTUAL_INPUT': "num_lines",
-            'NUM_PROVIDED_INPUT': "total_num_uploaded_entry"
+            'NUM_PROVIDED_INPUT': "total_num_uploaded_entry",
+            'ELASPIC_URL': "ELASPIC_URL",
+            'UPLOADED_STATUS': 'uploaded_status',
+            'DOWNLOADED_STATUS': 'downloaded_status'
         }
 
     COLUMN_NAMES = list(COLUMN_NAMES_TO_CHUNK_ATTR.keys())
@@ -43,26 +75,15 @@ class Record:
         self.record_data = self.bring_record()
         self.initialize_record_file()
 
-    def is_subchunk_completed(self):
-        completed_condition = (self.chunk.ELASPIC_URL is not None and
-                               self.chunk.uploaded_status is True and
-                               self.chunk.downloaded_status is True)
-
-        return completed_condition
-
     def update_record_data(self, updated_record_data):
         self.record_data = updated_record_data
 
     def get_new_chunk_entry(self):
         new_chunk_entry = self.create_record()
-        print('new_chunk_entry columns:')
+
         for column in new_chunk_entry.columns:
-            print(' - - - - - - - - - - ')
             new_chunk_entry.loc[self.chunk.file_name, column] = getattr(self.chunk,
                                                                         self.COLUMN_NAMES_TO_CHUNK_ATTR[column])
-
-        print('new_chunk_entry')
-        print(new_chunk_entry)
         return new_chunk_entry
 
     def record(self):
@@ -73,8 +94,8 @@ class Record:
             logging.info(f'Appending {self.chunk.file_name}')
             record_data = record_data.append(self.get_new_chunk_entry())
 
-        print('APPENDED DATA')
-        print(record_data)
+        # print('APPENDED DATA')
+        # print(record_data)
 
         record_data.to_csv(self.path)
         # self.update_record_data(record_data)
@@ -90,7 +111,7 @@ class Record:
             self.write_record()
 
         else:
-            logging.info("record file {} already exist, we don't touch it..")
+            logging.info(f"record file {self.filename} already exist, we don't touch it..")
 
     def bring_record(self):
         if self.is_exist():
