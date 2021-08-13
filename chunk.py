@@ -39,6 +39,13 @@ class Chunk:
 
         # number of lines in text file.
         self.num_lines = self.get_num_lines()
+        # after web page computation
+        self.mutations_not_computed = None
+
+    def set_muts_not_computed(self, mut_not_computed):
+        self.mutations_not_computed = mut_not_computed
+        self.num_mutations_not_computed = len(mut_not_computed)  # todo: what if it is None?, what if there is no
+                                                                 #  not computed muts? len may throw error.
 
     def set_url(self, url):
         self.ELASPIC_URL = url
