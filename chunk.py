@@ -1,4 +1,7 @@
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO, format='[CHUNK] %(message)s')
 
 
 class Chunk:
@@ -41,19 +44,23 @@ class Chunk:
         self.num_lines = self.get_num_lines()
         # after web page computation
         self.mutations_not_computed = None
+        self.num_mutations_not_computed = None
 
     def set_muts_not_computed(self, mut_not_computed):
-        self.mutations_not_computed = mut_not_computed
-        self.num_mutations_not_computed = len(mut_not_computed)  # todo: what if it is None?, what if there is no
-                                                                 #  not computed muts? len may throw error.
+        logging.info("setting chunk's attr: `mut_not_computed`")
+        self.mutations_not_computed = mut_not_computed['elements']
+        self.num_mutations_not_computed = mut_not_computed['num_elements']
 
     def set_url(self, url):
+        logging.info("setting chunk's attr: `ELASPIC_URL`")
         self.ELASPIC_URL = url
 
     def set_uploaded_status(self, uploaded_status):
+        logging.info("setting chunk's attr: `uploaded_status`")
         self.uploaded_status = int(uploaded_status)
 
     def set_downloaded_status(self, downloaded_status):
+        logging.info("setting chunk's attr: `downloaded_status`")
         self.downloaded_status = int(downloaded_status)
 
     def get_num_lines(self):
@@ -98,26 +105,7 @@ class Chunk:
             # info_file.write("total_num_entry: {}".format(self.total_num_entry))
 
     def print_info(self):
-        print("tcga_code: ", self.tcga_code)
-        print("chunk_no: ", self.chunk_no)
-        print("subchunk_no: ", self.subchunk_no)
-        print("number of correctly_input_mutations:", self.num_correctly_input_mutations)
-        # Errors
-        print("invalid_syntax: ", self.invalid_syntax)
-        print("num_invalid_syntax: ", self.num_invalid_syntax)
-        print("unrecognized_gene_symbols: ", self.unrecognized_gene_symbols)
-        print("num_unrecognized_gene_symbols: ", self.num_unrecognized_gene_symbols)
-        print("unrecognized_protein_residues: ", self.unrecognized_protein_residues)
-        print("num_unrecognized_protein_residues: ", self.num_unrecognized_protein_residues)
-        print("duplicates: ", self.duplicates)
-        print("num_duplicates: ", self.num_duplicates)
-        print("outside_of_structural_domain: ", self.outside_of_structural_domain)
-        print("num_outside_of_structural_domain: ", self.num_outside_of_structural_domain)
-        # additional information
-        print("file_path: ", self.file_path)
-        print("file_name: ", self.file_name)
-        print("ELASPIC_URL: ", self.ELASPIC_URL)
-        print("uploaded_status: ", self.uploaded_status)
-        print("downloaded_status: ", self.downloaded_status)
-        print("total_num_entry: ", self.total_num_uploaded_entry)
-        print("num_lines: ", self.num_lines)
+        print("\t - - - CHUNK INFO - - - ")
+        attributes = [attr for attr in dir(self) if not attr.startswith('__')]
+        for attr in attributes:
+            print(f"\t → {attr}: {getattr(self, attr)}")
