@@ -4,32 +4,34 @@
 import logging
 
 from upload_utils import upload_file
-from utils import make_chunk, get_filename_from_path
+from utils import make_chunk
 from organizer import organize
-from config import UPLOAD_FILE_PATH, DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH
+from config import UPLOAD_FILE_PATH, DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL
 from download_utils import download_result_file
 from driver_conf import initialize_driver
-from record import has_recorded, Record
+from record import get_chunk_record_status, Record, RecordStatuses
 import sys
-
 from page_utils import page_computation, ResponseMessages, process_input_recognization
+from page_utils import click_button_by_id
 
-## TODO load csv file and make sure this chunk is not uploaded to ELASPIC before.
-#   If it is uploaded, then do not upload again.
+ELASPIC_TARGET_URL = ELASPIC_MANY_URL
 
-# logging.basicConfig(level=logging.INFO, format='%(message)s')
-# logging.basicConfig(filename='app.log', level=logging.INFO, format='%(levelname)s:%(message)s')
 logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
 logging.info(f"Processing {UPLOAD_FILE_PATH}")
 
-chunk_record_flag = has_recorded(UPLOAD_FILE_PATH, "Records_Test")
-logging.info("HAS RECORDED: {}".format(chunk_record_flag))
-if chunk_record_flag:
+record_response, new_url = get_chunk_record_status(UPLOAD_FILE_PATH, "Records_Test")
+logging.info("HAS RECORDED: {}".format(record_response))
+if record_response == RecordStatuses.RECORDED_DOWNLOADED:
     sys.exit("It appears that we already have downloaded this file.\nAborting..")
+elif record_response == RecordStatuses.RECORDED_NOT_DOWNLOADED:
+    logging.info('target url is changed.')
+    ELASPIC_TARGET_URL = new_url
+elif record_response == RecordStatuses.NOT_RECORDED:
+    logging.info('uploading first time.')
 
 driver = initialize_driver()
-driver.get('http://elaspic.kimlab.org/many/')
+driver.get(ELASPIC_TARGET_URL)
 logging.info("Webpage Title: {}".format(driver.title))
 
 # Upload the file.
@@ -49,6 +51,9 @@ print('===========================================================')
 # Click on submit
 driver.find_element_by_id('submit').click()
 logging.info('Clicking SUBMIT button ..')
+### replace above lines by
+# click_button_by_id(driver, 'submit')
+# logging.info('Clicking SUBMIT button ..')
 
 # Get current URL.
 logging.info("current_url: {}".format(driver.current_url))
@@ -65,18 +70,16 @@ if response == ResponseMessages.COMPLETED:
     # move downloaded file to folder where it belongs and organize naming etc.
     organize(DOWNLOAD_FOLDER_PATH, UPLOAD_FILE_PATH, downloaded_filename='allresults.txt')
     chunk.set_downloaded_status(True)
-    logging.info('Operation is completed successfully.')
+    logging.info('File is downloaded successfully.')
     # todo run checker code.
 
 elif response == ResponseMessages.STILL_PROCESSING:
     logging.info('Mutations are in proces.')
     chunk.set_downloaded_status(False)
 
-## save the meta info about each subchunk.
-
-print('=======================================================')
-print('=======================================================')
-chunk.print_info()
+# chunk.print_info()
 print('=======================================================')
 record = Record(RECORDS_FOLDER_PATH, chunk)
 record.record()
+
+logging.info('WE ARE DONE.')
