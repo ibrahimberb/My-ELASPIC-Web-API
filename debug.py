@@ -1,11 +1,17 @@
-import logging
+import pandas as pd
+import numpy as np
 
-logging.basicConfig(filename='mylog.log', level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s')
+COLUMN_NAMES = ['SUBCHUNK', 'ELASPIC_URL', 'NUM_CORR_INPUT_MUTS',
+                'INVALID_SYNTAX', 'NUM_INVALID_SYNTAX',
+                'UNRECOG_GENE_SYMBOLS', 'NUM_UNRECOG_GENE_SYMBOLS',
+                'UNRECOG_PROT_RESIDUES', 'NUM_UNRECOG_PROT_RESIDUES',
+                'DUPLICATES', 'NUM_DUPLICATES',
+                'OUTSIDE_STRUCT_DOMAIN', 'NUM_OUTSIDE_STRUCT_DOMAIN',
+                'NUM_ACTUAL_INPUT', 'NUM_PROVIDED_INPUT']
 
-logging.debug("this is debug")
-logging.info("this is info")
-logging.warning("this is warning")
-logging.error("this is error")
-logging.critical("this is critical")
-# this needs to be RED.
-print("10 / 0 =", 10 / 0)
+data = pd.DataFrame(np.random.randn(5, 14), columns=COLUMN_NAMES[1:])
+data[COLUMN_NAMES[0]] = [f'subchunk_{e}' for e in range(1, 6)]
+data = data[COLUMN_NAMES]
+print(data)
+print('***********************************')
+print(data['ELASPIC_URL'])

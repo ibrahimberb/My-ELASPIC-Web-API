@@ -2,6 +2,7 @@ import os
 
 
 class Chunk:
+    ## a subchunk
 
     def __init__(self, file_path=None, num_correctly_input_mutations=0,
                  invalid_syntax=None, num_invalid_syntax=0,
@@ -27,24 +28,26 @@ class Chunk:
         self.outside_of_structural_domain = outside_of_structural_domain
         self.num_outside_of_structural_domain = num_outside_of_structural_domain
         # additional information
-        self.ELASPIC_URL = "WILL_BE_ADDED"
-        self.uploaded_status = "WILL_BE_ADDED"
-        self.downloaded_status = "WILL_BE_ADDED"
-        self.total_num_entry = self.num_correctly_input_mutations + self.num_invalid_syntax \
-                               + self.num_unrecognized_gene_symbols \
-                               + self.num_unrecognized_protein_residues + self.num_duplicates \
-                               + self.num_outside_of_structural_domain
+        self.ELASPIC_URL = None
+        self.uploaded_status = None
+        self.downloaded_status = None
+        # number of entries uploaded to ELASPIC in input recognition step.
+        self.total_num_uploaded_entry = self.num_correctly_input_mutations + self.num_invalid_syntax \
+                                        + self.num_unrecognized_gene_symbols \
+                                        + self.num_unrecognized_protein_residues + self.num_duplicates \
+                                        + self.num_outside_of_structural_domain
 
+        # number of lines in text file.
         self.num_lines = self.get_num_lines()
 
     def set_url(self, url):
         self.ELASPIC_URL = url
 
     def set_uploaded_status(self, uploaded_status):
-        self.uploaded_status = uploaded_status
+        self.uploaded_status = int(uploaded_status)
 
     def set_downloaded_status(self, downloaded_status):
-        self.downloaded_status = downloaded_status
+        self.downloaded_status = int(downloaded_status)
 
     def get_num_lines(self):
         """Returns number of lines in text file."""
@@ -74,7 +77,7 @@ class Chunk:
         return tcga_code, chunk_no, subchunk_no
 
     def extract_info(self):
-        with open(self.chunk_code + '_info.txt', 'w') as info_file:
+        with open(f"{self.chunk_no}_{self.subchunk_no}_info.txt", 'w') as info_file:
             pass
 
             # info_file.write("num_correctly_input_mutations: {}".format(self.num_correctly_input_mutations))
@@ -109,5 +112,5 @@ class Chunk:
         print("ELASPIC_URL: ", self.ELASPIC_URL)
         print("uploaded_status: ", self.uploaded_status)
         print("downloaded_status: ", self.downloaded_status)
-        print("total_num_entry: ", self.total_num_entry)
-        print("num_lines: ", self.get_num_lines())
+        print("total_num_entry: ", self.total_num_uploaded_entry)
+        print("num_lines: ", self.num_lines)
