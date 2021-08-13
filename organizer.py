@@ -46,7 +46,7 @@ def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, download
     Path(correct_folder_path).mkdir(parents=True, exist_ok=True)
 
     if os.path.isfile(correct_file_path):
-        raise FileExistsError("You already have the file.")
+        raise FileExistsError(f"You already have the file {correct_filename}")
 
     logging.debug('downloaded_file_path:', downloaded_file_path)
     logging.debug('correct_file_path:', correct_file_path)
