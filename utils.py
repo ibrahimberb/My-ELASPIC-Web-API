@@ -4,17 +4,24 @@ import logging
 from chunk import Chunk
 import os
 import time
+from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
+# def wait(duration):
+#     time_elasped = 0
+#     while time_elasped < duration:
+#         print('.', end='')
+#         time.sleep(0.1)
+#         time_elasped += 0.1
+#     print()
+
 def wait(duration):
-    time_elasped = 0
-    while time_elasped < duration:
-        print('.', end='')
-        time.sleep(0.1)
-        time_elasped += 0.1
-    print()
+    if duration == 0:
+        return
+    for _ in tqdm(range(duration), desc='[WAIT_DELAY]', position=0, leave=True):
+        time.sleep(1)
 
 
 def is_valid_file(filepath):
@@ -88,8 +95,6 @@ def make_chunk(driver, file_path, correctly_input_mutations_flag=True):
 
         else:
             raise ValueError("Error Title unexpected!")
-
-        print('=' * 40)
 
     chunk = Chunk(file_path=file_path, num_correctly_input_mutations=num_correctly_input_mutations,
                   invalid_syntax=invalid_syntax, num_invalid_syntax=num_invalid_syntax,
