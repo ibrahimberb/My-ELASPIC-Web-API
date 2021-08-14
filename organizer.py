@@ -8,6 +8,16 @@ import glob
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
+class CorrectLocation:
+    def __init__(self, tcga_code, chunk_no, subchunk_no):
+        self.tcga_code = tcga_code
+        self.chunk_no = chunk_no
+        self.subchunk_no = subchunk_no
+        self.correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
+        self.correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
+        self.correct_file_path = os.path.join(self.correct_folder_path, self.correct_filename)
+
+
 def parse_filename(filepath):
     """
     Parses the filepath
@@ -30,6 +40,16 @@ def parse_filename(filepath):
     return tcga_code, chunk_no, subchunk_no
 
 
+def get_correct_location_obj(tcga_code, chunk_no, subchunk_no):
+    correct_location_obj = CorrectLocation(tcga_code, chunk_no, subchunk_no)
+    return correct_location_obj
+    #
+    # correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
+    # correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
+    # correct_file_path = os.path.join(correct_folder_path, correct_filename)
+    # return correct_filename, correct_file_path, correct_folder_path
+
+
 def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, downloaded_filename):
     """Moves the file where it belongs."""
 
@@ -38,21 +58,32 @@ def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, download
     assert len(files) == 1
     downloaded_file_path = files[0]
 
-    correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
-    correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
-    correct_file_path = os.path.join(correct_folder_path, correct_filename)
+    correct_location = CorrectLocation(tcga_code, chunk_no, subchunk_no)
+
+    # correct_folder_path, correct_filename, correct_file_path
+    #
+    # correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
+    # correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
+    # correct_file_path = os.path.join(correct_folder_path, correct_filename)
 
     # Create paths
-    Path(correct_folder_path).mkdir(parents=True, exist_ok=True)
+    Path(correct_location.correct_folder_path).mkdir(parents=True, exist_ok=True)
 
-    if os.path.isfile(correct_file_path):
-        raise FileExistsError(f"You already have the file {correct_filename}")
+    if os.path.isfile(correct_location.correct_file_path):
+        raise FileExistsError(f"You already have the file {correct_location.correct_filename}")
 
     logging.debug('downloaded_file_path:', downloaded_file_path)
-    logging.debug('correct_file_path:', correct_file_path)
+    logging.debug('correct_file_path:', correct_location.correct_file_path)
 
     logging.info('Moving the file to correct location ..')
-    shutil.move(downloaded_file_path, correct_file_path)
+    shutil.move(downloaded_file_path, correct_location.correct_file_path)
+
+
+def is_file_located(filename):
+    tcga_code, chunk_no, subchunk_no = parse_filename(filename)
+    cl = CorrectLocation(tcga_code, chunk_no, subchunk_no)
+    logging.debug(f'checking if {cl.correct_filename} exist.')
+    return os.path.isfile(cl.correct_file_path)
 
 
 # def clean_download_folder(downloaded_folder_path, downloaded_filename):
