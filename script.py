@@ -4,7 +4,7 @@
 import logging
 
 from upload_utils import upload_file
-from utils import make_chunk
+from chunk import make_chunk
 from organizer import organize
 from config import UPLOAD_FILE_PATH, DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL
 from download_utils import download_result_file
@@ -50,7 +50,7 @@ print('===========================================================')
 
 # Click on submit
 driver.find_element_by_id('submit').click()
-logging.info('Clicking SUBMIT button ..')
+logging.debug('Clicking SUBMIT button ..')
 ### replace above lines by
 # click_button_by_id(driver, 'submit')
 # logging.info('Clicking SUBMIT button ..')
