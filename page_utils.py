@@ -37,8 +37,8 @@ def page_computation(driver):
             job_completed = False
             check_cooldown = 1  # check in every 5 seconds.
 
-            # mutations are still being processed.
-            print(driver.find_element_by_id('notreadyyet').find_element_by_tag_name('p').text)
+            # n mutations are still being processed.
+            logging.info(driver.find_element_by_id('notreadyyet').find_element_by_tag_name('p').text)
 
             pbar = tqdm(total=COMPUTATION_TIME_ALLOWED, desc='still not completed. waiting', position=0, leave=True)
             while computation_time_elasped_seconds < COMPUTATION_TIME_ALLOWED and not job_completed:
@@ -49,13 +49,14 @@ def page_computation(driver):
                     job_completed = True
 
                 pbar.update(check_cooldown)
+            pbar.close()
 
             if not job_completed:
-                logging.info("I had enough.. can't wait any longer.")
+                # logging.info("I had enough.. can't wait any longer.")
                 return ResponseMessages.STILL_PROCESSING
 
         elif check_exists_by_xpath(driver, '//*[@id="summary"]/div[2]/div[1]'):
-            print(driver.find_element_by_xpath('//*[@id="summary"]/div[2]/div[1]').text)
+            logging.info(driver.find_element_by_xpath('//*[@id="summary"]/div[2]/div[1]').text)
             return ResponseMessages.COMPLETED
 
         else:
