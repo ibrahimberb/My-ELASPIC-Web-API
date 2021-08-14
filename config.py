@@ -1,6 +1,6 @@
 import pathlib
 
-COMPUTATION_TIME_ALLOWED = 3  # in seconds.
+COMPUTATION_TIME_ALLOWED = 1 # 3 # 10  # in seconds.
 # Paths
 DRIVER_PATH = r"C:\webdrivers\geckodriver.exe"
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"
