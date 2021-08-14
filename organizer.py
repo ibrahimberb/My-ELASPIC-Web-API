@@ -5,7 +5,7 @@ from pathlib import Path
 import pathlib
 import glob
 
-logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
 def parse_filename(filepath):
@@ -20,10 +20,10 @@ def parse_filename(filepath):
     # Extract filename from filepath
     filename = os.path.basename(filepath)
     filename = filename.replace('.txt', '')
-    logging.info(f"filename: {filename}")
+    logging.debug(f"filename: {filename}")
     filename_splitted = filename.split('_')
-    logging.info(f"filename_splitted: {filename_splitted}")
-    logging.info(f"TCGA: {filename_splitted[1]}, CHUNK: {filename_splitted[3]}, SUBCHUNK: {filename_splitted[4]}")
+    logging.debug(f"filename_splitted: {filename_splitted}")
+    logging.debug(f"TCGA: {filename_splitted[1]}, CHUNK: {filename_splitted[3]}, SUBCHUNK: {filename_splitted[4]}")
 
     tcga_code, chunk_no, subchunk_no = filename_splitted[1], filename_splitted[3], filename_splitted[4]
 
@@ -51,7 +51,7 @@ def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, download
     logging.debug('downloaded_file_path:', downloaded_file_path)
     logging.debug('correct_file_path:', correct_file_path)
 
-    logging.info('\tMoving the file to correct location ..')
+    logging.info('Moving the file to correct location ..')
     shutil.move(downloaded_file_path, correct_file_path)
 
 
