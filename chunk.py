@@ -1,5 +1,10 @@
 import os
 import logging
+import inspect
+
+from bs4 import BeautifulSoup as BS
+
+from input.scrap_record import process_single_error
 
 logging.basicConfig(level=logging.INFO, format='[INFO] %(message)s')
 
@@ -12,28 +17,29 @@ class Chunk:
                  unrecognized_gene_symbols=None, num_unrecognized_gene_symbols=0,
                  unrecognized_protein_residues=None, num_unrecognized_protein_residues=0,
                  duplicates=None, num_duplicates=0,
-                 outside_of_structural_domain=None, num_outside_of_structural_domain=0):
+                 outside_of_structural_domain=None, num_outside_of_structural_domain=0,
+                 elaspic_url=None, uploaded_status=None, downloaded_status=None):
         # path, codes, names
         self.file_path = file_path
         self.tcga_code, self.chunk_no, self.subchunk_no = self.parse_filename()
-        self.file_name = os.path.basename(self.file_path)
+        self.file_name = self.get_filename_from_path()
         # Num corr. input mutations
-        self.num_correctly_input_mutations = num_correctly_input_mutations
+        self.num_correctly_input_mutations = int(num_correctly_input_mutations)
         # Errors
         self.invalid_syntax = invalid_syntax
-        self.num_invalid_syntax = num_invalid_syntax
+        self.num_invalid_syntax = int(num_invalid_syntax)
         self.unrecognized_gene_symbols = unrecognized_gene_symbols
-        self.num_unrecognized_gene_symbols = num_unrecognized_gene_symbols
+        self.num_unrecognized_gene_symbols = int(num_unrecognized_gene_symbols)
         self.unrecognized_protein_residues = unrecognized_protein_residues
-        self.num_unrecognized_protein_residues = num_unrecognized_protein_residues
+        self.num_unrecognized_protein_residues = int(num_unrecognized_protein_residues)
         self.duplicates = duplicates
-        self.num_duplicates = num_duplicates
+        self.num_duplicates = int(num_duplicates)
         self.outside_of_structural_domain = outside_of_structural_domain
-        self.num_outside_of_structural_domain = num_outside_of_structural_domain
+        self.num_outside_of_structural_domain = int(num_outside_of_structural_domain)
         # additional information
-        self.ELASPIC_URL = None
-        self.uploaded_status = None
-        self.downloaded_status = None
+        self.elaspic_url = elaspic_url
+        self.uploaded_status = uploaded_status
+        self.downloaded_status = downloaded_status
         # number of entries uploaded to ELASPIC in input recognition step.
         self.total_num_uploaded_entry = self.num_correctly_input_mutations + self.num_invalid_syntax \
                                         + self.num_unrecognized_gene_symbols \
@@ -50,8 +56,14 @@ class Chunk:
         self.mutations_running = None
         self.num_mutations_running = 0
 
+    def get_filename_from_path(self):
+        if self.file_path is None:
+            return None
+
+        return os.path.basename(self.file_path)
+
     def set_mutations_post_info(self, post_info_dict):
-        logging.info(f"setting chunk's post info.`")
+        logging.debug(f"setting chunk's post info.`")
         self.mutations_done = post_info_dict['mutations_done']
         self.num_mutations_done = post_info_dict['num_mutations_done']
         self.mutations_error = post_info_dict['mutations_error']
@@ -60,19 +72,22 @@ class Chunk:
         self.num_mutations_running = post_info_dict['num_mutations_running']
 
     def set_url(self, url):
-        logging.info("setting chunk's attr: `ELASPIC_URL`")
-        self.ELASPIC_URL = url
+        logging.debug("setting chunk's attr: `ELASPIC_URL`")
+        self.elaspic_url = url
 
     def set_uploaded_status(self, uploaded_status):
-        logging.info("setting chunk's attr: `uploaded_status`")
+        logging.debug("setting chunk's attr:", uploaded_status)
         self.uploaded_status = int(uploaded_status)
 
     def set_downloaded_status(self, downloaded_status):
-        logging.info("setting chunk's attr: `downloaded_status`")
+        logging.debug("setting chunk's attr:", downloaded_status)
         self.downloaded_status = int(downloaded_status)
 
     def get_num_lines(self):
         """Returns number of lines in text file."""
+        if self.file_path is None:
+            return 0
+
         with open(self.file_path) as chunk_file:
             lines = chunk_file.readlines()
             lines = [line.strip() for line in lines if line.strip() != '']
@@ -90,6 +105,9 @@ class Chunk:
         -------
             tcga_code, chunk_no, subchunk_no
         """
+        if self.file_path is None:
+            return None, None, None
+
         # Extract filename from filepath
         filename = os.path.basename(self.file_path)
         filename = filename.replace('.txt', '')
@@ -119,3 +137,79 @@ class Chunk:
         print(" - - - CHUNK INFO - - - ")
         for attr in self.get_attributes():
             print(f" → {attr}: {getattr(self, attr)}")
+
+
+def make_chunk(driver, file_path, correctly_input_mutations_flag=True):
+    invalid_syntax = None
+    num_invalid_syntax = 0
+    unrecognized_gene_symbols = None
+    num_unrecognized_gene_symbols = 0
+    unrecognized_protein_residues = None
+    num_unrecognized_protein_residues = 0
+    duplicates = None
+    num_duplicates = 0
+    outside_of_structural_domain = None
+    num_outside_of_structural_domain = 0
+
+    if correctly_input_mutations_flag:
+        # Find number of correctly input mutations.
+        input_resp = driver.find_element_by_xpath('//*[@id="input_resp"]/div/h4')
+        num_correctly_input_mutations = int(str(input_resp.text).split()[0])
+        logging.info(input_resp.text)
+    else:
+        num_correctly_input_mutations = 0
+
+    # Find invalid input mutations and their occurrance.
+    input_err_str = driver.find_element_by_xpath('//*[@id="input_err"]/div/h4')
+    logging.info(input_err_str.text)
+
+    html = driver.page_source
+
+    soup = BS(html, 'lxml')
+
+    # Iterate over error types.
+    errors = soup.find("div", {"id": "input_err"})
+    for error_type in errors.find_all('p'):
+        # print(error_type)
+        error_title, values, num_values = process_single_error(str(error_type))
+
+        if error_title == 'Invalid syntax':
+            invalid_syntax = values
+            num_invalid_syntax = num_values
+
+        elif error_title == 'Unrecognized gene symbols':
+            unrecognized_gene_symbols = values
+            num_unrecognized_gene_symbols = num_values
+
+        elif error_title == 'Unrecognized protein residues':
+            unrecognized_protein_residues = values
+            num_unrecognized_protein_residues = num_values
+
+        elif error_title == 'Duplicates':
+            duplicates = values
+            num_duplicates = num_values
+
+        elif error_title == 'Outside of structural domain':
+            outside_of_structural_domain = values
+            num_outside_of_structural_domain = num_values
+
+        else:
+            raise ValueError("Error Title unexpected!")
+
+    chunk = Chunk(file_path=file_path, num_correctly_input_mutations=num_correctly_input_mutations,
+                  invalid_syntax=invalid_syntax, num_invalid_syntax=num_invalid_syntax,
+                  unrecognized_gene_symbols=unrecognized_gene_symbols,
+                  num_unrecognized_gene_symbols=num_unrecognized_gene_symbols,
+                  unrecognized_protein_residues=unrecognized_protein_residues,
+                  num_unrecognized_protein_residues=num_unrecognized_protein_residues,
+                  duplicates=duplicates, num_duplicates=num_duplicates,
+                  outside_of_structural_domain=outside_of_structural_domain,
+                  num_outside_of_structural_domain=num_outside_of_structural_domain)
+
+    return chunk
+
+
+def get_chunk_init_args():
+    # TODO
+    signature = inspect.signature(Chunk.__init__)
+    return list(signature.parameters.values())
