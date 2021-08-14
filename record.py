@@ -2,7 +2,6 @@ from chunk import Chunk
 import pandas as pd
 import os
 import logging
-import sys
 
 logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
@@ -19,7 +18,6 @@ class RecordStatuses:
 #                            self.chunk.downloaded_status is True)
 #
 #     return completed_condition
-
 
 
 def get_chunk_record_status(chunk_file_path, records_folder_path):
@@ -43,28 +41,28 @@ def get_chunk_record_status(chunk_file_path, records_folder_path):
 
 
 class Record:
-    COLUMN_NAMES_TO_CHUNK_ATTR = \
-        {
-            'SUBCHUNK': "file_name",
-            'NUM_CORR_INPUT_MUTS': "num_correctly_input_mutations",
-            'INVALID_SYNTAX': "invalid_syntax",
-            'NUM_INVALID_SYNTAX': "num_invalid_syntax",
-            'UNRECOG_GENE_SYMBOLS': "unrecognized_gene_symbols",
-            'NUM_UNRECOG_GENE_SYMBOLS': "num_unrecognized_gene_symbols",
-            'UNRECOG_PROT_RESIDUES': "unrecognized_protein_residues",
-            'NUM_UNRECOG_PROT_RESIDUES': "num_unrecognized_protein_residues",
-            'DUPLICATES': "duplicates",
-            'NUM_DUPLICATES': "num_duplicates",
-            'OUTSIDE_STRUCT_DOMAIN': "outside_of_structural_domain",
-            'NUM_OUTSIDE_STRUCT_DOMAIN': "num_outside_of_structural_domain",
-            'NUM_ACTUAL_INPUT': "num_lines",
-            'NUM_PROVIDED_INPUT': "total_num_uploaded_entry",
-            'ELASPIC_URL': "ELASPIC_URL",
-            'UPLOADED_STATUS': 'uploaded_status',
-            'DOWNLOADED_STATUS': 'downloaded_status'
-        }
+    # COLUMN_NAMES_TO_CHUNK_ATTR = \
+    #     {
+    #         'SUBCHUNK': "file_name",
+    #         'NUM_CORR_INPUT_MUTS': "num_correctly_input_mutations",
+    #         'INVALID_SYNTAX': "invalid_syntax",
+    #         'NUM_INVALID_SYNTAX': "num_invalid_syntax",
+    #         'UNRECOG_GENE_SYMBOLS': "unrecognized_gene_symbols",
+    #         'NUM_UNRECOG_GENE_SYMBOLS': "num_unrecognized_gene_symbols",
+    #         'UNRECOG_PROT_RESIDUES': "unrecognized_protein_residues",
+    #         'NUM_UNRECOG_PROT_RESIDUES': "num_unrecognized_protein_residues",
+    #         'DUPLICATES': "duplicates",
+    #         'NUM_DUPLICATES': "num_duplicates",
+    #         'OUTSIDE_STRUCT_DOMAIN': "outside_of_structural_domain",
+    #         'NUM_OUTSIDE_STRUCT_DOMAIN': "num_outside_of_structural_domain",
+    #         'NUM_ACTUAL_INPUT': "num_lines",
+    #         'NUM_PROVIDED_INPUT': "total_num_uploaded_entry",
+    #         'ELASPIC_URL': "ELASPIC_URL",
+    #         'UPLOADED_STATUS': 'uploaded_status',
+    #         'DOWNLOADED_STATUS': 'downloaded_status'
+    #     }
 
-    COLUMN_NAMES = list(COLUMN_NAMES_TO_CHUNK_ATTR.keys())
+    # COLUMN_NAMES = list(COLUMN_NAMES_TO_CHUNK_ATTR.keys())
 
     def __init__(self, records_folder_path, chunk: Chunk):
         self.chunk = chunk
@@ -72,6 +70,9 @@ class Record:
         self.tcga_code = chunk.tcga_code
         self.filename = f"record_{chunk.tcga_code}_{chunk.chunk_no}.csv"
         self.path = os.path.join(self.records_folder_path, self.filename)
+        self.COLUMN_NAMES_TO_CHUNK_ATTR = None
+        self.COLUMN_NAMES = None
+        self.prepare_colnames()
         self.record_data = self.bring_record()
         self.initialize_record_file()
 
@@ -91,19 +92,10 @@ class Record:
 
         # if subchunk name is not found in the table, record it to the table.
         if self.chunk.file_name not in record_data.index:
-            logging.info(f'Appending {self.chunk.file_name}')
+            logging.debug(f'Appending {self.chunk.file_name}')
             record_data = record_data.append(self.get_new_chunk_entry())
 
-        # print('APPENDED DATA')
-        # print(record_data)
-
         record_data.to_csv(self.path)
-        # self.update_record_data(record_data)
-        # self.write_record()
-
-        # todo idk
-        # self.
-        # if record_data.loc[[chunk.subchunk_no]]
 
     def initialize_record_file(self):
         if not os.path.isfile(self.path):
@@ -122,7 +114,7 @@ class Record:
 
     def create_record(self):
         record_data = pd.DataFrame(columns=self.COLUMN_NAMES).set_index(self.COLUMN_NAMES[0])
-        logging.info('Creating record ..')
+        logging.debug('Creating record ..')
         return record_data
 
     def read_record(self):
@@ -130,8 +122,12 @@ class Record:
         return record_data
 
     def write_record(self):
-        logging.info('Writing record ..')
+        logging.debug('Writing record ..')
         self.record_data.to_csv(self.path)
 
     def is_exist(self):
         return os.path.isfile(self.path)
+
+    def prepare_colnames(self):
+        self.COLUMN_NAMES_TO_CHUNK_ATTR = {attr.upper(): attr for attr in self.chunk.get_attributes()}
+        self.COLUMN_NAMES = list(self.COLUMN_NAMES_TO_CHUNK_ATTR.keys())
