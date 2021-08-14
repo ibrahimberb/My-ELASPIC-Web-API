@@ -1,7 +1,7 @@
 import os
 import logging
 
-logging.basicConfig(level=logging.INFO, format='[CHUNK] %(message)s')
+logging.basicConfig(level=logging.INFO, format='[INFO] %(message)s')
 
 
 class Chunk:
@@ -42,14 +42,22 @@ class Chunk:
 
         # number of lines in text file.
         self.num_lines = self.get_num_lines()
-        # after web page computation
-        self.mutations_not_computed = None
-        self.num_mutations_not_computed = None
+        # after web page computation - post info
+        self.mutations_done = None
+        self.num_mutations_done = 0
+        self.mutations_error = None
+        self.num_mutations_error = 0
+        self.mutations_running = None
+        self.num_mutations_running = 0
 
-    def set_muts_not_computed(self, mut_not_computed):
-        logging.info("setting chunk's attr: `mut_not_computed`")
-        self.mutations_not_computed = mut_not_computed['elements']
-        self.num_mutations_not_computed = mut_not_computed['num_elements']
+    def set_mutations_post_info(self, post_info_dict):
+        logging.info(f"setting chunk's post info.`")
+        self.mutations_done = post_info_dict['mutations_done']
+        self.num_mutations_done = post_info_dict['num_mutations_done']
+        self.mutations_error = post_info_dict['mutations_error']
+        self.num_mutations_error = post_info_dict['num_mutations_error']
+        self.mutations_running = post_info_dict['mutations_running']
+        self.num_mutations_running = post_info_dict['num_mutations_running']
 
     def set_url(self, url):
         logging.info("setting chunk's attr: `ELASPIC_URL`")
@@ -76,7 +84,7 @@ class Chunk:
 
         Parameters
         ----------
-            filepath : <todo>
+            filepath : <todo: DOCSTRING>
                 Filepath of chunkfile. E.g. SNV_BRCA_Chunk_22_0_test.txt
         Returns
         -------
@@ -104,8 +112,10 @@ class Chunk:
             # info_file.write("get_num_lines: {}".format(self.get_num_lines()))
             # info_file.write("total_num_entry: {}".format(self.total_num_entry))
 
+    def get_attributes(self):
+        return self.__dict__.keys()
+
     def print_info(self):
-        print("\t - - - CHUNK INFO - - - ")
-        attributes = [attr for attr in dir(self) if not attr.startswith('__')]
-        for attr in attributes:
-            print(f"\t → {attr}: {getattr(self, attr)}")
+        print(" - - - CHUNK INFO - - - ")
+        for attr in self.get_attributes():
+            print(f" → {attr}: {getattr(self, attr)}")
