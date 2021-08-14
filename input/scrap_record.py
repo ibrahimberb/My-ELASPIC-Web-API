@@ -75,4 +75,6 @@ def process_single_error(html_text):
     else:
         num_values = len(values)
 
+    print('-' * 40)
+
     return error_title, values, num_values
