@@ -3,7 +3,7 @@ import time
 import logging
 from page_utils import click_button_by_xpath
 
-logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
 def download_result_file(driver, download_folder_path):
@@ -12,9 +12,9 @@ def download_result_file(driver, download_folder_path):
 
 
 def wait_result_download(dir_name, filename="allresults.txt", timeout_duration=15):
-    print("dir_name:", dir_name)
+    logging.debug("dir_name:", dir_name)
     download_file_path = os.path.join(dir_name, filename)
-    print("download_file_path:", download_file_path)
+    logging.debug("download_file_path:", download_file_path)
     time_elapsed = 0
     while not os.path.exists(download_file_path):
         if time_elapsed > timeout_duration:
