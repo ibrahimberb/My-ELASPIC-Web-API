@@ -9,14 +9,18 @@ from config import DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL
 from download_utils import download_result_file
 from driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
-from interact_page import get_post_info
-from utils import get_filename_from_path, wait
+from interact_page import get_post_info, uploaded
+from utils import get_filename_from_path, wait, record_upload_failed
 from page_utils import page_computation, ResponseMessages, process_input_recognization
 from chunk import Chunk, make_chunk
-import sys
+from log_script import ColorHandler
 
-logging.basicConfig(level=logging.INFO, format='[MyScapper] %(message)s')
+log = logging.Logger('debug_runner', level=logging.DEBUG)
+log.addHandler(ColorHandler())
 
+
+# logging.basicConfig(level=logging.INFO, format='[MyScapper] %(message)s')
+#
 
 class MyScraper:
     DEBUG_DELAY = 0
@@ -31,21 +35,21 @@ class MyScraper:
         # self.already_calculated = None
         if take_it_slow:
             self.DEBUG_DELAY = 5
-        logging.info('= = = = = = = = = = = = = = = = = = = = = =')
-        logging.info("STARTING MyScraper ..")
-        logging.info(f"FILENAME: {self.chunk_file_name} ")
+        log.info('= = = = = = = = = = = = = = = = = = = = = =')
+        log.info("STARTING MyScraper ..")
+        log.info(f"FILENAME: {self.chunk_file_name} ")
         self.set_run_mode()
         self.run()
 
     def set_run_mode(self):
         record_response, chunk = get_chunk_record_status(self.chunk_file_path, "Records_Test")
-        logging.info("RECORD STATUS: {}".format(record_response))
+        log.info("RECORD STATUS: {}".format(record_response))
         self.run_mode = record_response
         # print('NEW COMING CHUNK URL:', chunk.elaspic_url)
         self.chunk = chunk
 
         # if self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
-        #     logging.info(f'File {self.chunk_file_name} is already downloaded.')
+        #     log.info(f'File {self.chunk_file_name} is already downloaded.')
         #     self.already_calculated = True
 
     def _initialize_driver(self):
@@ -53,21 +57,21 @@ class MyScraper:
 
     def open_recorded_page(self):
         self.driver.get(self.chunk.elaspic_url)
-        # logging.info("Webpage Title: {}".format(self.driver.title))
+        # log.info("Webpage Title: {}".format(self.driver.title))
 
     def open_default_page(self):
         self.driver.get(self.ELASPIC_TARGET_URL)
-        # logging.info("Webpage Title: {}".format(self.driver.title))
+        # log.info("Webpage Title: {}".format(self.driver.title))
 
     def run(self):
         # if self.already_calculated and is_file_located(self.chunk_file_name):
         #     print('file is located! doing nothing..')
         #     return
 
-        # logging.info(f"Processing {self.chunk_file_path}")
+        # log.info(f"Processing {self.chunk_file_path}")
 
         # if self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
-        #     logging.info(f'File {self.chunk_file_name} is already downloaded.')
+        #     log.info(f'File {self.chunk_file_name} is already downloaded.')
         #     self.driver.quit()
         #     return
 
@@ -80,26 +84,44 @@ class MyScraper:
 
         elif self.run_mode == RecordStatuses.NOT_RECORDED:
             self._initialize_driver()
-            logging.debug('uploading first time.')
+            log.debug('uploading first time.')
             self.open_default_page()
+            wait(self.DEBUG_DELAY)  # ------------------------------------------------
             upload_file(self.driver, self.chunk_file_path)
+
+            wait(5)  # ------------------------------------------------
+            #################################################################
+            # TODO
+            # make sure input text file is uploaded to webpage.
+            # upload_err_txt = str(self.driver.find_element_by_id('uploaderr').text).strip()
+            # print('UPLOADERR: *{}*'.format(upload_err_txt))
+            if not uploaded(self.driver, self.chunk_file_name):
+                log.warning('Could not upload the file. skipping..')
+                record_upload_failed(self.chunk_file_name)
+                self.driver.quit()
+                return
+
+            ##################################################################
+
             # Wait until all inputs are recognized.
             correctly_input_mutations_flag = process_input_recognization(self.driver)
             chunk = make_chunk(self.driver, file_path=self.chunk_file_path,
                                correctly_input_mutations_flag=correctly_input_mutations_flag)
 
+            # wait(self.DEBUG_DELAY)
+
             # Click on submit
             wait(self.DEBUG_DELAY)  # ------------------------------------------------
             self.driver.find_element_by_id('submit').click()
-            logging.info('Clicking SUBMIT button ..')
+            log.info('Clicking SUBMIT button ..')
 
         elif self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
             if is_file_located(self.chunk_file_name):
-                logging.info('file is located! doing nothing..')
+                log.info('file is located! doing nothing..')
                 return
             else:
-                logging.info('Record says file is downloaded, but I could not find it.')
-                logging.info('Re-downloading from recorded URL.')
+                log.info('Record says file is downloaded, but I could not find it.')
+                log.info('Re-downloading from recorded URL.')
                 self._initialize_driver()
                 chunk = self.chunk
                 self.open_recorded_page()
@@ -126,7 +148,7 @@ class MyScraper:
         chunk.set_url(self.driver.current_url)
         chunk.set_uploaded_status(True)
 
-        logging.info("current_url: {}".format(self.driver.current_url))
+        log.info("current_url: {}".format(self.driver.current_url))
 
         wait(self.DEBUG_DELAY)  # ------------------------------------------------
 
@@ -137,13 +159,13 @@ class MyScraper:
             # move downloaded file to folder where it belongs and organize naming etc.
             organize(DOWNLOAD_FOLDER_PATH, self.chunk_file_path, downloaded_filename='allresults.txt')
             chunk.set_downloaded_status(True)
-            logging.debug(f'+ chunk_downloaded_status : {chunk.downloaded_status}')
+            log.debug(f'+ chunk_downloaded_status : {chunk.downloaded_status}')
             chunk.set_mutations_post_info(get_post_info(self.driver))
-            logging.info('File is downloaded successfully.')
+            log.info('File is downloaded successfully.')
             # todo run checker code.
 
         elif response == ResponseMessages.STILL_PROCESSING:
-            logging.info('Mutations are in process.')
+            log.info('Mutations are in process.')
             chunk.set_downloaded_status(False)
 
         # chunk.print_info()
@@ -153,8 +175,8 @@ class MyScraper:
         wait(self.DEBUG_DELAY * 2)  # ------------------------------------------------
 
         self.driver.quit()
-        # logging.info(f"PROCESS COMPLETED FOR {self.chunk_file_path}")
-        # logging.info('= = = = = = = = = = = = = = = = = = = = = =')
+        # log.info(f"PROCESS COMPLETED FOR {self.chunk_file_path}")
+        # log.info('= = = = = = = = = = = = = = = = = = = = = =')
 
 
 if __name__ == '__main__':
@@ -173,15 +195,15 @@ if __name__ == '__main__':
     # todo run browser in the background, it always pops up.
 
     # running all OV?, got it.
-    upload_test_file_paths = upload_test_file_paths[:]
+    upload_test_file_paths_run = upload_test_file_paths[:]
     #
     # upload_test_file_paths = [file for file in
     #                           glob.glob(TEST_FILES_PATH)
     #                           if 'SNV_BRCA_Chunk_22_21.txt' in file]
 
-    upload_test_file_paths_cycle = cycle(upload_test_file_paths)
-    for file_path in upload_test_file_paths_cycle:
-        myscapper = MyScraper(file_path, take_it_slow=False)
-        # wait(2)
+    # upload_test_file_paths_cycle = cycle(upload_test_file_paths)
+    for file_path in upload_test_file_paths_run:
+        myscapper = MyScraper(file_path, take_it_slow=True)
+        wait(1)
 
     print('<END>')
