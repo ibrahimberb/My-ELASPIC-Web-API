@@ -3,11 +3,16 @@ import pathlib
 test_mode = True
 
 if test_mode:
-    RECORDS_FOLDER_PATH = "Records_Test"
-    ELASPIC_RESULTS_FOLDER_PATH = "ELASPIC_Results_TEST"
+    RECORDS_FOLDER_PATH = "test_files/Records_Test"
+    ELASPIC_RESULTS_FOLDER_PATH = "test_files/ELASPIC_Results_TEST"
+    UPLOAD_FAILED_PATH = r"upload_failed_records_TEST.txt"
+    INPUT_FILES_PATH = "-----"
+
 else:
     RECORDS_FOLDER_PATH = "Records"
-    ELASPIC_RESULTS_FOLDER_PATH = "ELASPIC_Results"
+    ELASPIC_RESULTS_FOLDER_PATH = "Elaspic_Results"
+    UPLOAD_FAILED_PATH = "upload_failed_records.txt"
+    INPUT_FILES_PATH = "ELASPIC_Input"
 
 COMPUTATION_TIME_ALLOWED = 1  # 3 # 10  # in seconds.
 
@@ -15,7 +20,6 @@ COMPUTATION_TIME_ALLOWED = 1  # 3 # 10  # in seconds.
 DRIVER_PATH = r"C:\webdrivers\geckodriver.exe"
 TEMP_DOWNLOAD_FOLDER_PATH = pathlib.Path().resolve() / 'Firefox_download'
 ELASPIC_MANY_URL = 'http://elaspic.kimlab.org/many/'
-UPLOAD_FAILED_PATH = r"upload_failed_records.txt"
 HEADLESS = True
 
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"

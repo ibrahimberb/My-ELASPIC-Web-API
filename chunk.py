@@ -3,7 +3,7 @@ import logging
 import inspect
 
 from bs4 import BeautifulSoup as BS
-from interact_page import check_exists_by_id, check_exists_by_xpath
+from utils.interact_page import check_exists_by_xpath
 
 from input.scrap_record import process_single_error
 
