@@ -2,9 +2,10 @@ import logging
 import os
 import time
 from tqdm import tqdm
-from config import UPLOAD_FAILED_PATH, UNEXPECTED_FAILED_PATH
+from config import UPLOAD_FAILED_PATH, UNEXPECTED_FAILED_PATH, ALLMUTATIONS_FAILED_PATH, TEMP_DOWNLOAD_FOLDER_PATH
 import glob
 from utils.organizer import parse_filename
+import pandas as pd
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -54,11 +55,44 @@ def record_upload_failed(filename, upload_failed_path=UPLOAD_FAILED_PATH):
     record_bad_states(filename, "upload fail", upload_failed_path)
 
 
+def delete_allresults_temp_file(temp_download_folder_path=TEMP_DOWNLOAD_FOLDER_PATH):
+    allresults_temp_filepath = os.path.join(temp_download_folder_path, 'allresults.txt')
+    if os.path.isfile(allresults_temp_filepath):
+        logging.info(f'removing temp allresults file: {allresults_temp_filepath}')
+        os.remove(allresults_temp_filepath)
+    else:
+        print("Error: {} file not found.".format(allresults_temp_filepath))
+
+
+# deprecated
+def record_allmutations_failed(filename, url, allmutations_failed_path=ALLMUTATIONS_FAILED_PATH):
+    # The webpage says "All the mutations are done!" but all entries have cross,
+    # indicating the ERR.
+    tcga_code, _, _ = parse_filename(filename)
+    allmutations_failed_path = os.path.join(allmutations_failed_path, tcga_code + '.csv')
+    if not os.path.isfile(allmutations_failed_path):
+        logging.info(f"Creating allmutations results fail record file {allmutations_failed_path}")
+        allmutations_failed_record_data = pd.DataFrame({"filename": [],
+                                                        "URLs": []})
+
+    with open(allmutations_failed_path) as file:
+        lines = file.readlines()
+        filenames = [line.split('-')[0].strip() for line in lines]
+        if filename in filenames:
+            logging.info(f"{filename} already recorded as allmutations results fail.")
+            logging.info(f"Appending the new failed URL.")
+            return
+
+    with open(allmutations_failed_path, 'a') as file:
+        logging.info(f"Recording {filename} as failed ..")
+        file.write(f"{filename}\n")
+
+
 def record_unexpected_failed(filename, unexpected_failed_path=UNEXPECTED_FAILED_PATH):
     record_bad_states(filename, "unexpected fail", unexpected_failed_path)
 
 
-def record_bad_states(filename, bad_state, bad_state_path=UPLOAD_FAILED_PATH):
+def record_bad_states(filename, bad_state, bad_state_path):
     tcga_code, _, _ = parse_filename(filename)
     bad_state_path = os.path.join(bad_state_path, tcga_code + '.txt')
     if not os.path.isfile(bad_state_path):
