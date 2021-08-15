@@ -93,7 +93,7 @@ class MyScraper:
             # Click on submit
             wait(self.DEBUG_DELAY)  # ------------------------------------------------
             self.driver.find_element_by_id('submit').click()
-            log.info('Clicking SUBMIT button ..')
+            log.info('Submitting ..')
 
         elif self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
             if is_file_located(self.chunk_file_name):
@@ -176,4 +176,4 @@ if __name__ == '__main__':
     # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
 
     TCGA = 'OV'
-    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=list(range(2, 11)), run_speed=RunMode.FAST)
+    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=list(range(2, 6)), run_speed=RunMode.FAST)
