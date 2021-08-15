@@ -1,13 +1,14 @@
 import pathlib
 
-test_mode = False
+test_mode = True
 
 if test_mode:
-    RECORDS_FOLDER_PATH = "test_files/Records_Test"
-    ELASPIC_RESULTS_FOLDER_PATH = "test_files/ELASPIC_Results_TEST"
-    UPLOAD_FAILED_PATH = r"upload_failed_records_TEST.txt"
-    UNEXPECTED_FAILED_PATH = r"unexpected_failed_records_TEST.txt"
-    INPUT_FILES_PATH = "-----"
+    RECORDS_FOLDER_PATH = r"test_files\Records_Test"
+    ELASPIC_RESULTS_FOLDER_PATH = r"test_files\ELASPIC_Results_TEST"
+    UPLOAD_FAILED_PATH = r"test_files\upload_failed_records_TEST"
+    UNEXPECTED_FAILED_PATH = r"test_files\unexpected_failed_records_TEST"
+    INPUT_FILES_PATH = r"test_files\input_files_test"
+    ALLMUTATIONS_FAILED_PATH = r"test_files\allmutations_failed_TEST"
 
 # ACTUAL RUN
 else:
@@ -16,6 +17,7 @@ else:
     UPLOAD_FAILED_PATH = "Upload_fails"
     UNEXPECTED_FAILED_PATH = "Unexpected_fails"
     INPUT_FILES_PATH = "ELASPIC_Input"
+    ALLMUTATIONS_FAILED_PATH = r"Allmutations_fails"
 
 COMPUTATION_TIME_ALLOWED = 1  # 3 # 10  # in seconds.
 
@@ -23,7 +25,9 @@ COMPUTATION_TIME_ALLOWED = 1  # 3 # 10  # in seconds.
 DRIVER_PATH = r"C:\webdrivers\geckodriver.exe"
 TEMP_DOWNLOAD_FOLDER_PATH = pathlib.Path().resolve() / 'Firefox_download'
 ELASPIC_MANY_URL = 'http://elaspic.kimlab.org/many/'
+
 HEADLESS = True
+ELASPIC_NUM_PARALLEL_COMPUTATION = 2
 
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\mutations_input_test.txt"
@@ -33,6 +37,3 @@ HEADLESS = True
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\SNV_BRCA_Chunk_22_0_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\SNV_BRCA_Chunk_22_1_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\SNV_BRCA_Chunk_22_7_test.txt"
-
-
-# TODO records icin Folder creation... BRCA, OV.
