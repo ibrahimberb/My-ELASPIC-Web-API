@@ -1,4 +1,4 @@
-from interact_page import check_exists_by_xpath, check_exists_by_id
+from utils.interact_page import check_exists_by_xpath, check_exists_by_id
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,6 +14,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 class ResponseMessages:
     STILL_PROCESSING = "STILL_PROCESSING"
     COMPLETED = "COMPLETED"
+    RESULT_PAGE_NOT_LOADED = "RESULT_PAGE_NOT_LOADED"
 
 
 def click_button_by_xpath(driver, element_xpath):
@@ -64,7 +65,7 @@ def page_computation(driver):
 
     except TimeoutException:
         logging.warning("Result page not loaded!")
-        raise TimeoutException('Timeout..')
+        return ResponseMessages.RESULT_PAGE_NOT_LOADED
 
 
 def process_input_recognization(driver):
