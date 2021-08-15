@@ -15,13 +15,15 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 #         time_elasped += 0.1
 #     print()
 
-def wait(duration):
+def wait(duration, desc=None):
+    if desc is None:
+        desc = "[WAIT_DELAY]"
     if duration == 0:
         return
     if duration == 1:
         time.sleep(1)
     else:
-        for _ in tqdm(range(duration), desc='[WAIT_DELAY]', position=0, leave=True):
+        for _ in tqdm(range(duration), desc=desc, position=0, leave=True):
             time.sleep(1)
 
 
