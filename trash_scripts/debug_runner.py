@@ -1,5 +1,5 @@
 import glob
-from MySrapper import MyScraper
+from MyScraper import MyScraper
 import logging
 from log_script import ColorHandler
 
