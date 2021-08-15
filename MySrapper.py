@@ -179,6 +179,12 @@ class MyScraper:
         # log.info('= = = = = = = = = = = = = = = = = = = = = =')
 
 
+def run_multiple_files(multiple_files):
+    for file_path in multiple_files:
+        myscapper = MyScraper(file_path, take_it_slow=False)
+        wait(1)
+
+
 if __name__ == '__main__':
     import glob
     from itertools import cycle
@@ -202,8 +208,11 @@ if __name__ == '__main__':
     #                           if 'SNV_BRCA_Chunk_22_21.txt' in file]
 
     # upload_test_file_paths_cycle = cycle(upload_test_file_paths)
-    for file_path in upload_test_file_paths_run:
-        myscapper = MyScraper(file_path, take_it_slow=True)
-        wait(1)
+    # for file_path in upload_test_file_paths_run:
+    #     myscapper = MyScraper(file_path, take_it_slow=True)
+    #     wait(1)
 
-    print('<END>')
+    while True:
+        run_multiple_files(upload_test_file_paths_run)
+        print('<END>')
+        wait(60, 'cooling down the engines..')
