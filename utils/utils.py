@@ -55,7 +55,7 @@ def record_upload_failed(filename, upload_failed_path=UPLOAD_FAILED_PATH):
 
 
 def record_unexpected_failed(filename, unexpected_failed_path=UNEXPECTED_FAILED_PATH):
-    record_bad_states(filename, "unexpected", unexpected_failed_path)
+    record_bad_states(filename, "unexpected fail", unexpected_failed_path)
 
 
 def record_bad_states(filename, bad_state, bad_state_path=UPLOAD_FAILED_PATH):
