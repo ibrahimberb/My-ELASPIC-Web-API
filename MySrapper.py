@@ -10,13 +10,18 @@ from utils.download_utils import download_result_file
 from utils.driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
 from utils.interact_page import get_post_info, uploaded
-from utils.utils import get_filename_from_path, wait, record_upload_failed, get_subchunk_files
+from utils.utils import get_filename_from_path, wait, record_upload_failed, record_unexpected_failed, get_subchunk_files
 from utils.page_utils import page_computation, ResponseMessages, process_input_recognization
 from chunk import Chunk, make_chunk
 from log_script import ColorHandler
 
 log = logging.Logger('debug_runner', level=logging.DEBUG)
 log.addHandler(ColorHandler())
+
+
+class RunMode:
+    FAST = False
+    SLOW = True
 
 
 class MyScraper:
@@ -30,8 +35,8 @@ class MyScraper:
         self.driver = None
         self.chunk = Chunk()
         if take_it_slow:
-            self.DEBUG_DELAY = 5
-        log.info('= = = = = = = = = = = = = = = = = = = = = =')
+            self.DEBUG_DELAY = 15
+        log.info('------------------------------------------------------')
         log.info("STARTING MyScraper ..")
         log.info(f"FILENAME: {self.chunk_file_name} ")
         self.set_run_mode()
@@ -74,7 +79,7 @@ class MyScraper:
             wait(5)  # ------------------------------------------------
             if not uploaded(self.driver, self.chunk_file_name):
                 log.warning('Could not upload the file. skipping..')
-                record_upload_failed(self.chunk_file_name)
+                record_upload_failed(filename=self.chunk_file_name)
                 self.driver.quit()
                 return
 
@@ -114,6 +119,7 @@ class MyScraper:
         wait(self.DEBUG_DELAY)  # ------------------------------------------------
 
         response = page_computation(self.driver)
+
         if response == ResponseMessages.COMPLETED:
             # download the allresult file.
             download_result_file(self.driver, TEMP_DOWNLOAD_FOLDER_PATH)
@@ -123,11 +129,17 @@ class MyScraper:
             log.debug(f'+ chunk_downloaded_status : {chunk.downloaded_status}')
             chunk.set_mutations_post_info(get_post_info(self.driver))
             log.info('File is downloaded successfully.')
-            # todo run checker code.
+            # todo run file checker code. (sometimes they give error all)
 
         elif response == ResponseMessages.STILL_PROCESSING:
             log.info('Mutations are in process.')
             chunk.set_downloaded_status(False)
+
+        elif response == ResponseMessages.RESULT_PAGE_NOT_LOADED:
+            logging.warning("[WARNING] RESULT_PAGE_NOT_LOADED")
+            record_unexpected_failed(filename=self.chunk_file_name)
+            self.driver.quit()
+            return
 
         # chunk.print_info()
         record = Record(RECORDS_FOLDER_PATH, chunk)
@@ -136,29 +148,32 @@ class MyScraper:
         wait(self.DEBUG_DELAY * 2)  # ------------------------------------------------
 
         self.driver.quit()
-        # log.info(f"PROCESS COMPLETED FOR {self.chunk_file_path}")
-        # log.info('= = = = = = = = = = = = = = = = = = = = = =')
 
 
-def run_multiple_files(multiple_files):
-    for file_path in multiple_files:
-        myscapper = MyScraper(file_path, take_it_slow=False)
-        wait(0.2)
+def run_single_chunk(subchunk_files, run_speed, num_repeat=3):
+    for i in range(num_repeat):
+        log.debug(f"\tREPEAT #{i + 1}")
+        for subchunk_file in subchunk_files:
+            log.debug(f"\tRUNNING SUB-CHUNK: {subchunk_file} ")
+            myscapper = MyScraper(subchunk_file, take_it_slow=run_speed)
+            wait(0.1)
+        log.debug('\t- - - ')
+        wait(10, '[REPEAT COOL DOWN]')
+
+
+def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed):
+    for chunk_no in chunks_to_run:
+        # Returns 100 chunk files for 1 chunk.
+        subchunk_file_paths = get_subchunk_files(subchunks_path=input_path, tcga=tcga, chunk_no=chunk_no)
+        log.debug(f' RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)')
+        log.debug('===========================================================')
+        run_single_chunk(subchunk_file_paths, run_speed)
+        wait(60, 'cooling down the engines..')
+    log.debug('<END>')
 
 
 if __name__ == '__main__':
+    # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
 
-    TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\OV_10_test\*"
-
-    upload_test_file_paths = get_subchunk_files(chunk_path=INPUT_FILES_PATH)
-
-    # print(upload_test_file_paths)
-    #
-    # ################## RUN OPTION, how many files you want to run?
-
-    upload_test_file_paths_run = upload_test_file_paths[:1]
-    #
-    while True:
-        run_multiple_files(upload_test_file_paths_run)
-        log.debug('<END>')
-        wait(60, 'cooling down the engines..')
+    TCGA = 'OV'
+    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=list(range(2, 11)), run_speed=RunMode.FAST)
