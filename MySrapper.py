@@ -5,13 +5,16 @@ import logging
 
 from utils.upload_utils import upload_file
 from utils.organizer import organize, is_file_located
-from config import TEMP_DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL, INPUT_FILES_PATH
+from config import TEMP_DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL, INPUT_FILES_PATH, \
+    ELASPIC_NUM_PARALLEL_COMPUTATION
 from utils.download_utils import download_result_file
 from utils.driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
 from utils.interact_page import get_post_info, uploaded
-from utils.utils import get_filename_from_path, wait, record_upload_failed, record_unexpected_failed, get_subchunk_files
+from utils.utils import get_filename_from_path, wait, record_upload_failed, record_unexpected_failed, \
+    get_subchunk_files, delete_allresults_temp_file
 from utils.page_utils import page_computation, ResponseMessages, process_input_recognization
+from utils.record_utils import record_allmutations_failed
 from chunk import Chunk, make_chunk
 from log_script import ColorHandler
 
@@ -33,6 +36,7 @@ class MyScraper:
         self.ELASPIC_TARGET_URL = ELASPIC_MANY_URL
         self.run_mode = None
         self.driver = None
+        self.num_active_computations = None
         self.chunk = Chunk()
         if take_it_slow:
             self.DEBUG_DELAY = 15
@@ -43,10 +47,12 @@ class MyScraper:
         self.run()
 
     def set_run_mode(self):
-        record_response, chunk = get_chunk_record_status(self.chunk_file_path, RECORDS_FOLDER_PATH)
+        record_response, chunk, num_active_computations = get_chunk_record_status(self.chunk_file_path,
+                                                                                  RECORDS_FOLDER_PATH)
         log.info("RECORD STATUS: {}".format(record_response))
         self.run_mode = record_response
         self.chunk = chunk
+        self.num_active_computations = int(num_active_computations)
 
     def _initialize_driver(self):
         self.driver = initialize_driver()
@@ -59,6 +65,13 @@ class MyScraper:
         self.driver.get(self.ELASPIC_TARGET_URL)
         # log.info("Webpage Title: {}".format(self.driver.title))
 
+    def handle_allmutations_error(self, new_chunk):
+        # new_chunk because it now stores post info.
+        log.warning('Allresult file is empty. we do not download it.')
+        record_allmutations_failed(self.chunk_file_name, self.chunk.elaspic_url)
+        record = Record(RECORDS_FOLDER_PATH, new_chunk)
+        record.delete_chunk_from_record()
+
     def run(self):
         # log.info(f"Processing {self.chunk_file_path}")
 
@@ -70,8 +83,15 @@ class MyScraper:
             self.open_recorded_page()
 
         elif self.run_mode == RecordStatuses.NOT_RECORDED:
-            self._initialize_driver()
             log.debug('uploading first time.')
+            # todo make it function
+            if self.num_active_computations >= ELASPIC_NUM_PARALLEL_COMPUTATION:
+                log.warning(
+                    f"Number of active computation: {self.num_active_computations}\nAborting Scraper.")
+                return
+
+            self._initialize_driver()
+
             self.open_default_page()
             wait(self.DEBUG_DELAY)  # ------------------------------------------------
             upload_file(self.driver, self.chunk_file_path)
@@ -121,15 +141,18 @@ class MyScraper:
         response = page_computation(self.driver)
 
         if response == ResponseMessages.COMPLETED:
-            # download the allresult file.
+            chunk.set_mutations_post_info(get_post_info(self.driver))
+
+            # This means the webpage ERR for all inputs.
+            if chunk.num_mutations_done == 0:
+                self.handle_allmutations_error(chunk)
+                return
+
             download_result_file(self.driver, TEMP_DOWNLOAD_FOLDER_PATH)
-            # move downloaded file to folder where it belongs and organize naming etc.
             organize(TEMP_DOWNLOAD_FOLDER_PATH, self.chunk_file_path, downloaded_filename='allresults.txt')
             chunk.set_downloaded_status(True)
             log.debug(f'+ chunk_downloaded_status : {chunk.downloaded_status}')
-            chunk.set_mutations_post_info(get_post_info(self.driver))
             log.info('File is downloaded successfully.')
-            # todo run file checker code. (sometimes they give error all)
 
         elif response == ResponseMessages.STILL_PROCESSING:
             log.info('Mutations are in process.')
@@ -141,11 +164,10 @@ class MyScraper:
             self.driver.quit()
             return
 
-        # chunk.print_info()
         record = Record(RECORDS_FOLDER_PATH, chunk)
         record.record()
 
-        wait(self.DEBUG_DELAY * 2)  # ------------------------------------------------
+        wait(self.DEBUG_DELAY)  # ------------------------------------------------
 
         self.driver.quit()
 
