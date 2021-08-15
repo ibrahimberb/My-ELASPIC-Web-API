@@ -43,3 +43,13 @@ def get_post_info(driver):
 
     logging.debug('post_info: {}'.format(post_info))
     return post_info
+
+
+def uploaded(driver, chunk_file_name):
+    # upload_err_txt = str(driver.find_element_by_id('uploaderr').text).strip()
+    resp_wrapper_txt = str(driver.find_element_by_id('resp_wrapper').text).strip()
+    # print('resp_wrapper_txt: *{}*'.format(resp_wrapper_txt))
+    resp_wrapper_visible = not bool(resp_wrapper_txt)
+    if resp_wrapper_visible:
+        return False
+    return True
