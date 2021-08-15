@@ -184,7 +184,7 @@ class Record:
 
     def write_record(self):
         logging.debug('Writing record ..')
-        print("self.path: ", self.path)
+        # print("self.path: ", self.path)
         folder_path, _ = path, file = os.path.split(self.path)
         Path(folder_path).mkdir(parents=True, exist_ok=True)
         # print("os.listdir():", os.listdir())
