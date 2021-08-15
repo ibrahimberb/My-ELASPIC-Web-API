@@ -65,6 +65,9 @@ class Chunk:
 
     def set_mutations_post_info(self, post_info_dict):
         logging.debug(f"setting chunk's post info.`")
+        # Todo
+        #  if num mutations_done is 0, then it means that
+        #  the web server ERR.
         self.mutations_done = post_info_dict['mutations_done']
         self.num_mutations_done = post_info_dict['num_mutations_done']
         self.mutations_error = post_info_dict['mutations_error']
