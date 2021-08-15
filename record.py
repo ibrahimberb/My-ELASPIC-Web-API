@@ -31,7 +31,8 @@ def get_chunk_record_status(chunk_file_path, records_folder_path):
     # print('-----------------------------------')
 
     logging.info(f"record_data shape: {record.record_data.shape}")
-
+    logging.info(f"num_active_computations: {record.get_num_active_computations()}")
+    num_active_computations = record.get_num_active_computations()
     # print('-----------------------------------')
     # print("record.chunk.file_name:", record.chunk.file_name)
     # print('-----------------------------------')
@@ -39,7 +40,7 @@ def get_chunk_record_status(chunk_file_path, records_folder_path):
     # print('-----------------------------------')
 
     if record.chunk.file_name not in record.record_data.index:
-        return RecordStatuses.NOT_RECORDED, None
+        return RecordStatuses.NOT_RECORDED, None, num_active_computations
     # print('-----------------------------------')
     # print('apperantly, I can find the index and access it..')
     # print(record.chunk.file_name in record.record_data.index)
@@ -102,13 +103,13 @@ def get_chunk_record_status(chunk_file_path, records_folder_path):
             entry_data.loc[record.chunk.file_name, 'UPLOADED_STATUS'] == 1 and
             entry_data.loc[record.chunk.file_name, 'DOWNLOADED_STATUS'] == 1
     ):
-        return RecordStatuses.RECORDED_DOWNLOADED, chunk
+        return RecordStatuses.RECORDED_DOWNLOADED, chunk, num_active_computations
 
     elif (
             entry_data.loc[record.chunk.file_name, 'UPLOADED_STATUS'] == 1 and
             entry_data.loc[record.chunk.file_name, 'DOWNLOADED_STATUS'] == 0
     ):
-        return RecordStatuses.RECORDED_NOT_DOWNLOADED, chunk
+        return RecordStatuses.RECORDED_NOT_DOWNLOADED, chunk, num_active_computations
 
     else:
         raise Exception('something went wrong :(')
@@ -134,7 +135,7 @@ class Record:
         return record_data
 
     def get_new_chunk_entry(self):
-        new_chunk_entry = self.create_record()
+        new_chunk_entry = self.create_record_data()
 
         for column in new_chunk_entry.columns:
             new_chunk_entry.loc[self.chunk.file_name, column] = getattr(self.chunk,
@@ -160,22 +161,34 @@ class Record:
             self.write_record()
 
         else:
-            logging.info(f"record file {self.filename} already exist, no need to create a new one.")
+            logging.debug(f"record file {self.filename} already exist, no need to create a new one.")
 
     def bring_record(self):
         if self.is_exist():
             logging.debug('bringing from existing file.')
             record_data = self.read_record()
         else:
-            record_data = self.create_record()
+            record_data = self.create_record_data()
         # print('debug - bring_record: record_data.index.name: ', record_data.index.name)
         return record_data
 
-    def create_record(self):
+    def create_record_data(self):
         record_data = pd.DataFrame(columns=self.COLUMN_NAMES).set_index(self.COLUMN_NAMES[0])
         logging.debug('Creating record ..')
         # print('debug - create_record: record_data.index.name: ', record_data.index.name)
         return record_data
+
+    def delete_chunk_from_record(self):
+        logging.info(f'removing chunk from record ..')
+        self.record_data = self.record_data.drop(self.chunk.file_name, axis='index')
+        self.write_record()
+
+    def get_num_active_computations(self):
+        logging.debug('Getting num_active_computations ..')
+        record_data = pd.read_csv(self.path, index_col=self.COLUMN_NAMES[0])
+        num_active_computations = len(record_data[(record_data['UPLOADED_STATUS'] == 1) &
+                                                  (record_data['DOWNLOADED_STATUS'] == 0)])
+        return num_active_computations
 
     def read_record(self):
         record_data = pd.read_csv(self.path, index_col=self.COLUMN_NAMES[0])
