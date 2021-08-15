@@ -3,24 +3,21 @@
 # Imports
 import logging
 
-from upload_utils import upload_file
-from organizer import organize, is_file_located
-from config import TEMP_DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL
-from download_utils import download_result_file
-from driver_conf import initialize_driver
+from utils.upload_utils import upload_file
+from utils.organizer import organize, is_file_located
+from config import TEMP_DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL, INPUT_FILES_PATH
+from utils.download_utils import download_result_file
+from utils.driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
-from interact_page import get_post_info, uploaded
-from utils import get_filename_from_path, wait, record_upload_failed
-from page_utils import page_computation, ResponseMessages, process_input_recognization
+from utils.interact_page import get_post_info, uploaded
+from utils.utils import get_filename_from_path, wait, record_upload_failed, get_subchunk_files
+from utils.page_utils import page_computation, ResponseMessages, process_input_recognization
 from chunk import Chunk, make_chunk
 from log_script import ColorHandler
 
 log = logging.Logger('debug_runner', level=logging.DEBUG)
 log.addHandler(ColorHandler())
 
-
-# logging.basicConfig(level=logging.INFO, format='[MyScapper] %(message)s')
-#
 
 class MyScraper:
     DEBUG_DELAY = 0
@@ -32,7 +29,6 @@ class MyScraper:
         self.run_mode = None
         self.driver = None
         self.chunk = Chunk()
-        # self.already_calculated = None
         if take_it_slow:
             self.DEBUG_DELAY = 5
         log.info('= = = = = = = = = = = = = = = = = = = = = =')
@@ -42,15 +38,10 @@ class MyScraper:
         self.run()
 
     def set_run_mode(self):
-        record_response, chunk = get_chunk_record_status(self.chunk_file_path, "Records_Test")
+        record_response, chunk = get_chunk_record_status(self.chunk_file_path, RECORDS_FOLDER_PATH)
         log.info("RECORD STATUS: {}".format(record_response))
         self.run_mode = record_response
-        # print('NEW COMING CHUNK URL:', chunk.elaspic_url)
         self.chunk = chunk
-
-        # if self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
-        #     log.info(f'File {self.chunk_file_name} is already downloaded.')
-        #     self.already_calculated = True
 
     def _initialize_driver(self):
         self.driver = initialize_driver()
@@ -64,16 +55,7 @@ class MyScraper:
         # log.info("Webpage Title: {}".format(self.driver.title))
 
     def run(self):
-        # if self.already_calculated and is_file_located(self.chunk_file_name):
-        #     print('file is located! doing nothing..')
-        #     return
-
         # log.info(f"Processing {self.chunk_file_path}")
-
-        # if self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
-        #     log.info(f'File {self.chunk_file_name} is already downloaded.')
-        #     self.driver.quit()
-        #     return
 
         if self.run_mode == RecordStatuses.RECORDED_NOT_DOWNLOADED:
             self._initialize_driver()
@@ -90,18 +72,11 @@ class MyScraper:
             upload_file(self.driver, self.chunk_file_path)
 
             wait(5)  # ------------------------------------------------
-            #################################################################
-            # TODO
-            # make sure input text file is uploaded to webpage.
-            # upload_err_txt = str(self.driver.find_element_by_id('uploaderr').text).strip()
-            # print('UPLOADERR: *{}*'.format(upload_err_txt))
             if not uploaded(self.driver, self.chunk_file_name):
                 log.warning('Could not upload the file. skipping..')
                 record_upload_failed(self.chunk_file_name)
                 self.driver.quit()
                 return
-
-            ##################################################################
 
             # Wait until all inputs are recognized.
             correctly_input_mutations_flag = process_input_recognization(self.driver)
@@ -129,20 +104,6 @@ class MyScraper:
         else:
             print(self.run_mode)
             raise ValueError('run mode not defined properly.')
-
-        # if self.run_mode == RecordStatuses.RECORDED_NOT_DOWNLOADED:
-        #     record = Record(RECORDS_FOLDER_PATH, Chunk(file_path=self.chunk_file_path))
-        #     record.record()
-        #     chunk = record.make_chunk_from_record()
-
-        # elif self.run_mode == RecordStatuses.NOT_RECORDED:
-        #     # Upload the file.
-        #     upload_file(self.driver, self.chunk_file_path)
-        #     # Wait until all inputs are recognized.
-        #     correctly_input_mutations_flag = process_input_recognization(self.driver)
-        #     # make a chunk object.
-        #     chunk = make_chunk(self.driver, file_path=self.chunk_file_path,
-        #                        correctly_input_mutations_flag=correctly_input_mutations_flag)
 
         # Get current URL.
         chunk.set_url(self.driver.current_url)
@@ -186,23 +147,17 @@ def run_multiple_files(multiple_files):
 
 
 if __name__ == '__main__':
-    import glob
-    from itertools import cycle
 
-    TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\OV_10_test\*"
+    TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\OV_10_test\*"
 
-    upload_test_file_paths = [file for file in
-                              glob.glob(TEST_FILES_PATH)
-                              if 'Chunk_1' in file]
+    upload_test_file_paths = get_subchunk_files(chunk_path=INPUT_FILES_PATH)
 
     # print(upload_test_file_paths)
+    #
+    # ################## RUN OPTION, how many files you want to run?
 
-    ################## RUN OPTION, how many files you want to run?
-    # todo run browser in the background, it always pops up.
-
-    # running all OV?, got it.
-    upload_test_file_paths_run = upload_test_file_paths[:]
-
+    upload_test_file_paths_run = upload_test_file_paths[:1]
+    #
     while True:
         run_multiple_files(upload_test_file_paths_run)
         log.debug('<END>')
