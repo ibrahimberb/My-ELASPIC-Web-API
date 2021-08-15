@@ -15,7 +15,7 @@ class CorrectLocation:
         self.chunk_no = chunk_no
         self.subchunk_no = subchunk_no
         self.correct_folder_path = pathlib.Path().resolve() / ELASPIC_RESULTS_FOLDER_PATH / tcga_code
-        self.correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
+        self.correct_filename = f"{chunk_no}/allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
         self.correct_file_path = os.path.join(self.correct_folder_path, self.correct_filename)
 
 
