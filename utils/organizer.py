@@ -14,8 +14,8 @@ class CorrectLocation:
         self.tcga_code = tcga_code
         self.chunk_no = chunk_no
         self.subchunk_no = subchunk_no
-        self.correct_folder_path = pathlib.Path().resolve() / ELASPIC_RESULTS_FOLDER_PATH / tcga_code
-        self.correct_filename = f"{chunk_no}/allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
+        self.correct_folder_path = pathlib.Path().resolve() / ELASPIC_RESULTS_FOLDER_PATH / tcga_code / chunk_no
+        self.correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
         self.correct_file_path = os.path.join(self.correct_folder_path, self.correct_filename)
 
 
@@ -54,7 +54,11 @@ def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, download
     assert len(files) == 1
     downloaded_file_path = files[0]
 
+    logging.debug(f"downloaded_file_path: {downloaded_file_path}")
+
     correct_location = CorrectLocation(tcga_code, chunk_no, subchunk_no)
+
+    logging.debug(f"downloaded_file_path: {correct_location}")
 
     # Create paths
     Path(correct_location.correct_folder_path).mkdir(parents=True, exist_ok=True)
