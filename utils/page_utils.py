@@ -17,8 +17,8 @@ class ResponseMessages:
     RESULT_PAGE_NOT_LOADED = "RESULT_PAGE_NOT_LOADED"
 
 
-def click_button_by_xpath(driver, element_xpath):
-    click_button_wait = WebDriverWait(driver, 3)
+def click_button_by_xpath(driver, element_xpath, allowed_timeout=3):
+    click_button_wait = WebDriverWait(driver, allowed_timeout)
     click_button_wait.until(EC.visibility_of_element_located((By.XPATH, element_xpath)))
     driver.find_element_by_xpath(element_xpath).click()
 
