@@ -73,3 +73,12 @@
 #     print('ERROR ENTRY.')
 # else:
 #     raise ValueError('potential invalid attrs.')
+
+############################
+# chunk_file_paths = get_subchunk_files(TEST_FILES_PATH)
+# selected_chunk_file_paths = [file for file in chunk_file_paths if "BBB" in file]
+# upload_test_file_paths_run = upload_test_file_paths[:]
+
+# logging.debug(chunk_file_paths)
+#
+# run_multiple_chunks(chunk_file_paths)
