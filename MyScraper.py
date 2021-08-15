@@ -198,4 +198,5 @@ if __name__ == '__main__':
     # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
 
     TCGA = 'OV'
-    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=list(range(2, 6)), run_speed=RunMode.FAST)
+    # list(range(2, 6))
+    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=[2], run_speed=RunMode.FAST)
