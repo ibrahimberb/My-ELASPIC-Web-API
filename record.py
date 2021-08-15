@@ -2,7 +2,7 @@ from chunk import Chunk
 import pandas as pd
 import os
 import logging
-from utils import get_filename_from_path
+from pathlib import Path
 
 logging.basicConfig(filename='recordlogger.log', level=logging.INFO, format='%(message)s')
 
@@ -102,49 +102,25 @@ def get_chunk_record_status(chunk_file_path, records_folder_path):
             entry_data.loc[record.chunk.file_name, 'UPLOADED_STATUS'] == 1 and
             entry_data.loc[record.chunk.file_name, 'DOWNLOADED_STATUS'] == 1
     ):
-        # print('returning chunk with URL: ', chunk.elaspic_url)
-        return RecordStatuses.RECORDED_DOWNLOADED, chunk  # chunk.ELASPIC_URL, chunk
+        return RecordStatuses.RECORDED_DOWNLOADED, chunk
 
     elif (
             entry_data.loc[record.chunk.file_name, 'UPLOADED_STATUS'] == 1 and
             entry_data.loc[record.chunk.file_name, 'DOWNLOADED_STATUS'] == 0
     ):
-        # print('returning chunk with URL: ', chunk.elaspic_url)
-        return RecordStatuses.RECORDED_NOT_DOWNLOADED, chunk  # entry_data.loc[record.chunk.file_name, 'ELASPIC_URL'], chunk
+        return RecordStatuses.RECORDED_NOT_DOWNLOADED, chunk
 
     else:
         raise Exception('something went wrong :(')
 
 
 class Record:
-    # COLUMN_NAMES_TO_CHUNK_ATTR = \
-    #     {
-    #         'SUBCHUNK': "file_name",
-    #         'NUM_CORR_INPUT_MUTS': "num_correctly_input_mutations",
-    #         'INVALID_SYNTAX': "invalid_syntax",
-    #         'NUM_INVALID_SYNTAX': "num_invalid_syntax",
-    #         'UNRECOG_GENE_SYMBOLS': "unrecognized_gene_symbols",
-    #         'NUM_UNRECOG_GENE_SYMBOLS': "num_unrecognized_gene_symbols",
-    #         'UNRECOG_PROT_RESIDUES': "unrecognized_protein_residues",
-    #         'NUM_UNRECOG_PROT_RESIDUES': "num_unrecognized_protein_residues",
-    #         'DUPLICATES': "duplicates",
-    #         'NUM_DUPLICATES': "num_duplicates",
-    #         'OUTSIDE_STRUCT_DOMAIN': "outside_of_structural_domain",
-    #         'NUM_OUTSIDE_STRUCT_DOMAIN': "num_outside_of_structural_domain",
-    #         'NUM_ACTUAL_INPUT': "num_lines",
-    #         'NUM_PROVIDED_INPUT': "total_num_uploaded_entry",
-    #         'ELASPIC_URL': "ELASPIC_URL",
-    #         'UPLOADED_STATUS': 'uploaded_status',
-    #         'DOWNLOADED_STATUS': 'downloaded_status'
-    #     }
-
-    # COLUMN_NAMES = list(COLUMN_NAMES_TO_CHUNK_ATTR.keys())
 
     def __init__(self, records_folder_path, chunk: Chunk):
         self.chunk = chunk
         self.records_folder_path = records_folder_path
         self.tcga_code = chunk.tcga_code
-        self.filename = f"record_{chunk.tcga_code}_{chunk.chunk_no}.csv"
+        self.filename = os.path.join(self.tcga_code, f"record_{chunk.tcga_code}_{chunk.chunk_no}.csv")
         self.path = os.path.join(self.records_folder_path, self.filename)
         self.COLUMN_NAMES_TO_CHUNK_ATTR = None
         self.COLUMN_NAMES = None
@@ -209,7 +185,9 @@ class Record:
     def write_record(self):
         logging.debug('Writing record ..')
         print("self.path: ", self.path)
-        print("os.listdir():", os.listdir())
+        folder_path, _ = path, file = os.path.split(self.path)
+        Path(folder_path).mkdir(parents=True, exist_ok=True)
+        # print("os.listdir():", os.listdir())
         self.record_data.to_csv(self.path)
 
     def is_exist(self):
