@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 import pathlib
 import glob
+from config import ELASPIC_RESULTS_FOLDER_PATH
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -13,7 +14,7 @@ class CorrectLocation:
         self.tcga_code = tcga_code
         self.chunk_no = chunk_no
         self.subchunk_no = subchunk_no
-        self.correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
+        self.correct_folder_path = pathlib.Path().resolve() / ELASPIC_RESULTS_FOLDER_PATH / tcga_code
         self.correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
         self.correct_file_path = os.path.join(self.correct_folder_path, self.correct_filename)
 
@@ -43,11 +44,6 @@ def parse_filename(filepath):
 def get_correct_location_obj(tcga_code, chunk_no, subchunk_no):
     correct_location_obj = CorrectLocation(tcga_code, chunk_no, subchunk_no)
     return correct_location_obj
-    #
-    # correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
-    # correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
-    # correct_file_path = os.path.join(correct_folder_path, correct_filename)
-    # return correct_filename, correct_file_path, correct_folder_path
 
 
 def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, downloaded_filename):
@@ -60,17 +56,11 @@ def move_file(downloaded_folder_path, tcga_code, chunk_no, subchunk_no, download
 
     correct_location = CorrectLocation(tcga_code, chunk_no, subchunk_no)
 
-    # correct_folder_path, correct_filename, correct_file_path
-    #
-    # correct_folder_path = pathlib.Path().resolve() / "ELASPIC_Results" / tcga_code
-    # correct_filename = f"allresults_{tcga_code}_{chunk_no}_{subchunk_no}.txt"
-    # correct_file_path = os.path.join(correct_folder_path, correct_filename)
-
     # Create paths
     Path(correct_location.correct_folder_path).mkdir(parents=True, exist_ok=True)
 
     if os.path.isfile(correct_location.correct_file_path):
-        raise FileExistsError(f"You already have the file {correct_location.correct_filename}")
+        raise FileExistsError(f"You already have the file {correct_location.correct_file_path}")
 
     logging.debug('downloaded_file_path:', downloaded_file_path)
     logging.debug('correct_file_path:', correct_location.correct_file_path)
