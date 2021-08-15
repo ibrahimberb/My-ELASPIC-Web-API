@@ -8,7 +8,6 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 def split_pair_occurrence(input_str):
     """
     Q9HD36.A79T (x11) → (Q9HD36.A79T, 11)
-    TODO: fill doc string.
     """
     if '(x' not in input_str:
         return input_str, 1
