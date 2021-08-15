@@ -5,7 +5,7 @@ import logging
 
 from upload_utils import upload_file
 from organizer import organize, is_file_located
-from config import DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL
+from config import TEMP_DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL
 from download_utils import download_result_file
 from driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
@@ -155,9 +155,9 @@ class MyScraper:
         response = page_computation(self.driver)
         if response == ResponseMessages.COMPLETED:
             # download the allresult file.
-            download_result_file(self.driver, DOWNLOAD_FOLDER_PATH)
+            download_result_file(self.driver, TEMP_DOWNLOAD_FOLDER_PATH)
             # move downloaded file to folder where it belongs and organize naming etc.
-            organize(DOWNLOAD_FOLDER_PATH, self.chunk_file_path, downloaded_filename='allresults.txt')
+            organize(TEMP_DOWNLOAD_FOLDER_PATH, self.chunk_file_path, downloaded_filename='allresults.txt')
             chunk.set_downloaded_status(True)
             log.debug(f'+ chunk_downloaded_status : {chunk.downloaded_status}')
             chunk.set_mutations_post_info(get_post_info(self.driver))
@@ -182,7 +182,7 @@ class MyScraper:
 def run_multiple_files(multiple_files):
     for file_path in multiple_files:
         myscapper = MyScraper(file_path, take_it_slow=False)
-        wait(1)
+        wait(0.2)
 
 
 if __name__ == '__main__':
@@ -202,17 +202,8 @@ if __name__ == '__main__':
 
     # running all OV?, got it.
     upload_test_file_paths_run = upload_test_file_paths[:]
-    #
-    # upload_test_file_paths = [file for file in
-    #                           glob.glob(TEST_FILES_PATH)
-    #                           if 'SNV_BRCA_Chunk_22_21.txt' in file]
-
-    # upload_test_file_paths_cycle = cycle(upload_test_file_paths)
-    # for file_path in upload_test_file_paths_run:
-    #     myscapper = MyScraper(file_path, take_it_slow=True)
-    #     wait(1)
 
     while True:
         run_multiple_files(upload_test_file_paths_run)
-        print('<END>')
+        log.debug('<END>')
         wait(60, 'cooling down the engines..')
