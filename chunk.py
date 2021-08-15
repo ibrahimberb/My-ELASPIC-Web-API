@@ -100,7 +100,7 @@ class Chunk:
 
         Parameters
         ----------
-            filepath : <todo: DOCSTRING>
+            filepath :
                 Filepath of chunkfile. E.g. SNV_BRCA_Chunk_22_0_test.txt
         Returns
         -------
