@@ -3,25 +3,25 @@ import os
 import time
 from tqdm import tqdm
 from config import UPLOAD_FAILED_PATH
+import glob
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
-# def wait(duration):
-#     time_elasped = 0
-#     while time_elasped < duration:
-#         print('.', end='')
-#         time.sleep(0.1)
-#         time_elasped += 0.1
-#     print()
+def get_subchunk_files(chunk_path):
+    files = [file for file in
+             glob.glob(chunk_path)
+             if f'Chunk_{TODO}' in file]
+
 
 def wait(duration, desc=None):
     if desc is None:
         desc = "[WAIT_DELAY]"
     if duration == 0:
         return
-    if duration == 1:
-        time.sleep(1)
+    if duration <= 1:
+        time.sleep(duration)
+
     else:
         for _ in tqdm(range(duration), desc=desc, position=0, leave=True):
             time.sleep(1)

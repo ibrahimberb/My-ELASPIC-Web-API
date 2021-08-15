@@ -1,7 +1,6 @@
 import logging
-from driver_conf import initialize_driver
-from selenium.webdriver.support.ui import Select
-from interact_page import get_post_info
+from utils.driver_conf import initialize_driver
+from utils.interact_page import get_post_info
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
