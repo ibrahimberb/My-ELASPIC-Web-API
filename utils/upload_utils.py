@@ -1,4 +1,4 @@
-from utils import is_valid_file
+from utils.utils import is_valid_file
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
