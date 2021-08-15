@@ -1,6 +1,6 @@
 import pathlib
 
-test_mode = True
+test_mode = False
 
 if test_mode:
     RECORDS_FOLDER_PATH = r"test_files\Records_Test"
@@ -27,7 +27,7 @@ TEMP_DOWNLOAD_FOLDER_PATH = pathlib.Path().resolve() / 'Firefox_download'
 ELASPIC_MANY_URL = 'http://elaspic.kimlab.org/many/'
 
 HEADLESS = True
-ELASPIC_NUM_PARALLEL_COMPUTATION = 2
+ELASPIC_NUM_PARALLEL_COMPUTATION = 10
 
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\mutations_input_test.txt"
