@@ -136,7 +136,7 @@ class MyScraper:
             chunk.set_downloaded_status(False)
 
         elif response == ResponseMessages.RESULT_PAGE_NOT_LOADED:
-            logging.warning("[WARNING] RESULT_PAGE_NOT_LOADED")
+            log.warning("[WARNING] RESULT_PAGE_NOT_LOADED")
             record_unexpected_failed(filename=self.chunk_file_name)
             self.driver.quit()
             return
