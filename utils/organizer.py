@@ -25,7 +25,7 @@ def parse_filename(filepath):
 
     Parameters
     ----------
-        filepath : <todo>
+        filepath:
             Filepath of chunkfile. E.g. SNV_BRCA_Chunk_22_0_test.txt
     """
     # Extract filename from filepath
