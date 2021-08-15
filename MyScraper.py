@@ -12,7 +12,7 @@ from utils.driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
 from utils.interact_page import get_post_info, uploaded
 from utils.utils import get_filename_from_path, wait, record_upload_failed, record_unexpected_failed, \
-    get_subchunk_files, delete_allresults_temp_file
+    get_subchunk_files
 from utils.page_utils import page_computation, ResponseMessages, process_input_recognization
 from utils.record_utils import record_allmutations_failed
 from chunk import Chunk, make_chunk
@@ -199,4 +199,4 @@ if __name__ == '__main__':
 
     TCGA = 'OV'
     # list(range(2, 6))
-    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=[2], run_speed=RunMode.FAST)
+    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=[3], run_speed=RunMode.FAST)
