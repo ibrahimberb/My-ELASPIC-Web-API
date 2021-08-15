@@ -125,7 +125,8 @@ class ColorHandler(logging.StreamHandler):
             logging.DEBUG: "\33[90m",
             logging.INFO: "\33[94m",
             logging.WARNING: "\33[33m",
-            logging.ERROR: "\33[31m"
+            logging.ERROR: "\33[31m",
+            logging.CRITICAL: "\33[31m"
         }
 
         # color = msg_colors.get(record.levelno, "blue")
