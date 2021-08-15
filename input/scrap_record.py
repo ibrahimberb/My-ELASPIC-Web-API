@@ -1,5 +1,8 @@
 from bs4 import BeautifulSoup as BS
 import re
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
 def split_pair_occurrence(input_str):
@@ -60,21 +63,19 @@ def process_single_error(html_text):
         s.extract()
 
     error_title = get_stripped_error_title(soup_copy.get_text())
-    print(' TITLE '.center(40, '-'))
-    print('TITLE:', error_title)
+    logging.info(' TITLE '.center(40, '-'))
+    logging.info('TITLE:', error_title)
 
     error_items = soup_single_error.find("span", {"class": "resp"})
 
-    print("VALUES:")
     values = [value.strip() for value in error_items.get_text().split(',')]
-    print(len(values))
-    print(values)
+    logging.info("VALUES ({}) : {}".format(len(values), values))
 
     if error_title == "Duplicates":
         num_values = count_duplicates(values)
     else:
         num_values = len(values)
 
-    print('-' * 40)
+    logging.info('-' * 40)
 
     return error_title, values, num_values
