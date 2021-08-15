@@ -1,5 +1,5 @@
 from selenium import webdriver
-from config import DOWNLOAD_FOLDER_PATH, DRIVER_PATH, HEADLESS
+from config import TEMP_DOWNLOAD_FOLDER_PATH, DRIVER_PATH, HEADLESS
 
 
 def initialize_driver():
@@ -7,7 +7,7 @@ def initialize_driver():
     profile = webdriver.FirefoxProfile()
     profile.set_preference('browser.download.folderList', 2)  # custom location
     profile.set_preference('browser.download.manager.showWhenStarting', False)
-    profile.set_preference("browser.download.dir", str(DOWNLOAD_FOLDER_PATH))
+    profile.set_preference("browser.download.dir", str(TEMP_DOWNLOAD_FOLDER_PATH))
     profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/plain')  # type of file to download
 
     options = webdriver.FirefoxOptions()
