@@ -70,7 +70,7 @@ def page_computation(driver):
 
 def process_input_recognization(driver):
     # Wait until all inputs are recognized.
-    input_recognition_wait = WebDriverWait(driver, 20)  # 10
+    input_recognition_wait = WebDriverWait(driver, 10)  # 10
     # Waiting for information box to appear.
     try:
         input_recognition_wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="input_resp"]/div/h4')))
