@@ -3,6 +3,7 @@ import logging
 import inspect
 
 from bs4 import BeautifulSoup as BS
+from interact_page import check_exists_by_id, check_exists_by_xpath
 
 from input.scrap_record import process_single_error
 
@@ -160,41 +161,46 @@ def make_chunk(driver, file_path, correctly_input_mutations_flag=True):
         num_correctly_input_mutations = 0
 
     # Find invalid input mutations and their occurrance.
-    input_err_str = driver.find_element_by_xpath('//*[@id="input_err"]/div/h4')
-    logging.info(input_err_str.text)
 
-    html = driver.page_source
+    if check_exists_by_xpath(driver, '//*[@id="input_err"]/div/h4'):
+        input_err_str = driver.find_element_by_xpath('//*[@id="input_err"]/div/h4')
+        logging.info(input_err_str.text)
 
-    soup = BS(html, 'lxml')
+        html = driver.page_source
 
-    # Iterate over error types.
-    errors = soup.find("div", {"id": "input_err"})
-    for error_type in errors.find_all('p'):
-        # print(error_type)
-        error_title, values, num_values = process_single_error(str(error_type))
+        soup = BS(html, 'lxml')
 
-        if error_title == 'Invalid syntax':
-            invalid_syntax = values
-            num_invalid_syntax = num_values
+        # Iterate over error types.
+        errors = soup.find("div", {"id": "input_err"})
+        for error_type in errors.find_all('p'):
+            # print(error_type)
+            error_title, values, num_values = process_single_error(str(error_type))
 
-        elif error_title == 'Unrecognized gene symbols':
-            unrecognized_gene_symbols = values
-            num_unrecognized_gene_symbols = num_values
+            if error_title == 'Invalid syntax':
+                invalid_syntax = values
+                num_invalid_syntax = num_values
 
-        elif error_title == 'Unrecognized protein residues':
-            unrecognized_protein_residues = values
-            num_unrecognized_protein_residues = num_values
+            elif error_title == 'Unrecognized gene symbols':
+                unrecognized_gene_symbols = values
+                num_unrecognized_gene_symbols = num_values
 
-        elif error_title == 'Duplicates':
-            duplicates = values
-            num_duplicates = num_values
+            elif error_title == 'Unrecognized protein residues':
+                unrecognized_protein_residues = values
+                num_unrecognized_protein_residues = num_values
 
-        elif error_title == 'Outside of structural domain':
-            outside_of_structural_domain = values
-            num_outside_of_structural_domain = num_values
+            elif error_title == 'Duplicates':
+                duplicates = values
+                num_duplicates = num_values
 
-        else:
-            raise ValueError("Error Title unexpected!")
+            elif error_title == 'Outside of structural domain':
+                outside_of_structural_domain = values
+                num_outside_of_structural_domain = num_values
+
+            else:
+                raise ValueError("Error Title unexpected!")
+
+    else:
+        logging.warning("No error, surprizingly.")
 
     chunk = Chunk(file_path=file_path, num_correctly_input_mutations=num_correctly_input_mutations,
                   invalid_syntax=invalid_syntax, num_invalid_syntax=num_invalid_syntax,
