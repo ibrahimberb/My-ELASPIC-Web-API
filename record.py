@@ -208,6 +208,8 @@ class Record:
 
     def write_record(self):
         logging.debug('Writing record ..')
+        print("self.path: ", self.path)
+        print("os.listdir():", os.listdir())
         self.record_data.to_csv(self.path)
 
     def is_exist(self):
