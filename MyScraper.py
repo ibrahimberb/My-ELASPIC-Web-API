@@ -172,25 +172,26 @@ class MyScraper:
         self.driver.quit()
 
 
-def run_single_chunk(subchunk_files, run_speed, num_repeat=3):
-    for i in range(num_repeat):
+def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repeat=1):
+    for i in range(num_chunk_repeat):
         log.debug(f"\tREPEAT #{i + 1}")
         for subchunk_file in subchunk_files:
             log.debug(f"\tRUNNING SUB-CHUNK: {subchunk_file} ")
             myscapper = MyScraper(subchunk_file, take_it_slow=run_speed)
             wait(0.1)
         log.debug('\t- - - ')
-        wait(10, '[REPEAT COOL DOWN]')
+        wait(repeat_cool_down * 60, '[REPEAT COOL DOWN]')
 
 
-def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed):
+def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chunk_cool_down,
+                        num_chunk_repeat):
     for chunk_no in chunks_to_run:
         # Returns 100 chunk files for 1 chunk.
         subchunk_file_paths = get_subchunk_files(subchunks_path=input_path, tcga=tcga, chunk_no=chunk_no)
         log.debug(f' RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)')
         log.debug('===========================================================')
-        run_single_chunk(subchunk_file_paths, run_speed)
-        wait(60, 'cooling down the engines..')
+        run_single_chunk(subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat)
+        wait(chunks_cool_down * 60, '[CHUNK COOL DOWN]')
     log.debug('<END>')
 
 
@@ -199,4 +200,9 @@ if __name__ == '__main__':
 
     TCGA = 'OV'
     # list(range(2, 6))
-    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=[3], run_speed=RunMode.FAST)
+
+    CHUNKS_TO_RUN = [6]
+
+    # cools downs in minutes.
+    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN, run_speed=RunMode.FAST,
+                        chunks_cool_down=1, repeat_chunk_cool_down=1, num_chunk_repeat=5)
