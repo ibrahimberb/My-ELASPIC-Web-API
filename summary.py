@@ -49,7 +49,7 @@ class TCGA:
 
         return table
 
-    def get_summary(self, print_table=True, subchunks_of=None):
+    def get_summary(self, print_table=True, subchunks_of=None, filter=None):
         print(f"SUMMARY FOR TCGA   : \t {self.cohort_name}")
         table = self.get_summary_table()
         chunks_remaining = len(table[table['Downloaded_subchunk'] == 0])
@@ -58,10 +58,16 @@ class TCGA:
             print("\tSUBCHUNKS OF {} : \t {} DOWNLOADED".format(
                 subchunks_of, table.loc[str(subchunks_of), 'Downloaded_subchunk']))
 
-        if print_table:
+        if print_table and filter is None:
             print("SUMMARY TABLE      :\n")
-            print(self.get_summary_table())
+            print(table)
+
+        if print_table and filter is not None:
+            table = table.iloc[filter, :]
+            print("SUMMARY TABLE      :\n")
+            print(table)
 
 
 ov = TCGA('OV')
-ov.get_summary(print_table=False, subchunks_of=8)
+# ov.get_summary(print_table=False, subchunks_of=11)
+ov.get_summary(print_table=True, filter=list(range(9, 20)))
