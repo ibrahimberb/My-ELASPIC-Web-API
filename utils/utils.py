@@ -32,9 +32,12 @@ def wait(duration, desc=None):
     if duration <= 1:
         time.sleep(duration)
 
-    else:
+    elif isinstance(duration, int):
         for _ in tqdm(range(duration), desc=desc, position=0, leave=True):
             time.sleep(1)
+
+    else:
+        time.sleep(duration)
 
 
 def is_valid_file(filepath):
