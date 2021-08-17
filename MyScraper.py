@@ -173,7 +173,7 @@ class MyScraper:
 
 
 def log_run_options(tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chunk_cool_down,
-                    num_chunk_repeat):
+                    num_chunk_repeat, num_cycles, cool_down_cycle):
     log.debug('+------------------------+')
     log.debug(f"tcga: {tcga}")
     log.debug(f"chunks_to_run: {chunks_to_run}")
@@ -181,6 +181,8 @@ def log_run_options(tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chu
     log.debug(f"chunks_cool_down: {chunks_cool_down}")
     log.debug(f"repeat_chunk_cool_down: {repeat_chunk_cool_down}")
     log.debug(f"num_chunk_repeat: {num_chunk_repeat}")
+    log.debug(f"num_cycles: {num_cycles}")
+    log.debug(f"cool_down_cycle: {cool_down_cycle}")
     log.debug('+------------------------+')
 
 
@@ -195,17 +197,21 @@ def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repe
         wait(repeat_cool_down * 60, '[REPEAT CHUNK COOL DOWN]')
 
 
-def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chunk_cool_down,
-                        num_chunk_repeat):
-    log_run_options(tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chunk_cool_down,
-                    num_chunk_repeat)
-    for chunk_no in chunks_to_run:
-        # Returns 100 chunk files for 1 chunk.
-        subchunk_file_paths = get_subchunk_files(subchunks_path=input_path, tcga=tcga, chunk_no=chunk_no)
-        log.debug(f' RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)')
-        log.debug('===========================================================')
-        run_single_chunk(subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat)
-        wait(chunks_cool_down * 60, '[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]')
+def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed, cool_down_btw_chunks, repeat_chunk_cool_down,
+                        num_chunk_repeat, num_cycles, cool_down_cycle):
+    log_run_options(tcga, chunks_to_run, run_speed, cool_down_btw_chunks, repeat_chunk_cool_down,
+                    num_chunk_repeat, num_cycles, cool_down_cycle)
+
+    for cycle in range(num_cycles):
+        log.debug(F'CYCLE: {cycle + 1} OF {num_cycles}')
+        for chunk_no in chunks_to_run:
+            # Returns 100 chunk files for 1 chunk.
+            subchunk_file_paths = get_subchunk_files(subchunks_path=input_path, tcga=tcga, chunk_no=chunk_no)
+            log.debug(f' RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)')
+            log.debug('===========================================================')
+            run_single_chunk(subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat)
+            wait(cool_down_btw_chunks * 60, '[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]')
+        wait(cool_down_cycle * 60, f'[RECHARCHING .. ({cool_down_cycle} mins ..]')
     log.debug('<END>')
 
 
@@ -215,8 +221,10 @@ if __name__ == '__main__':
     TCGA = 'OV'
     # list(range(2, 6))
 
-    CHUNKS_TO_RUN = [8]
+    CHUNKS_TO_RUN = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
     # cools downs in minutes.
-    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN, run_speed=RunMode.FAST,
-                        chunks_cool_down=1, repeat_chunk_cool_down=10, num_chunk_repeat=3)
+    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN,
+                        run_speed=RunMode.FAST, cool_down_btw_chunks=0.5,
+                        repeat_chunk_cool_down=0.2, num_chunk_repeat=2,
+                        num_cycles=25, cool_down_cycle=10)
