@@ -2,6 +2,8 @@ import pathlib
 
 test_mode = False
 
+ALLOWED_RAM_PERCENTAGE: int = 85
+
 if test_mode:
     RECORDS_FOLDER_PATH = r"test_files\Records_Test"
     ELASPIC_RESULTS_FOLDER_PATH = r"test_files\ELASPIC_Results_TEST"
