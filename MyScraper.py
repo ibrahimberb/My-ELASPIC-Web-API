@@ -67,7 +67,7 @@ class MyScraper:
 
     def handle_allmutations_error(self, new_chunk):
         # new_chunk because it now stores post info.
-        log.warning('Allresult file is empty. we do not download it.')
+        log.warning('[WARNING] Allresult file is empty. we do not download it.')
         record_allmutations_failed(self.chunk_file_name, self.chunk.elaspic_url)
         record = Record(RECORDS_FOLDER_PATH, new_chunk)
         record.delete_chunk_from_record()
@@ -183,6 +183,7 @@ def log_run_options(tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chu
     log.debug(f"num_chunk_repeat: {num_chunk_repeat}")
     log.debug(f"num_cycles: {num_cycles}")
     log.debug(f"cool_down_cycle: {cool_down_cycle}")
+    log.debug(f"ELASPIC_NUM_PARALLEL_COMPUTATION: {ELASPIC_NUM_PARALLEL_COMPUTATION}")
     log.debug('+------------------------+')
 
 
@@ -211,7 +212,7 @@ def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed, cool_down_bt
             log.debug('===========================================================')
             run_single_chunk(subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat)
             wait(cool_down_btw_chunks * 60, '[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]')
-        wait(cool_down_cycle * 60, f'[RECHARCHING .. ({cool_down_cycle} mins ..]')
+        wait(cool_down_cycle * 60, f'[RECHARCHING .. ({cool_down_cycle} mins)]')
     log.debug('<END>')
 
 
@@ -221,10 +222,13 @@ if __name__ == '__main__':
     TCGA = 'OV'
     # list(range(2, 6))
 
-    CHUNKS_TO_RUN = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    # CHUNKS_TO_RUN = list(range(1, 40))
+    # CHUNKS_TO_RUN = [31, 32, 33, 34, 35, 36, 37, 38, 39]
+    # CHUNKS_TO_RUN = [28]
+    CHUNKS_TO_RUN = list(range(11, 40))
+    # CHUNKS_TO_RUN = [17]
 
-    # cools downs in minutes.
     run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN,
-                        run_speed=RunMode.FAST, cool_down_btw_chunks=0.5,
-                        repeat_chunk_cool_down=0.2, num_chunk_repeat=2,
-                        num_cycles=25, cool_down_cycle=10)
+                        run_speed=RunMode.FAST, cool_down_btw_chunks=0.1,
+                        repeat_chunk_cool_down=0, num_chunk_repeat=1,
+                        num_cycles=100, cool_down_cycle=30)
