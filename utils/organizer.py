@@ -80,9 +80,8 @@ def is_file_located(filename):
     return os.path.isfile(cl.correct_file_path)
 
 
-# def clean_download_folder(downloaded_folder_path, downloaded_filename):
-#     print("downloaded_folder_path:", downloaded_folder_path)
-#     files = glob.glob(os.path.join(downloaded_folder_path, downloaded_filename))
+# def clear_download_folder(downloaded_folder_path):
+#     files = glob.glob(downloaded_folder_path)
 #     print("WARNING: THIS FILES WILL BE REMOVED")
 #     print(files)
 #     # Ensure there is 1 file to be removed.
