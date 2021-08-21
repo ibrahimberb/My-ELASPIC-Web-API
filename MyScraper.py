@@ -17,6 +17,7 @@ from utils.page_utils import page_computation, ResponseMessages, process_input_r
 from utils.record_utils import record_allmutations_failed
 from chunk import Chunk, make_chunk
 from log_script import ColorHandler
+from utils.computation_utils import check_utalization
 
 log = logging.Logger('debug_runner', level=logging.DEBUG)
 log.addHandler(ColorHandler())
@@ -74,6 +75,9 @@ class MyScraper:
 
     def run(self):
         # log.info(f"Processing {self.chunk_file_path}")
+
+        # Ensuring we have available resources.
+        check_utalization()
 
         if self.run_mode == RecordStatuses.RECORDED_NOT_DOWNLOADED:
             self._initialize_driver()
@@ -225,10 +229,10 @@ if __name__ == '__main__':
     # CHUNKS_TO_RUN = list(range(1, 40))
     # CHUNKS_TO_RUN = [31, 32, 33, 34, 35, 36, 37, 38, 39]
     # CHUNKS_TO_RUN = [28]
-    CHUNKS_TO_RUN = list(range(11, 40))
+    CHUNKS_TO_RUN = list(range(21, 40))
     # CHUNKS_TO_RUN = [17]
 
     run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN,
                         run_speed=RunMode.FAST, cool_down_btw_chunks=0.1,
-                        repeat_chunk_cool_down=0, num_chunk_repeat=1,
-                        num_cycles=100, cool_down_cycle=30)
+                        repeat_chunk_cool_down=0, num_chunk_repeat=2,
+                        num_cycles=2, cool_down_cycle=15)
