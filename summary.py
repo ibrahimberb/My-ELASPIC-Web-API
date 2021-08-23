@@ -1,8 +1,7 @@
 # August 16, 2021
 
-from config import (
-    ELASPIC_RESULTS_FOLDER_PATH, RECORDS_FOLDER_PATH, ALLMUTATIONS_FAILED_PATH,
-    ELASPIC_RESULTS_FOLDER_PATH, INPUT_FILES_PATH)
+from config import (RECORDS_FOLDER_PATH,
+                    ELASPIC_RESULTS_FOLDER_PATH, INPUT_FILES_PATH)
 
 import os
 import pandas as pd
@@ -19,6 +18,7 @@ class TCGA:
         self.chunks = self.get_input_files()
         self.downloaded_files_path = os.path.join(ELASPIC_RESULTS_FOLDER_PATH, self.cohort_name)
         self.chunks_to_num_downloaded_subchunks = self.get_chunks_to_num_downloaded_subchunks()
+        self.chunks_to_num_active_computations = self.get_chunks_to_num_active_computations()
 
     def get_input_files(self):
         input_files = os.listdir(self.input_files_path)
@@ -35,6 +35,19 @@ class TCGA:
         except FileNotFoundError:
             return []
 
+    def get_chunks_to_num_active_computations(self):
+        chunks_to_num_active_computations = dict.fromkeys(map(str, self.chunks))
+        for chunk in self.chunks:
+            record_filepath = rf'record_{self.cohort_name}_{chunk}.csv'
+            record_path = os.path.join(RECORDS_FOLDER_PATH, self.cohort_name, record_filepath)
+            record_data = pd.read_csv(record_path)
+            num_active_computations = len(record_data[(record_data['UPLOADED_STATUS'] == 1) &
+                                                      (record_data['DOWNLOADED_STATUS'] == 0)])
+
+            chunks_to_num_active_computations[chunk] = num_active_computations
+
+        return chunks_to_num_active_computations
+
     def get_chunks_to_num_downloaded_subchunks(self):
         chunks_to_num_downloaded_subchunks = dict.fromkeys(map(str, self.chunks))
         for chunk in self.chunks:
@@ -46,6 +59,7 @@ class TCGA:
         table = pd.DataFrame(self.chunks_to_num_downloaded_subchunks,
                              index=['Downloaded_subchunk']).T
         table.index.name = 'Chunk'
+        table['NUM_ACTIVE_COMPUTATIONS'] = list(self.chunks_to_num_active_computations.values())
 
         return table
 
@@ -61,6 +75,9 @@ class TCGA:
         if print_table and filter is None:
             print("SUMMARY TABLE      :\n")
             print(table)
+            print(f"Number of total downloaded subchunk files: "
+                  f"{table['Downloaded_subchunk'].sum()}"
+                  f" of {len(self.chunks) * 100}")
 
         if print_table and filter is not None:
             table = table.iloc[filter, :]
@@ -69,5 +86,7 @@ class TCGA:
 
 
 ov = TCGA('OV')
+filter_chunks = list(range(18, 22))
 # ov.get_summary(print_table=False, subchunks_of=11)
-ov.get_summary(print_table=True, filter=list(range(9, 20)))
+# ov.get_summary(print_table=True, filter=filter_chunks)
+ov.get_summary(print_table=True)
