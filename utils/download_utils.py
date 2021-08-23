@@ -7,6 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
 def download_result_file(driver, download_folder_path, allowed_timeout=15):
+    assert len(os.listdir(download_folder_path)) == 0, 'CLEAR DOWNLOAD FOLDER!'  # make sure download folder is empty.
     click_button_by_xpath(driver, element_xpath='// *[ @ id = "allresults"] / a', allowed_timeout=allowed_timeout)
     wait_result_download(download_folder_path)
 
