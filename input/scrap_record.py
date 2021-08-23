@@ -62,8 +62,8 @@ def process_single_error(html_text):
         s.extract()
 
     error_title = get_stripped_error_title(soup_copy.get_text())
-    logging.info(' TITLE '.center(40, '-'))
-    logging.info(f'TITLE: {error_title}')
+    logging.info(' TITLE '.center(40, '-'))  # TODO, the title can be placed here
+    logging.info(f'TITLE: {error_title}')    #  not here.
 
     error_items = soup_single_error.find("span", {"class": "resp"})
 
