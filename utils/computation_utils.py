@@ -38,6 +38,7 @@ def terminate_firefox_processes():
 
 
 def utilization_exceed() -> bool:
+    # todo: chain (num_firefox_instances > 100) with OR.
     return get_ram_usage_percentage() > ALLOWED_RAM_PERCENTAGE
 
 
