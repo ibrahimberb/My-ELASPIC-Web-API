@@ -12,12 +12,12 @@ from utils.driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
 from utils.interact_page import get_post_info, uploaded
 from utils.utils import get_filename_from_path, wait, record_upload_failed, record_unexpected_failed, \
-    get_subchunk_files
+    get_subchunk_files, get_current_time
 from utils.page_utils import page_computation, ResponseMessages, process_input_recognization
 from utils.record_utils import record_allmutations_failed
 from chunk import Chunk, make_chunk
 from log_script import ColorHandler
-from utils.computation_utils import check_utalization
+from utils.computation_utils import handle_memory_utilization, terminate_firefox_processes
 
 log = logging.Logger('debug_runner', level=logging.DEBUG)
 log.addHandler(ColorHandler())
@@ -42,7 +42,7 @@ class MyScraper:
         if take_it_slow:
             self.DEBUG_DELAY = 15
         log.info('------------------------------------------------------')
-        log.info("STARTING MyScraper ..")
+        log.info(f"STARTING MyScraper .. [{get_current_time()}]")
         log.info(f"FILENAME: {self.chunk_file_name} ")
         self.set_run_mode()
         self.run()
@@ -77,7 +77,7 @@ class MyScraper:
         # log.info(f"Processing {self.chunk_file_path}")
 
         # Ensuring we have available resources.
-        check_utalization()
+        handle_memory_utilization()
 
         if self.run_mode == RecordStatuses.RECORDED_NOT_DOWNLOADED:
             self._initialize_driver()
@@ -215,6 +215,7 @@ def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed, cool_down_bt
             log.debug(f' RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)')
             log.debug('===========================================================')
             run_single_chunk(subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat)
+            terminate_firefox_processes()
             wait(cool_down_btw_chunks * 60, '[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]')
         wait(cool_down_cycle * 60, f'[RECHARCHING .. ({cool_down_cycle} mins)]')
     log.debug('<END>')
@@ -226,13 +227,15 @@ if __name__ == '__main__':
     TCGA = 'OV'
     # list(range(2, 6))
 
-    # CHUNKS_TO_RUN = list(range(1, 40))
+    # CHUNKS_TO_RUN = list(range(1, 11))
     # CHUNKS_TO_RUN = [31, 32, 33, 34, 35, 36, 37, 38, 39]
     # CHUNKS_TO_RUN = [28]
-    CHUNKS_TO_RUN = list(range(21, 40))
-    # CHUNKS_TO_RUN = [17]
+    # CHUNKS_TO_RUN = list(range(18, 22))
+    # CHUNKS_TO_RUN = list(range(11, 40))
+    CHUNKS_TO_RUN = list(range(22, 40))
+    # CHUNKS_TO_RUN = [14, 22, 23, 34, 36, 37, 38]
 
     run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN,
                         run_speed=RunMode.FAST, cool_down_btw_chunks=0.1,
-                        repeat_chunk_cool_down=0, num_chunk_repeat=2,
-                        num_cycles=2, cool_down_cycle=15)
+                        repeat_chunk_cool_down=0.1, num_chunk_repeat=1,
+                        num_cycles=6, cool_down_cycle=90)
