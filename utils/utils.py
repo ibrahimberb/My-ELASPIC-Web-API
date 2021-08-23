@@ -6,8 +6,13 @@ from config import UPLOAD_FAILED_PATH, UNEXPECTED_FAILED_PATH, ALLMUTATIONS_FAIL
 import glob
 from utils.organizer import parse_filename
 import pandas as pd
+from time import localtime, strftime
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
+
+
+def get_current_time():
+    return strftime("%Y-%m-%d %H:%M:%S", localtime())
 
 
 def get_subchunk_files(subchunks_path, tcga=None, chunk_no=None):
