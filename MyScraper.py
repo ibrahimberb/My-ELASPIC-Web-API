@@ -5,33 +5,53 @@ import logging
 
 from utils.upload_utils import upload_file
 from utils.organizer import organize, is_file_located
-from config import TEMP_DOWNLOAD_FOLDER_PATH, RECORDS_FOLDER_PATH, ELASPIC_MANY_URL, INPUT_FILES_PATH, \
-    ELASPIC_NUM_PARALLEL_COMPUTATION
+from config import (
+    TEMP_DOWNLOAD_FOLDER_PATH,
+    RECORDS_FOLDER_PATH,
+    ELASPIC_MANY_URL,
+    INPUT_FILES_PATH,
+    ELASPIC_NUM_PARALLEL_COMPUTATION,
+)
 from utils.download_utils import download_result_file
 from utils.driver_conf import initialize_driver
 from record import get_chunk_record_status, Record, RecordStatuses
 from utils.interact_page import get_post_info, uploaded
-from utils.utils import get_filename_from_path, wait, record_upload_failed, record_unexpected_failed, \
-    get_subchunk_files, get_current_time
-from utils.page_utils import page_computation, ResponseMessages, process_input_recognization
+from utils.utils import (
+    get_filename_from_path,
+    wait,
+    record_upload_failed,
+    record_unexpected_failed,
+    get_subchunk_files,
+    get_current_time,
+)
+from utils.page_utils import (
+    page_computation,
+    ResponseMessages,
+    process_input_recognization,
+    ElaspicTimeoutError,
+)
 from utils.record_utils import record_allmutations_failed
 from chunk import Chunk, make_chunk
 from log_script import ColorHandler
-from utils.computation_utils import handle_memory_utilization, terminate_firefox_processes
+from utils.computation_utils import (
+    handle_memory_utilization,
+    terminate_firefox_processes,
+)
+from typing import NamedTuple
 
-log = logging.Logger('debug_runner', level=logging.DEBUG)
+log = logging.Logger("debug_runner", level=logging.DEBUG)
 log.addHandler(ColorHandler())
 
 
-class RunMode:
-    FAST = False
-    SLOW = True
+class RunMode(NamedTuple):
+    FAST = 2
+    SLOW = 1
 
 
 class MyScraper:
     DEBUG_DELAY = 0
 
-    def __init__(self, chunk_file_path, take_it_slow=False):
+    def __init__(self, chunk_file_path, run_mode=None):
         self.chunk_file_path = chunk_file_path
         self.chunk_file_name = get_filename_from_path(self.chunk_file_path)
         self.ELASPIC_TARGET_URL = ELASPIC_MANY_URL
@@ -39,17 +59,18 @@ class MyScraper:
         self.driver = None
         self.num_active_computations = None
         self.chunk = Chunk()
-        if take_it_slow:
+        if run_mode == RunMode.SLOW:
             self.DEBUG_DELAY = 15
-        log.info('------------------------------------------------------')
+        log.info("------------------------------------------------------")
         log.info(f"STARTING MyScraper .. [{get_current_time()}]")
         log.info(f"FILENAME: {self.chunk_file_name} ")
         self.set_run_mode()
         self.run()
 
     def set_run_mode(self):
-        record_response, chunk, num_active_computations = get_chunk_record_status(self.chunk_file_path,
-                                                                                  RECORDS_FOLDER_PATH)
+        record_response, chunk, num_active_computations = get_chunk_record_status(
+            self.chunk_file_path, RECORDS_FOLDER_PATH
+        )
         log.info("RECORD STATUS: {}".format(record_response))
         self.run_mode = record_response
         self.chunk = chunk
@@ -58,20 +79,40 @@ class MyScraper:
     def _initialize_driver(self):
         self.driver = initialize_driver()
 
+    # PATCH
+    # def open_recorded_page(self):
+    #     open_page(self.driver, self.chunk.elaspic_url)
+    #     # log.info("Webpage Title: {}".format(self.driver.title))
+    #
+    # def open_default_page(self):
+    #     open_page(self.driver, self.ELASPIC_TARGET_URL)
+    #     # log.info("Webpage Title: {}".format(self.driver.title))
+
+    # original openers.
     def open_recorded_page(self):
         self.driver.get(self.chunk.elaspic_url)
         # log.info("Webpage Title: {}".format(self.driver.title))
 
     def open_default_page(self):
+        # TODO: handle selenium.common.exceptions.WebDriverException:
+        #  Message: Reached error page:
+        #  about:neterror?e=netReset&u=http%3A//elaspic.kimlab.org/many/&c=UTF-8&d=The%20connection%20to%20the%20server%20was%20reset%20while%20the%20page%20was%20loading.
+        #  Maybe allowed time 3 seconds, repeated attempt.
         self.driver.get(self.ELASPIC_TARGET_URL)
         # log.info("Webpage Title: {}".format(self.driver.title))
 
     def handle_allmutations_error(self, new_chunk):
         # new_chunk because it now stores post info.
-        log.warning('[WARNING] Allresult file is empty. we do not download it.')
+        log.warning("[WARNING] Allresult file is empty. we do not download it.")
         record_allmutations_failed(self.chunk_file_name, self.chunk.elaspic_url)
         record = Record(RECORDS_FOLDER_PATH, new_chunk)
         record.delete_chunk_from_record()
+
+    # todo handle_allmutations_not_reachable
+    # def handle_allmutations_not_reachable(self, new_chunk):
+    #     # new_chunk because it now handles 'allresuts are done' page.
+    #     log.warning('[WARNING] Allresult download clickable object not reachable, skipping ..')
+    #     return
 
     def run(self):
         # log.info(f"Processing {self.chunk_file_path}")
@@ -81,17 +122,25 @@ class MyScraper:
 
         if self.run_mode == RecordStatuses.RECORDED_NOT_DOWNLOADED:
             self._initialize_driver()
-            # record = Record(RECORDS_FOLDER_PATH, Chunk(file_path=self.chunk_file_path))
-            # record.record()
             chunk = self.chunk
+
+            # URL was stuck to default (elaspic/many), without job code.
+            if self.chunk.elaspic_url == ELASPIC_MANY_URL:
+                log.warning("[WARNING] URL was stuck, now fixed.")
+                record = Record(RECORDS_FOLDER_PATH, chunk)
+                record.delete_chunk_from_record()
+                log.info("Skipping ..")
+                return
+
             self.open_recorded_page()
 
         elif self.run_mode == RecordStatuses.NOT_RECORDED:
-            log.debug('uploading first time.')
+            log.debug("uploading first time.")
             # todo make it function
             if self.num_active_computations >= ELASPIC_NUM_PARALLEL_COMPUTATION:
                 log.warning(
-                    f"Number of active computation: {self.num_active_computations}\nAborting Scraper.")
+                    f"Number of active computation: {self.num_active_computations}\nAborting Scraper."
+                )
                 return
 
             self._initialize_driver()
@@ -102,37 +151,38 @@ class MyScraper:
 
             wait(5)  # ------------------------------------------------
             if not uploaded(self.driver, self.chunk_file_name):
-                log.warning('Could not upload the file. skipping..')
+                log.warning("Could not upload the file. skipping..")
                 record_upload_failed(filename=self.chunk_file_name)
                 self.driver.quit()
                 return
 
             # Wait until all inputs are recognized.
             correctly_input_mutations_flag = process_input_recognization(self.driver)
-            chunk = make_chunk(self.driver, file_path=self.chunk_file_path,
-                               correctly_input_mutations_flag=correctly_input_mutations_flag)
-
-            # wait(self.DEBUG_DELAY)
+            chunk = make_chunk(
+                self.driver,
+                file_path=self.chunk_file_path,
+                correctly_input_mutations_flag=correctly_input_mutations_flag,
+            )
 
             # Click on submit
             wait(self.DEBUG_DELAY)  # ------------------------------------------------
-            self.driver.find_element_by_id('submit').click()
-            log.info('Submitting ..')
+            self.driver.find_element_by_id("submit").click()
+            log.info("Submitting ..")
 
         elif self.run_mode == RecordStatuses.RECORDED_DOWNLOADED:
             if is_file_located(self.chunk_file_name):
-                log.info('file is located! doing nothing..')
+                log.info("file is located! doing nothing..")
                 return
             else:
-                log.info('Record says file is downloaded, but I could not find it.')
-                log.info('Re-downloading from recorded URL.')
+                log.info("Record says file is downloaded, but I could not find it.")
+                log.info("Re-downloading from recorded URL.")
                 self._initialize_driver()
                 chunk = self.chunk
                 self.open_recorded_page()
 
         else:
             print(self.run_mode)
-            raise ValueError('run mode not defined properly.')
+            raise ValueError("run mode not defined properly.")
 
         # Get current URL.
         chunk.set_url(self.driver.current_url)
@@ -152,14 +202,27 @@ class MyScraper:
                 self.handle_allmutations_error(chunk)
                 return
 
-            download_result_file(self.driver, TEMP_DOWNLOAD_FOLDER_PATH)
-            organize(TEMP_DOWNLOAD_FOLDER_PATH, self.chunk_file_path, downloaded_filename='allresults.txt')
-            chunk.set_downloaded_status(True)
-            log.debug(f'+ chunk_downloaded_status : {chunk.downloaded_status}')
-            log.info('File is downloaded successfully.')
+            try:
+                download_result_file(self.driver, TEMP_DOWNLOAD_FOLDER_PATH)
+                organize(
+                    TEMP_DOWNLOAD_FOLDER_PATH,
+                    self.chunk_file_path,
+                    downloaded_filename="allresults.txt",
+                )
+                chunk.set_downloaded_status(True)
+                log.debug(f"+ chunk_downloaded_status : {chunk.downloaded_status}")
+                log.info("File is downloaded successfully.")
+
+            # Allresults are done, but download clickable object is not visible.
+            except ElaspicTimeoutError:
+                log.warning(
+                    "[WARNING] `download allresults` item not loaded within allowed time."
+                )
+                log.warning("Skipping ..")
+                return
 
         elif response == ResponseMessages.STILL_PROCESSING:
-            log.info('Mutations are in process.')
+            log.info("Mutations are in process.")
             chunk.set_downloaded_status(False)
 
         elif response == ResponseMessages.RESULT_PAGE_NOT_LOADED:
@@ -176,9 +239,17 @@ class MyScraper:
         self.driver.quit()
 
 
-def log_run_options(tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chunk_cool_down,
-                    num_chunk_repeat, num_cycles, cool_down_cycle):
-    log.debug('+------------------------+')
+def log_run_options(
+    tcga,
+    chunks_to_run,
+    run_speed,
+    chunks_cool_down,
+    repeat_chunk_cool_down,
+    num_chunk_repeat,
+    num_cycles,
+    cool_down_cycle,
+):
+    log.debug("+------------------------+")
     log.debug(f"tcga: {tcga}")
     log.debug(f"chunks_to_run: {chunks_to_run}")
     log.debug(f"run_speed: {run_speed}")
@@ -188,7 +259,7 @@ def log_run_options(tcga, chunks_to_run, run_speed, chunks_cool_down, repeat_chu
     log.debug(f"num_cycles: {num_cycles}")
     log.debug(f"cool_down_cycle: {cool_down_cycle}")
     log.debug(f"ELASPIC_NUM_PARALLEL_COMPUTATION: {ELASPIC_NUM_PARALLEL_COMPUTATION}")
-    log.debug('+------------------------+')
+    log.debug("+------------------------+")
 
 
 def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repeat=1):
@@ -196,46 +267,88 @@ def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repe
         log.debug(f"\tREPEAT #{i + 1}")
         for subchunk_file in subchunk_files:
             log.debug(f"\tRUNNING SUB-CHUNK: {subchunk_file} ")
-            myscapper = MyScraper(subchunk_file, take_it_slow=run_speed)
+            MyScraper(subchunk_file, run_mode=run_speed)
             wait(0.1)
-        log.debug('\t- - - ')
-        wait(repeat_cool_down * 60, '[REPEAT CHUNK COOL DOWN]')
+        log.debug("\t- - - ")
+        wait(repeat_cool_down * 60, "[REPEAT CHUNK COOL DOWN]")
 
 
-def run_multiple_chunks(input_path, tcga, chunks_to_run, run_speed, cool_down_btw_chunks, repeat_chunk_cool_down,
-                        num_chunk_repeat, num_cycles, cool_down_cycle):
-    log_run_options(tcga, chunks_to_run, run_speed, cool_down_btw_chunks, repeat_chunk_cool_down,
-                    num_chunk_repeat, num_cycles, cool_down_cycle)
+def run_multiple_chunks(
+    input_path,
+    tcga,
+    chunks_to_run,
+    run_speed,
+    cool_down_btw_chunks,
+    repeat_chunk_cool_down,
+    num_chunk_repeat,
+    num_cycles,
+    cool_down_cycle,
+):
+    log_run_options(
+        tcga,
+        chunks_to_run,
+        run_speed,
+        cool_down_btw_chunks,
+        repeat_chunk_cool_down,
+        num_chunk_repeat,
+        num_cycles,
+        cool_down_cycle,
+    )
 
     for cycle in range(num_cycles):
-        log.debug(F'CYCLE: {cycle + 1} OF {num_cycles}')
+        log.debug(f"CYCLE: {cycle + 1} OF {num_cycles}")
         for chunk_no in chunks_to_run:
             # Returns 100 chunk files for 1 chunk.
-            subchunk_file_paths = get_subchunk_files(subchunks_path=input_path, tcga=tcga, chunk_no=chunk_no)
-            log.debug(f' RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)')
-            log.debug('===========================================================')
-            run_single_chunk(subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat)
+            subchunk_file_paths = get_subchunk_files(
+                subchunks_path=input_path, tcga=tcga, chunk_no=chunk_no
+            )
+            log.debug(
+                f" RUNNING {tcga} CHUNK_{chunk_no} ({len(subchunk_file_paths)} subchunk files)"
+            )
+            log.debug("===========================================================")
+            run_single_chunk(
+                subchunk_file_paths, run_speed, repeat_chunk_cool_down, num_chunk_repeat
+            )
             terminate_firefox_processes()
-            wait(cool_down_btw_chunks * 60, '[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]')
-        wait(cool_down_cycle * 60, f'[RECHARCHING .. ({cool_down_cycle} mins)]')
-    log.debug('<END>')
+            wait(cool_down_btw_chunks * 60, "[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]")
+        wait(cool_down_cycle * 60, f"[RECHARCHING .. ({cool_down_cycle} mins)]")
+    log.debug("<END>")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
 
-    TCGA = 'OV'
+    TCGA = "OV"
+    # TCGA = 'COAD'
     # list(range(2, 6))
 
     # CHUNKS_TO_RUN = list(range(1, 11))
     # CHUNKS_TO_RUN = [31, 32, 33, 34, 35, 36, 37, 38, 39]
-    # CHUNKS_TO_RUN = [28]
-    # CHUNKS_TO_RUN = list(range(18, 22))
+    # CHUNKS_TO_RUN = [19]
     # CHUNKS_TO_RUN = list(range(11, 40))
-    CHUNKS_TO_RUN = list(range(22, 40))
+    # CHUNKS_TO_RUN = list(range(22, 40))
     # CHUNKS_TO_RUN = [14, 22, 23, 34, 36, 37, 38]
 
-    run_multiple_chunks(INPUT_FILES_PATH, tcga=TCGA, chunks_to_run=CHUNKS_TO_RUN,
-                        run_speed=RunMode.FAST, cool_down_btw_chunks=0.1,
-                        repeat_chunk_cool_down=0.1, num_chunk_repeat=1,
-                        num_cycles=6, cool_down_cycle=90)
+    # OV
+    CHUNKS_TO_RUN = list(range(11, 17)) + list(range(18, 39))
+
+    # COAD
+    # CHUNKS_TO_RUN = list(range(1, 51))
+    # CHUNKS_TO_RUN = list(range(1, 21))
+    # CHUNKS_TO_RUN = list(range(1, 128))
+    # CHUNKS_TO_RUN = [20]
+
+    run_multiple_chunks(
+        INPUT_FILES_PATH,
+        tcga=TCGA,
+        chunks_to_run=CHUNKS_TO_RUN,
+        run_speed=RunMode.FAST,
+        cool_down_btw_chunks=0.1,
+        repeat_chunk_cool_down=0.1,
+        num_chunk_repeat=1,
+        num_cycles=5,
+        cool_down_cycle=60 * 2,
+    )
+
+    # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\19\SNV_COAD_Chunk_19_1.txt"
+    # MyScraper(debug_file, run_mode=RunMode.SLOW)
