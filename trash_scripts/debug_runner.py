@@ -18,6 +18,6 @@ upload_test_file_paths = [file for file in
 upload_test_file_path = upload_test_file_paths[0]
 print("upload_test_file_path:", upload_test_file_path)
 
-MyScraper(upload_test_file_path, take_it_slow=False)
+MyScraper(upload_test_file_path, run_mode=False)
 
 log.info('<END>')
