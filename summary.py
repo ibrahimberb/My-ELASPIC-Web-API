@@ -72,21 +72,30 @@ class TCGA:
             print("\tSUBCHUNKS OF {} : \t {} DOWNLOADED".format(
                 subchunks_of, table.loc[str(subchunks_of), 'Downloaded_subchunk']))
 
-        if print_table and filter is None:
+        if print_table:
+            table_all = table.copy()
+            table_print = table.copy()
             print("SUMMARY TABLE      :\n")
-            print(table)
+            if filter:
+                print("\t  - - -  (FILTERED) - - - ")
+                table_print = table_print.iloc[filter, :]
+            print(table_print)
+            downloaded = table_all['Downloaded_subchunk'].sum()
+            total = len(self.chunks) * 100
             print(f"Number of total downloaded subchunk files: "
-                  f"{table['Downloaded_subchunk'].sum()}"
-                  f" of {len(self.chunks) * 100}")
-
-        if print_table and filter is not None:
-            table = table.iloc[filter, :]
-            print("SUMMARY TABLE      :\n")
-            print(table)
+                  f"{downloaded} of {total}"
+                  f" ({round((downloaded / total) * 100, 2)}%)")
 
 
 ov = TCGA('OV')
-filter_chunks = list(range(18, 22))
-# ov.get_summary(print_table=False, subchunks_of=11)
-# ov.get_summary(print_table=True, filter=filter_chunks)
 ov.get_summary(print_table=True)
+filter_chunks = list(range(18, 22))
+
+# coad = TCGA('COAD')
+# filter_chunks = list(range(0, 51))
+# # filter_chunks = list(range(51, 101))
+# coad.get_summary(print_table=True, filter=filter_chunks)
+# # coad.get_summary(print_table=True)
+
+# OV: (65.9%)
+# COAD: (22.94%)
