@@ -7,6 +7,7 @@ import logging
 from selenium.common.exceptions import TimeoutException
 from config import COMPUTATION_TIME_ALLOWED
 from tqdm import tqdm
+from .exceptions import ElaspicTimeoutError
 
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
@@ -17,10 +18,13 @@ class ResponseMessages:
     RESULT_PAGE_NOT_LOADED = "RESULT_PAGE_NOT_LOADED"
 
 
-def click_button_by_xpath(driver, element_xpath, allowed_timeout=3):
-    click_button_wait = WebDriverWait(driver, allowed_timeout)
-    click_button_wait.until(EC.visibility_of_element_located((By.XPATH, element_xpath)))
-    driver.find_element_by_xpath(element_xpath).click()
+def click_button_by_xpath(driver, element_xpath, allowed_timeout=5):
+    try:
+        click_button_wait = WebDriverWait(driver, allowed_timeout)
+        click_button_wait.until(EC.visibility_of_element_located((By.XPATH, element_xpath)))
+        driver.find_element_by_xpath(element_xpath).click()
+    except TimeoutException:
+        raise ElaspicTimeoutError('Clickable item not loaded within allowed time.')
 
 
 def click_button_by_id(driver, element_id):
