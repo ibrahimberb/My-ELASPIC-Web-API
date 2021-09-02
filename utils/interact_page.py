@@ -1,10 +1,32 @@
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.remote.webdriver import WebDriver
 import logging
 from selenium.webdriver.support.ui import Select
+from utils.exceptions import NetworkError
+import time
 
-logging.basicConfig(level=logging.INFO, format='%(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(message)s')
 
 PAGE_POST_STATUSES = ['done', 'error', 'running']
+
+
+# def open_page(driver: WebDriver, elaspic_url, allowed_attempts=3):
+#     n_attempts = 0
+#     while n_attempts < allowed_attempts:
+#         try:
+#             driver.get(elaspic_url)
+#             break
+#         except WebDriverException:
+#             print('error !!!')
+#             time.sleep(3)
+#             n_attempts += 1
+#             logging.warning(f'[WARNING] Could not open the webpage, URL: {elaspic_url}')
+#             logging.warning(f'\tAttempt {n_attempts}')
+#
+#     logging.warning(f'current URL: {driver.current_url}')
+#     logging.warning(f'[WARNING] page is failed to open.')
+#     raise NetworkError
 
 
 def check_exists_by_id(driver, element_id):
