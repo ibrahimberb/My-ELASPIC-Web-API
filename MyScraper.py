@@ -103,6 +103,11 @@ class MyScraper:
 
     def handle_allmutations_error(self, new_chunk):
         # new_chunk because it now stores post info.
+        if self.chunk is None:
+            log.critical("UNEXPECTED ERROR: chunk is None and has no attribute 'elaspic_url' "
+                         "\nSKIPPING..")
+            return
+
         log.warning("[WARNING] Allresult file is empty. we do not download it.")
         record_allmutations_failed(self.chunk_file_name, self.chunk.elaspic_url)
         record = Record(RECORDS_FOLDER_PATH, new_chunk)
@@ -200,6 +205,7 @@ class MyScraper:
             # This means the webpage ERR for all inputs.
             if chunk.num_mutations_done == 0:
                 self.handle_allmutations_error(chunk)
+                self.driver.quit()
                 return
 
             try:
@@ -318,8 +324,8 @@ def run_multiple_chunks(
 if __name__ == "__main__":
     # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
 
-    TCGA = "OV"
-    # TCGA = 'COAD'
+    # TCGA = "OV"
+    TCGA = 'COAD'
     # list(range(2, 6))
 
     # CHUNKS_TO_RUN = list(range(1, 11))
@@ -329,26 +335,25 @@ if __name__ == "__main__":
     # CHUNKS_TO_RUN = list(range(22, 40))
     # CHUNKS_TO_RUN = [14, 22, 23, 34, 36, 37, 38]
 
-    # OV
-    CHUNKS_TO_RUN = list(range(11, 17)) + list(range(18, 39))
+    # OV                      11 ↓
+    # CHUNKS_TO_RUN = list(range(11, 16)) + list(range(18, 39))
+    # CHUNKS_TO_RUN = [11, 19, 21]
 
     # COAD
-    # CHUNKS_TO_RUN = list(range(1, 51))
-    # CHUNKS_TO_RUN = list(range(1, 21))
-    # CHUNKS_TO_RUN = list(range(1, 128))
-    # CHUNKS_TO_RUN = [20]
+    CHUNKS_TO_RUN = list(range(60, 128))
+    # CHUNKS_TO_RUN = [10, 11, 14, 16] + list(range(20, 50))
 
     run_multiple_chunks(
         INPUT_FILES_PATH,
         tcga=TCGA,
         chunks_to_run=CHUNKS_TO_RUN,
         run_speed=RunMode.FAST,
-        cool_down_btw_chunks=0.1,
+        cool_down_btw_chunks=0.3,
         repeat_chunk_cool_down=0.1,
         num_chunk_repeat=1,
-        num_cycles=5,
-        cool_down_cycle=60 * 2,
+        num_cycles=15,
+        cool_down_cycle=60*2,  # 60 * 2
     )
 
-    # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\19\SNV_COAD_Chunk_19_1.txt"
-    # MyScraper(debug_file, run_mode=RunMode.SLOW)
+    # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\59\SNV_COAD_Chunk_59_43.txt"
+    # MyScraper(debug_file, run_mode=RunMode.FAST)
