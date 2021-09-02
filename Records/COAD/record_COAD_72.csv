@@ -2,3 +2,4 @@ FILE_PATH,TCGA_CODE,CHUNK_NO,SUBCHUNK_NO,FILE_NAME,NUM_CORRECTLY_INPUT_MUTATIONS
 SNV_COAD_Chunk_72_100.txt,COAD,72,100,SNV_COAD_Chunk_72_100.txt,6,,0,,0,,0,,0,"['O00444.F799S', 'Q0GE19.I183V', 'Q7Z5S9.R186C', 'Q9Y4G8.A645T']",4,http://elaspic.kimlab.org/result/3b5cae85/,1,0,10,10,,0,,0,,0
 SNV_COAD_Chunk_72_11.txt,COAD,72,11,SNV_COAD_Chunk_72_11.txt,5,,0,,0,,0,,0,"['Q9HCJ5.V953I', 'A6H8Y1.S756L', 'Q8N895.R597C', 'Q86UG4.A279S', 'Q8NI36.V144A']",5,http://elaspic.kimlab.org/result/b2eb3a4f/,1,0,10,10,,0,,0,,0
 SNV_COAD_Chunk_72_12.txt,COAD,72,12,SNV_COAD_Chunk_72_12.txt,7,,0,,0,,0,,0,"['Q9NQX0.A203V', 'O15460.E351K', 'Q8NC54.S189P']",3,http://elaspic.kimlab.org/result/b6232c9a/,1,0,10,10,,0,,0,,0
+SNV_COAD_Chunk_72_10.txt,COAD,72,10,SNV_COAD_Chunk_72_10.txt,4,,0,,0,,0,,0,"['Q9P209.E600K', 'P80723.A29V', 'Q9Y6N8.A734V', 'Q9ULB4.V261I', 'P17342.H537N', 'Q9C093.P949L']",6,http://elaspic.kimlab.org/result/7f5f948e/,1,0,10,10,,0,,0,,0
