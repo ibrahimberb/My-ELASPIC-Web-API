@@ -12,7 +12,7 @@ def download_result_file(driver, download_folder_path, allowed_timeout=15):
     wait_result_download(download_folder_path)
 
 
-def wait_result_download(dir_name, filename="allresults.txt", timeout_duration=15):
+def wait_result_download(dir_name, filename="allresults.txt", timeout_duration=25):
     logging.debug("dir_name:", dir_name)
     download_file_path = os.path.join(dir_name, filename)
     logging.debug("download_file_path:", download_file_path)
