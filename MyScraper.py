@@ -2,7 +2,8 @@
 
 # Imports
 import logging
-
+import traceback
+from utils.notify import notify_error
 from utils.upload_utils import upload_file
 from utils.organizer import organize, is_file_located
 from config import (
@@ -11,6 +12,7 @@ from config import (
     ELASPIC_MANY_URL,
     INPUT_FILES_PATH,
     ELASPIC_NUM_PARALLEL_COMPUTATION,
+    ALLOWED_ATTEMPTS,
 )
 from utils.download_utils import download_result_file
 from utils.driver_conf import initialize_driver
@@ -246,14 +248,14 @@ class MyScraper:
 
 
 def log_run_options(
-    tcga,
-    chunks_to_run,
-    run_speed,
-    chunks_cool_down,
-    repeat_chunk_cool_down,
-    num_chunk_repeat,
-    num_cycles,
-    cool_down_cycle,
+        tcga,
+        chunks_to_run,
+        run_speed,
+        chunks_cool_down,
+        repeat_chunk_cool_down,
+        num_chunk_repeat,
+        num_cycles,
+        cool_down_cycle,
 ):
     log.debug("+------------------------+")
     log.debug(f"tcga: {tcga}")
@@ -280,15 +282,15 @@ def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repe
 
 
 def run_multiple_chunks(
-    input_path,
-    tcga,
-    chunks_to_run,
-    run_speed,
-    cool_down_btw_chunks,
-    repeat_chunk_cool_down,
-    num_chunk_repeat,
-    num_cycles,
-    cool_down_cycle,
+        input_path,
+        tcga,
+        chunks_to_run,
+        run_speed,
+        cool_down_btw_chunks,
+        repeat_chunk_cool_down,
+        num_chunk_repeat,
+        num_cycles,
+        cool_down_cycle,
 ):
     log_run_options(
         tcga,
@@ -321,39 +323,55 @@ def run_multiple_chunks(
     log.debug("<END>")
 
 
+# TCGA = "OV"
+TCGA = 'COAD'
+
+# OV                      11 ↓
+# # CHUNKS_TO_RUN = list(range(11, 16)) + [18] + list(range(20, 39))
+# CHUNKS_TO_RUN = list(range(1, 40))
+# EXCLUDED = list(range(1, 11)) + [16, 17, 19]
+# CHUNKS_TO_RUN = [e for e in CHUNKS_TO_RUN if e not in EXCLUDED]
+
+# COAD
+CHUNKS_TO_RUN = list(range(1, 128))
+# CHUNKS_TO_RUN = list(range(90, 114)) + list(range(116, 128))
+EXCLUDED = list(range(1, 11)) + \
+           [12, 13, 15] + \
+           list(range(17, 22)) + \
+           [24, 27, 29, 31] + [36, 59, 114, 115]
+CHUNKS_TO_RUN = [e for e in CHUNKS_TO_RUN if e not in EXCLUDED]
+
 if __name__ == "__main__":
-    # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
+    fail_count = 0
+    while fail_count < ALLOWED_ATTEMPTS:
+        try:
+            # TEST_FILES_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\test_files\input_files_test"
 
-    # TCGA = "OV"
-    TCGA = 'COAD'
-    # list(range(2, 6))
+            run_multiple_chunks(
+                INPUT_FILES_PATH,
+                tcga=TCGA,
+                chunks_to_run=CHUNKS_TO_RUN,
+                run_speed=RunMode.FAST,
+                cool_down_btw_chunks=0.5,  # 0.3
+                repeat_chunk_cool_down=0.1,
+                num_chunk_repeat=1,
+                num_cycles=15,
+                cool_down_cycle=10,  # 60 * 2
+            )
 
-    # CHUNKS_TO_RUN = list(range(1, 11))
-    # CHUNKS_TO_RUN = [31, 32, 33, 34, 35, 36, 37, 38, 39]
-    # CHUNKS_TO_RUN = [19]
-    # CHUNKS_TO_RUN = list(range(11, 40))
-    # CHUNKS_TO_RUN = list(range(22, 40))
-    # CHUNKS_TO_RUN = [14, 22, 23, 34, 36, 37, 38]
+            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\93\SNV_COAD_Chunk_93_2.txt"
+            # MyScraper(debug_file, run_mode=RunMode.FAST)
 
-    # OV                      11 ↓
-    # CHUNKS_TO_RUN = list(range(11, 16)) + list(range(18, 39))
-    # CHUNKS_TO_RUN = [11, 19, 21]
+        except Exception as e:
+            if "Reached error page" in str(e):
+                log.error("=== NETWORK ERROR, TRYING AGAIN .. ===")
+                notify_error("network-error-trying")
+                wait(15 * 60)
+                fail_count += 1
+            else:
+                log.error("=== UNEXPECTED ERROR, TRYING AGAIN .. ===")
+                print(traceback.format_exc())
+                notify_error("unexpected-error", repeat_inf=True)
 
-    # COAD
-    CHUNKS_TO_RUN = list(range(60, 128))
-    # CHUNKS_TO_RUN = [10, 11, 14, 16] + list(range(20, 50))
-
-    run_multiple_chunks(
-        INPUT_FILES_PATH,
-        tcga=TCGA,
-        chunks_to_run=CHUNKS_TO_RUN,
-        run_speed=RunMode.FAST,
-        cool_down_btw_chunks=0.3,
-        repeat_chunk_cool_down=0.1,
-        num_chunk_repeat=1,
-        num_cycles=15,
-        cool_down_cycle=60*2,  # 60 * 2
-    )
-
-    # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\59\SNV_COAD_Chunk_59_43.txt"
-    # MyScraper(debug_file, run_mode=RunMode.FAST)
+    log.error("=== UNEXPECTED ERROR ===")
+    notify_error("unexpected-error", repeat_inf=True)
