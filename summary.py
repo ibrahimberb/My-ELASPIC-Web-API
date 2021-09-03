@@ -82,20 +82,21 @@ class TCGA:
             print(table_print)
             downloaded = table_all['Downloaded_subchunk'].sum()
             total = len(self.chunks) * 100
-            print(f"Number of total downloaded subchunk files: "
+            print(f"Number of total downloaded subchunk files [{self.cohort_name}]: "
                   f"{downloaded} of {total}"
                   f" ({round((downloaded / total) * 100, 2)}%)")
 
 
 ov = TCGA('OV')
-ov.get_summary(print_table=True)
 filter_chunks = list(range(18, 22))
+ov.get_summary(print_table=True)
 
 # coad = TCGA('COAD')
 # filter_chunks = list(range(0, 51))
 # # filter_chunks = list(range(51, 101))
+# # filter_chunks = list(range(90, 127))
 # coad.get_summary(print_table=True, filter=filter_chunks)
 # # coad.get_summary(print_table=True)
 
-# OV: (65.9%)
-# COAD: (22.94%)
+# OV: (69.69%)
+# COAD: (30.74%)
