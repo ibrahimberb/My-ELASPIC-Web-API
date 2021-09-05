@@ -87,16 +87,16 @@ class TCGA:
                   f" ({round((downloaded / total) * 100, 2)}%)")
 
 
-ov = TCGA('OV')
-filter_chunks = list(range(18, 22))
-ov.get_summary(print_table=True)
+# ov = TCGA('OV')
+# filter_chunks = list(range(18, 22))
+# ov.get_summary(print_table=True)
 
-# coad = TCGA('COAD')
-# filter_chunks = list(range(0, 51))
-# # filter_chunks = list(range(51, 101))
-# # filter_chunks = list(range(90, 127))
-# coad.get_summary(print_table=True, filter=filter_chunks)
-# # coad.get_summary(print_table=True)
+coad = TCGA('COAD')
+filter_chunks = list(range(0, 51))
+# filter_chunks = list(range(51, 101))
+# filter_chunks = list(range(90, 127))
+coad.get_summary(print_table=True, filter=filter_chunks)
+# coad.get_summary(print_table=True)
 
-# OV: (69.69%)
-# COAD: (30.74%)
+# OV    :  2995 of 3900  (76.79%)
+# COAD  :  4655 of 12700 (36.65%)
