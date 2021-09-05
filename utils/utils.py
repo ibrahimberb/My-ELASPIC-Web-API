@@ -1,6 +1,8 @@
 import logging
 import os
 import time
+from typing import Union
+
 from tqdm import tqdm
 from config import UPLOAD_FAILED_PATH, UNEXPECTED_FAILED_PATH, ALLMUTATIONS_FAILED_PATH, TEMP_DOWNLOAD_FOLDER_PATH
 import glob
@@ -29,7 +31,10 @@ def get_subchunk_files(subchunks_path, tcga=None, chunk_no=None):
     return files
 
 
-def wait(duration, desc=None):
+Seconds = Union[int, float]
+
+
+def wait(duration: Seconds, desc=None):
     if desc is None:
         desc = "[WAIT_DELAY]"
     if duration == 0:
