@@ -1,10 +1,10 @@
 filename,URLs
-SNV_OV_Chunk_3_28.txt,http://elaspic.kimlab.org/result/1adc67a6/ - http://elaspic.kimlab.org/result/a5417794/ - http://elaspic.kimlab.org/result/df1c0a74/
-SNV_OV_Chunk_4_86.txt,http://elaspic.kimlab.org/result/aee445f5/ - http://elaspic.kimlab.org/result/5737a9d6/
+SNV_OV_Chunk_3_28.txt,http://elaspic.kimlab.org/result/1adc67a6/ - http://elaspic.kimlab.org/result/a5417794/ - http://elaspic.kimlab.org/result/df1c0a74/ - http://elaspic.kimlab.org/result/9cfdf4ee/
+SNV_OV_Chunk_4_86.txt,http://elaspic.kimlab.org/result/aee445f5/ - http://elaspic.kimlab.org/result/5737a9d6/ - http://elaspic.kimlab.org/result/4e655d7d/
 SNV_OV_Chunk_7_46.txt,http://elaspic.kimlab.org/result/5fda542c/ - http://elaspic.kimlab.org/result/3ab9b82c/ - http://elaspic.kimlab.org/result/e2b88ed2/ - http://elaspic.kimlab.org/result/7ae3bbb6/
-SNV_OV_Chunk_13_11.txt,http://elaspic.kimlab.org/result/8c01be05/ - http://elaspic.kimlab.org/result/3dac0973/ - http://elaspic.kimlab.org/result/d5849999/ - http://elaspic.kimlab.org/result/7505d66e/ - http://elaspic.kimlab.org/result/c0276514/ - http://elaspic.kimlab.org/result/01cdec14/ - http://elaspic.kimlab.org/result/8ae43e72/
-SNV_OV_Chunk_10_2.txt,http://elaspic.kimlab.org/result/e66aa5d4/ - http://elaspic.kimlab.org/result/176a04d9/ - http://elaspic.kimlab.org/result/c53cac56/ - http://elaspic.kimlab.org/result/a5527b33/ - http://elaspic.kimlab.org/result/c6db855a/
-SNV_OV_Chunk_33_12.txt,http://elaspic.kimlab.org/result/f60806ed/ - http://elaspic.kimlab.org/result/f07a1aa3/ - http://elaspic.kimlab.org/result/794004c9/
+SNV_OV_Chunk_13_11.txt,http://elaspic.kimlab.org/result/8c01be05/ - http://elaspic.kimlab.org/result/3dac0973/ - http://elaspic.kimlab.org/result/d5849999/ - http://elaspic.kimlab.org/result/7505d66e/ - http://elaspic.kimlab.org/result/c0276514/ - http://elaspic.kimlab.org/result/01cdec14/ - http://elaspic.kimlab.org/result/8ae43e72/ - http://elaspic.kimlab.org/result/3f7829dc/ - http://elaspic.kimlab.org/result/9f440804/ - http://elaspic.kimlab.org/result/ee57fd5b/ - http://elaspic.kimlab.org/result/79bccd9c/ - http://elaspic.kimlab.org/result/34f555f3/ - http://elaspic.kimlab.org/result/85fbcad5/ - http://elaspic.kimlab.org/result/15ec96cd/ - http://elaspic.kimlab.org/result/84a4cde2/
+SNV_OV_Chunk_10_2.txt,http://elaspic.kimlab.org/result/e66aa5d4/ - http://elaspic.kimlab.org/result/176a04d9/ - http://elaspic.kimlab.org/result/c53cac56/ - http://elaspic.kimlab.org/result/a5527b33/ - http://elaspic.kimlab.org/result/c6db855a/ - http://elaspic.kimlab.org/result/f37d373f/
+SNV_OV_Chunk_33_12.txt,http://elaspic.kimlab.org/result/f60806ed/ - http://elaspic.kimlab.org/result/f07a1aa3/ - http://elaspic.kimlab.org/result/794004c9/ - http://elaspic.kimlab.org/result/15e544eb/ - http://elaspic.kimlab.org/result/3aa76592/ - http://elaspic.kimlab.org/result/c47cc1bb/ - http://elaspic.kimlab.org/result/d95ad92a/ - http://elaspic.kimlab.org/result/02b1f0ec/ - http://elaspic.kimlab.org/result/538a16ad/ - http://elaspic.kimlab.org/result/afb2d548/ - http://elaspic.kimlab.org/result/b7362aca/
 SNV_OV_Chunk_11_10.txt,http://elaspic.kimlab.org/result/b0bd4e59/
 SNV_OV_Chunk_11_11.txt,http://elaspic.kimlab.org/result/5aad72aa/
 SNV_OV_Chunk_11_12.txt,http://elaspic.kimlab.org/result/ae558b3f/
@@ -19,7 +19,7 @@ SNV_OV_Chunk_12_13.txt,http://elaspic.kimlab.org/result/6b9f8e26/
 SNV_OV_Chunk_12_14.txt,http://elaspic.kimlab.org/result/64f2d00a/
 SNV_OV_Chunk_12_15.txt,http://elaspic.kimlab.org/result/93a7d61d/
 SNV_OV_Chunk_12_17.txt,http://elaspic.kimlab.org/result/62d05f6d/
-SNV_OV_Chunk_13_100.txt,http://elaspic.kimlab.org/result/d390ce72/
+SNV_OV_Chunk_13_100.txt,http://elaspic.kimlab.org/result/d390ce72/ - http://elaspic.kimlab.org/result/01a7e2b8/
 SNV_OV_Chunk_13_17.txt,http://elaspic.kimlab.org/result/c9dd3843/
 SNV_OV_Chunk_13_18.txt,http://elaspic.kimlab.org/result/b6a97169/
 SNV_OV_Chunk_13_19.txt,http://elaspic.kimlab.org/result/87ed145a/
@@ -125,7 +125,7 @@ SNV_OV_Chunk_12_30.txt,http://elaspic.kimlab.org/result/1adb9f17/
 SNV_OV_Chunk_12_32.txt,http://elaspic.kimlab.org/result/53b29a35/
 SNV_OV_Chunk_12_33.txt,http://elaspic.kimlab.org/result/1b3ea8cc/
 SNV_OV_Chunk_12_34.txt,http://elaspic.kimlab.org/result/1bfbdd79/
-SNV_OV_Chunk_11_55.txt,http://elaspic.kimlab.org/result/ded487ee/ - http://elaspic.kimlab.org/result/5d041b9c/
+SNV_OV_Chunk_11_55.txt,http://elaspic.kimlab.org/result/ded487ee/ - http://elaspic.kimlab.org/result/5d041b9c/ - http://elaspic.kimlab.org/result/5c8d2986/ - http://elaspic.kimlab.org/result/f2941bd8/ - http://elaspic.kimlab.org/result/29c9a9c7/ - http://elaspic.kimlab.org/result/878fd087/ - http://elaspic.kimlab.org/result/bb3ccc81/ - http://elaspic.kimlab.org/result/73ddc72e/ - http://elaspic.kimlab.org/result/170762b0/ - http://elaspic.kimlab.org/result/96cd8a3f/ - http://elaspic.kimlab.org/result/ee51efe5/
 SNV_OV_Chunk_14_26.txt,http://elaspic.kimlab.org/result/17e21353/
 SNV_OV_Chunk_14_27.txt,http://elaspic.kimlab.org/result/ac155c5c/
 SNV_OV_Chunk_14_28.txt,http://elaspic.kimlab.org/result/25832b48/
@@ -249,7 +249,7 @@ SNV_OV_Chunk_23_30.txt,http://elaspic.kimlab.org/result/67b99a35/
 SNV_OV_Chunk_23_31.txt,http://elaspic.kimlab.org/result/2b4cd72c/
 SNV_OV_Chunk_24_1.txt,http://elaspic.kimlab.org/result/4b286ed3/
 SNV_OV_Chunk_24_11.txt,http://elaspic.kimlab.org/result/4c91efd4/
-SNV_OV_Chunk_24_13.txt,http://elaspic.kimlab.org/result/9b29fddf/ - http://elaspic.kimlab.org/result/796420b8/ - http://elaspic.kimlab.org/result/6c0f1c5f/
+SNV_OV_Chunk_24_13.txt,http://elaspic.kimlab.org/result/9b29fddf/ - http://elaspic.kimlab.org/result/796420b8/ - http://elaspic.kimlab.org/result/6c0f1c5f/ - http://elaspic.kimlab.org/result/5bca5603/ - http://elaspic.kimlab.org/result/998cdc36/ - http://elaspic.kimlab.org/result/2589e8cb/ - http://elaspic.kimlab.org/result/f90dca98/ - http://elaspic.kimlab.org/result/f8de2a94/ - http://elaspic.kimlab.org/result/aae1a13e/ - http://elaspic.kimlab.org/result/b91eea63/ - http://elaspic.kimlab.org/result/d01236cd/
 SNV_OV_Chunk_24_14.txt,http://elaspic.kimlab.org/result/a3b94b55/
 SNV_OV_Chunk_24_15.txt,http://elaspic.kimlab.org/result/0574a725/
 SNV_OV_Chunk_25_11.txt,http://elaspic.kimlab.org/result/e179b10e/
@@ -308,7 +308,7 @@ SNV_OV_Chunk_34_12.txt,http://elaspic.kimlab.org/result/a391a5b5/
 SNV_OV_Chunk_34_15.txt,http://elaspic.kimlab.org/result/1ae3fc14/
 SNV_OV_Chunk_35_30.txt,http://elaspic.kimlab.org/result/d4096bfa/
 SNV_OV_Chunk_35_31.txt,http://elaspic.kimlab.org/result/7b99dc5a/
-SNV_OV_Chunk_33_50.txt,http://elaspic.kimlab.org/result/33e822a8/ - http://elaspic.kimlab.org/result/92fc87c1/
+SNV_OV_Chunk_33_50.txt,http://elaspic.kimlab.org/result/33e822a8/ - http://elaspic.kimlab.org/result/92fc87c1/ - http://elaspic.kimlab.org/result/59108107/ - http://elaspic.kimlab.org/result/dbd96641/ - http://elaspic.kimlab.org/result/3b9fd407/ - http://elaspic.kimlab.org/result/f39e2cb7/ - http://elaspic.kimlab.org/result/f0c4d84c/ - http://elaspic.kimlab.org/result/d572b0cb/
 SNV_OV_Chunk_35_32.txt,http://elaspic.kimlab.org/result/01194ffb/
 SNV_OV_Chunk_35_33.txt,http://elaspic.kimlab.org/result/2c1026f8/
 SNV_OV_Chunk_36_10.txt,http://elaspic.kimlab.org/result/71fa152a/
@@ -322,5 +322,900 @@ SNV_OV_Chunk_37_12.txt,http://elaspic.kimlab.org/result/e7ff66d2/
 SNV_OV_Chunk_38_10.txt,http://elaspic.kimlab.org/result/ca293bef/
 SNV_OV_Chunk_38_100.txt,http://elaspic.kimlab.org/result/7fd4d0df/
 SNV_OV_Chunk_38_11.txt,http://elaspic.kimlab.org/result/3880defc/
-SNV_OV_Chunk_38_12.txt,http://elaspic.kimlab.org/result/6f46c877/ - http://elaspic.kimlab.org/result/5b66348a/
+SNV_OV_Chunk_38_12.txt,http://elaspic.kimlab.org/result/6f46c877/ - http://elaspic.kimlab.org/result/5b66348a/ - http://elaspic.kimlab.org/result/b565a95c/ - http://elaspic.kimlab.org/result/6d603ebf/ - http://elaspic.kimlab.org/result/786afa1d/ - http://elaspic.kimlab.org/result/1cd1d98a/ - http://elaspic.kimlab.org/result/84cdd493/ - http://elaspic.kimlab.org/result/88f8a4cb/
 SNV_OV_Chunk_9_92.txt,http://elaspic.kimlab.org/result/8097c79b/
+SNV_OV_Chunk_11_31.txt,http://elaspic.kimlab.org/result/31bb35c5/
+SNV_OV_Chunk_11_32.txt,http://elaspic.kimlab.org/result/7a28c9cd/
+SNV_OV_Chunk_11_40.txt,http://elaspic.kimlab.org/result/1b61a23d/
+SNV_OV_Chunk_11_44.txt,http://elaspic.kimlab.org/result/af2484db/
+SNV_OV_Chunk_11_47.txt,http://elaspic.kimlab.org/result/c0a4f566/
+SNV_OV_Chunk_11_49.txt,http://elaspic.kimlab.org/result/474a51cf/
+SNV_OV_Chunk_12_47.txt,http://elaspic.kimlab.org/result/245d03d9/
+SNV_OV_Chunk_12_48.txt,http://elaspic.kimlab.org/result/90462d36/
+SNV_OV_Chunk_12_49.txt,http://elaspic.kimlab.org/result/7e81093a/
+SNV_OV_Chunk_12_51.txt,http://elaspic.kimlab.org/result/b71281b5/
+SNV_OV_Chunk_12_53.txt,http://elaspic.kimlab.org/result/f6180bbc/
+SNV_OV_Chunk_12_54.txt,http://elaspic.kimlab.org/result/cbb61858/
+SNV_OV_Chunk_12_55.txt,http://elaspic.kimlab.org/result/d4b5bc74/
+SNV_OV_Chunk_11_50.txt,http://elaspic.kimlab.org/result/82f594ee/
+SNV_OV_Chunk_11_51.txt,http://elaspic.kimlab.org/result/eaf6db1c/
+SNV_OV_Chunk_11_52.txt,http://elaspic.kimlab.org/result/a02f64af/
+SNV_OV_Chunk_11_54.txt,http://elaspic.kimlab.org/result/b21f2c60/
+SNV_OV_Chunk_11_56.txt,http://elaspic.kimlab.org/result/64e665e8/
+SNV_OV_Chunk_11_57.txt,http://elaspic.kimlab.org/result/0af0b300/
+SNV_OV_Chunk_11_58.txt,http://elaspic.kimlab.org/result/1b9c9631/
+SNV_OV_Chunk_11_59.txt,http://elaspic.kimlab.org/result/64683239/
+SNV_OV_Chunk_11_60.txt,http://elaspic.kimlab.org/result/6b807f21/
+SNV_OV_Chunk_11_61.txt,http://elaspic.kimlab.org/result/1efc095c/
+SNV_OV_Chunk_11_62.txt,http://elaspic.kimlab.org/result/d5f7e1ca/
+SNV_OV_Chunk_12_56.txt,http://elaspic.kimlab.org/result/a3079a98/
+SNV_OV_Chunk_12_57.txt,http://elaspic.kimlab.org/result/e5105971/
+SNV_OV_Chunk_12_58.txt,http://elaspic.kimlab.org/result/e01b88a0/
+SNV_OV_Chunk_12_59.txt,http://elaspic.kimlab.org/result/1d0a94f2/
+SNV_OV_Chunk_12_60.txt,http://elaspic.kimlab.org/result/0fb1e620/
+SNV_OV_Chunk_12_61.txt,http://elaspic.kimlab.org/result/f4cf6d14/ - http://elaspic.kimlab.org/result/fb6697f2/
+SNV_OV_Chunk_14_34.txt,http://elaspic.kimlab.org/result/43dcfccb/
+SNV_OV_Chunk_14_35.txt,http://elaspic.kimlab.org/result/404bcdd7/
+SNV_OV_Chunk_14_36.txt,http://elaspic.kimlab.org/result/ec22f8e2/
+SNV_OV_Chunk_14_37.txt,http://elaspic.kimlab.org/result/300bbdb2/
+SNV_OV_Chunk_14_38.txt,http://elaspic.kimlab.org/result/62b62971/
+SNV_OV_Chunk_14_4.txt,http://elaspic.kimlab.org/result/4312cf45/
+SNV_OV_Chunk_14_40.txt,http://elaspic.kimlab.org/result/9cdf2abb/
+SNV_OV_Chunk_14_41.txt,http://elaspic.kimlab.org/result/a5b39b25/
+SNV_OV_Chunk_11_63.txt,http://elaspic.kimlab.org/result/86bf74da/
+SNV_OV_Chunk_12_62.txt,http://elaspic.kimlab.org/result/ac50b775/ - http://elaspic.kimlab.org/result/f725f2fa/
+SNV_OV_Chunk_12_63.txt,http://elaspic.kimlab.org/result/f7e0ec4d/
+SNV_OV_Chunk_12_64.txt,http://elaspic.kimlab.org/result/597e0577/
+SNV_OV_Chunk_12_66.txt,http://elaspic.kimlab.org/result/53c51843/
+SNV_OV_Chunk_12_67.txt,http://elaspic.kimlab.org/result/34c1e241/
+SNV_OV_Chunk_12_68.txt,http://elaspic.kimlab.org/result/f0340e78/
+SNV_OV_Chunk_12_69.txt,http://elaspic.kimlab.org/result/c59228aa/
+SNV_OV_Chunk_13_44.txt,http://elaspic.kimlab.org/result/de1fbc5f/
+SNV_OV_Chunk_14_42.txt,http://elaspic.kimlab.org/result/cb437434/
+SNV_OV_Chunk_14_43.txt,http://elaspic.kimlab.org/result/e1bf937a/
+SNV_OV_Chunk_14_44.txt,http://elaspic.kimlab.org/result/4d348134/
+SNV_OV_Chunk_14_45.txt,http://elaspic.kimlab.org/result/770837f2/
+SNV_OV_Chunk_17_96.txt,http://elaspic.kimlab.org/result/e5799a1d/
+SNV_OV_Chunk_17_97.txt,http://elaspic.kimlab.org/result/f8df9465/
+SNV_OV_Chunk_17_98.txt,http://elaspic.kimlab.org/result/a8ab1bb4/
+SNV_OV_Chunk_17_99.txt,http://elaspic.kimlab.org/result/bbb6fc7f/
+SNV_OV_Chunk_15_49.txt,http://elaspic.kimlab.org/result/b4ad29f7/
+SNV_OV_Chunk_15_5.txt,http://elaspic.kimlab.org/result/44a4cec3/
+SNV_OV_Chunk_15_50.txt,http://elaspic.kimlab.org/result/6d77c520/
+SNV_OV_Chunk_15_51.txt,http://elaspic.kimlab.org/result/eccadb32/
+SNV_OV_Chunk_15_52.txt,http://elaspic.kimlab.org/result/ca26c2e5/
+SNV_OV_Chunk_16_46.txt,http://elaspic.kimlab.org/result/df451494/
+SNV_OV_Chunk_16_47.txt,http://elaspic.kimlab.org/result/73d64284/
+SNV_OV_Chunk_16_49.txt,http://elaspic.kimlab.org/result/144cb9e8/
+SNV_OV_Chunk_16_50.txt,http://elaspic.kimlab.org/result/b94d2e94/
+SNV_OV_Chunk_16_51.txt,http://elaspic.kimlab.org/result/ebcaa0df/
+SNV_OV_Chunk_18_29.txt,http://elaspic.kimlab.org/result/ccd33b1b/
+SNV_OV_Chunk_18_3.txt,http://elaspic.kimlab.org/result/9e4a87f3/
+SNV_OV_Chunk_18_30.txt,http://elaspic.kimlab.org/result/ddfd6bb6/
+SNV_OV_Chunk_18_31.txt,http://elaspic.kimlab.org/result/be11b8b9/
+SNV_OV_Chunk_18_32.txt,http://elaspic.kimlab.org/result/65d23e21/
+SNV_OV_Chunk_19_25.txt,http://elaspic.kimlab.org/result/0647f074/
+SNV_OV_Chunk_19_3.txt,http://elaspic.kimlab.org/result/2e3146c1/
+SNV_OV_Chunk_20_29.txt,http://elaspic.kimlab.org/result/19e19724/
+SNV_OV_Chunk_20_3.txt,http://elaspic.kimlab.org/result/f4051017/
+SNV_OV_Chunk_20_30.txt,http://elaspic.kimlab.org/result/0b182893/
+SNV_OV_Chunk_20_31.txt,http://elaspic.kimlab.org/result/a1d6ef67/
+SNV_OV_Chunk_20_32.txt,http://elaspic.kimlab.org/result/dd5a2e65/
+SNV_OV_Chunk_27_15.txt,http://elaspic.kimlab.org/result/f5a63502/
+SNV_OV_Chunk_27_16.txt,http://elaspic.kimlab.org/result/a6f5dd0d/
+SNV_OV_Chunk_28_16.txt,http://elaspic.kimlab.org/result/d16f93cf/
+SNV_OV_Chunk_28_17.txt,http://elaspic.kimlab.org/result/0929a656/
+SNV_OV_Chunk_28_18.txt,http://elaspic.kimlab.org/result/f250f1e0/ - http://elaspic.kimlab.org/result/ff0da5b4/
+SNV_OV_Chunk_28_19.txt,http://elaspic.kimlab.org/result/a930f9ed/ - http://elaspic.kimlab.org/result/54032b78/
+SNV_OV_Chunk_21_33.txt,http://elaspic.kimlab.org/result/24eda62d/
+SNV_OV_Chunk_21_34.txt,http://elaspic.kimlab.org/result/314b41f1/
+SNV_OV_Chunk_22_36.txt,http://elaspic.kimlab.org/result/2a8b1846/
+SNV_OV_Chunk_22_37.txt,http://elaspic.kimlab.org/result/5089f25b/
+SNV_OV_Chunk_22_38.txt,http://elaspic.kimlab.org/result/5b897096/
+SNV_OV_Chunk_22_39.txt,http://elaspic.kimlab.org/result/48342e11/
+SNV_OV_Chunk_22_40.txt,http://elaspic.kimlab.org/result/ad7a3da5/
+SNV_OV_Chunk_23_32.txt,http://elaspic.kimlab.org/result/628dfb01/
+SNV_OV_Chunk_23_33.txt,http://elaspic.kimlab.org/result/e0252441/
+SNV_OV_Chunk_23_34.txt,http://elaspic.kimlab.org/result/c2f3fea2/
+SNV_OV_Chunk_23_35.txt,http://elaspic.kimlab.org/result/1992ed1e/
+SNV_OV_Chunk_23_36.txt,http://elaspic.kimlab.org/result/73c89eca/
+SNV_OV_Chunk_24_16.txt,http://elaspic.kimlab.org/result/4a5fd1a9/
+SNV_OV_Chunk_24_17.txt,http://elaspic.kimlab.org/result/af3e00df/
+SNV_OV_Chunk_24_18.txt,http://elaspic.kimlab.org/result/80b9f755/
+SNV_OV_Chunk_24_19.txt,http://elaspic.kimlab.org/result/8b253b10/ - http://elaspic.kimlab.org/result/bb2414fb/
+SNV_OV_Chunk_24_2.txt,http://elaspic.kimlab.org/result/5e6c5df5/
+SNV_OV_Chunk_25_17.txt,http://elaspic.kimlab.org/result/df4e96ca/
+SNV_OV_Chunk_25_18.txt,http://elaspic.kimlab.org/result/760275a9/
+SNV_OV_Chunk_25_19.txt,http://elaspic.kimlab.org/result/27f62ca2/ - http://elaspic.kimlab.org/result/a94a3ad5/ - http://elaspic.kimlab.org/result/90953542/ - http://elaspic.kimlab.org/result/479b2525/ - http://elaspic.kimlab.org/result/b44d502e/ - http://elaspic.kimlab.org/result/067bbc37/
+SNV_OV_Chunk_25_20.txt,http://elaspic.kimlab.org/result/a2a1a900/
+SNV_OV_Chunk_25_21.txt,http://elaspic.kimlab.org/result/0cf16bdb/ - http://elaspic.kimlab.org/result/27a9701b/
+SNV_OV_Chunk_25_22.txt,http://elaspic.kimlab.org/result/79eb389b/ - http://elaspic.kimlab.org/result/2f672f98/
+SNV_OV_Chunk_26_14.txt,http://elaspic.kimlab.org/result/203ef748/
+SNV_OV_Chunk_26_15.txt,http://elaspic.kimlab.org/result/c0091664/
+SNV_OV_Chunk_26_16.txt,http://elaspic.kimlab.org/result/37657f17/
+SNV_OV_Chunk_26_17.txt,http://elaspic.kimlab.org/result/1421c9e3/
+SNV_OV_Chunk_26_18.txt,http://elaspic.kimlab.org/result/57a734a6/ - http://elaspic.kimlab.org/result/44addf33/
+SNV_OV_Chunk_27_13.txt,http://elaspic.kimlab.org/result/3da69259/
+SNV_OV_Chunk_27_14.txt,http://elaspic.kimlab.org/result/fa735940/
+SNV_OV_Chunk_27_18.txt,http://elaspic.kimlab.org/result/cc07e439/
+SNV_OV_Chunk_29_17.txt,http://elaspic.kimlab.org/result/63c26e2e/
+SNV_OV_Chunk_29_19.txt,http://elaspic.kimlab.org/result/f8d9fcb6/
+SNV_OV_Chunk_29_20.txt,http://elaspic.kimlab.org/result/1331f5af/ - http://elaspic.kimlab.org/result/108f98dc/
+SNV_OV_Chunk_29_21.txt,http://elaspic.kimlab.org/result/0fe86127/ - http://elaspic.kimlab.org/result/d50c3e69/
+SNV_OV_Chunk_29_22.txt,http://elaspic.kimlab.org/result/c6e6bbc4/ - http://elaspic.kimlab.org/result/5428b004/
+SNV_OV_Chunk_30_27.txt,http://elaspic.kimlab.org/result/850c5a25/
+SNV_OV_Chunk_30_3.txt,http://elaspic.kimlab.org/result/b4c2c5d0/
+SNV_OV_Chunk_30_38.txt,http://elaspic.kimlab.org/result/ca952a78/
+SNV_OV_Chunk_30_39.txt,http://elaspic.kimlab.org/result/22a0d6c2/
+SNV_OV_Chunk_30_4.txt,http://elaspic.kimlab.org/result/3bc71198/
+SNV_OV_Chunk_30_40.txt,http://elaspic.kimlab.org/result/b8481faf/
+SNV_OV_Chunk_30_42.txt,http://elaspic.kimlab.org/result/9130098e/
+SNV_OV_Chunk_30_43.txt,http://elaspic.kimlab.org/result/1340cb08/
+SNV_OV_Chunk_30_44.txt,http://elaspic.kimlab.org/result/5a41ae64/
+SNV_OV_Chunk_31_13.txt,http://elaspic.kimlab.org/result/73ffc150/
+SNV_OV_Chunk_31_14.txt,http://elaspic.kimlab.org/result/da461ad3/
+SNV_OV_Chunk_31_15.txt,http://elaspic.kimlab.org/result/9cbdc823/ - http://elaspic.kimlab.org/result/1af22eaf/
+SNV_OV_Chunk_31_16.txt,http://elaspic.kimlab.org/result/cda97384/ - http://elaspic.kimlab.org/result/f5d0d35f/
+SNV_OV_Chunk_31_17.txt,http://elaspic.kimlab.org/result/59e713a3/ - http://elaspic.kimlab.org/result/528f6ccd/
+SNV_OV_Chunk_31_18.txt,http://elaspic.kimlab.org/result/3c34cc25/ - http://elaspic.kimlab.org/result/7f3b9214/
+SNV_OV_Chunk_32_14.txt,http://elaspic.kimlab.org/result/bdf273c1/
+SNV_OV_Chunk_32_15.txt,http://elaspic.kimlab.org/result/aa448af6/
+SNV_OV_Chunk_32_18.txt,http://elaspic.kimlab.org/result/59822bf3/
+SNV_OV_Chunk_32_19.txt,http://elaspic.kimlab.org/result/1b4fc7d3/
+SNV_OV_Chunk_32_2.txt,http://elaspic.kimlab.org/result/fc6b4b5b/
+SNV_OV_Chunk_34_17.txt,http://elaspic.kimlab.org/result/f009dc84/
+SNV_OV_Chunk_35_35.txt,http://elaspic.kimlab.org/result/5a3efb25/
+SNV_OV_Chunk_36_14.txt,http://elaspic.kimlab.org/result/a147e883/
+SNV_OV_Chunk_37_14.txt,http://elaspic.kimlab.org/result/9c08a3e6/
+SNV_OV_Chunk_38_13.txt,http://elaspic.kimlab.org/result/aab4e802/
+SNV_OV_Chunk_34_19.txt,http://elaspic.kimlab.org/result/ec0ee39b/ - http://elaspic.kimlab.org/result/307b5674/
+SNV_OV_Chunk_36_15.txt,http://elaspic.kimlab.org/result/1a513a9b/
+SNV_OV_Chunk_37_15.txt,http://elaspic.kimlab.org/result/a89b18be/
+SNV_OV_Chunk_38_14.txt,http://elaspic.kimlab.org/result/9b17328b/ - http://elaspic.kimlab.org/result/1c268c96/
+SNV_OV_Chunk_13_45.txt,http://elaspic.kimlab.org/result/8091cf43/
+SNV_OV_Chunk_13_46.txt,http://elaspic.kimlab.org/result/9fb4d38d/
+SNV_OV_Chunk_19_4.txt,http://elaspic.kimlab.org/result/ebe189ab/
+SNV_OV_Chunk_19_40.txt,http://elaspic.kimlab.org/result/8dfe4223/
+SNV_OV_Chunk_21_35.txt,http://elaspic.kimlab.org/result/fc6299aa/
+SNV_OV_Chunk_24_23.txt,http://elaspic.kimlab.org/result/209f3786/
+SNV_OV_Chunk_26_19.txt,http://elaspic.kimlab.org/result/f9bb4f44/
+SNV_OV_Chunk_28_34.txt,http://elaspic.kimlab.org/result/2d2f97e1/ - http://elaspic.kimlab.org/result/c27aed80/
+SNV_OV_Chunk_29_23.txt,http://elaspic.kimlab.org/result/01aff288/ - http://elaspic.kimlab.org/result/e52cd29d/
+SNV_OV_Chunk_32_17.txt,http://elaspic.kimlab.org/result/094f7e7a/
+SNV_OV_Chunk_33_44.txt,http://elaspic.kimlab.org/result/7a446f80/
+SNV_OV_Chunk_33_45.txt,http://elaspic.kimlab.org/result/a7f9913f/ - http://elaspic.kimlab.org/result/56b2c602/
+SNV_OV_Chunk_33_47.txt,http://elaspic.kimlab.org/result/55f418ae/ - http://elaspic.kimlab.org/result/f40b81a6/
+SNV_OV_Chunk_33_48.txt,http://elaspic.kimlab.org/result/698f3483/ - http://elaspic.kimlab.org/result/7414d63d/
+SNV_OV_Chunk_33_49.txt,http://elaspic.kimlab.org/result/0e79d738/
+SNV_OV_Chunk_33_51.txt,http://elaspic.kimlab.org/result/b0691d27/
+SNV_OV_Chunk_34_2.txt,http://elaspic.kimlab.org/result/8f39fa40/
+SNV_OV_Chunk_34_20.txt,http://elaspic.kimlab.org/result/888db337/ - http://elaspic.kimlab.org/result/ee804f4f/
+SNV_OV_Chunk_34_21.txt,http://elaspic.kimlab.org/result/de777eb4/ - http://elaspic.kimlab.org/result/7dcf2615/
+SNV_OV_Chunk_34_22.txt,http://elaspic.kimlab.org/result/eee39b26/
+SNV_OV_Chunk_35_36.txt,http://elaspic.kimlab.org/result/7bb78ac9/
+SNV_OV_Chunk_35_37.txt,http://elaspic.kimlab.org/result/20f909c7/ - http://elaspic.kimlab.org/result/d63a26c9/
+SNV_OV_Chunk_35_38.txt,http://elaspic.kimlab.org/result/5054ac16/ - http://elaspic.kimlab.org/result/08388efc/
+SNV_OV_Chunk_36_16.txt,http://elaspic.kimlab.org/result/7ea99d60/ - http://elaspic.kimlab.org/result/4eb99d25/
+SNV_OV_Chunk_36_17.txt,http://elaspic.kimlab.org/result/04db000c/ - http://elaspic.kimlab.org/result/b9260051/
+SNV_OV_Chunk_36_18.txt,http://elaspic.kimlab.org/result/0aacf734/ - http://elaspic.kimlab.org/result/f73b09f2/
+SNV_OV_Chunk_36_21.txt,http://elaspic.kimlab.org/result/872c0883/
+SNV_OV_Chunk_37_16.txt,http://elaspic.kimlab.org/result/a53fe795/
+SNV_OV_Chunk_37_17.txt,http://elaspic.kimlab.org/result/11a27cfa/ - http://elaspic.kimlab.org/result/0688fe00/
+SNV_OV_Chunk_37_18.txt,http://elaspic.kimlab.org/result/f6b0bf7b/ - http://elaspic.kimlab.org/result/db8738fb/
+SNV_OV_Chunk_37_19.txt,http://elaspic.kimlab.org/result/7d350cba/ - http://elaspic.kimlab.org/result/2ecec8f1/
+SNV_OV_Chunk_38_15.txt,http://elaspic.kimlab.org/result/bde50201/ - http://elaspic.kimlab.org/result/e2b67a9e/
+SNV_OV_Chunk_38_16.txt,http://elaspic.kimlab.org/result/ee2b55ce/ - http://elaspic.kimlab.org/result/7905b15f/
+SNV_OV_Chunk_38_17.txt,http://elaspic.kimlab.org/result/410c758e/
+SNV_OV_Chunk_38_18.txt,http://elaspic.kimlab.org/result/54881df2/
+SNV_OV_Chunk_13_47.txt,http://elaspic.kimlab.org/result/a7567566/ - http://elaspic.kimlab.org/result/096b4753/
+SNV_OV_Chunk_13_48.txt,http://elaspic.kimlab.org/result/2ce4aec5/ - http://elaspic.kimlab.org/result/07bc46e6/
+SNV_OV_Chunk_13_49.txt,http://elaspic.kimlab.org/result/40732a76/ - http://elaspic.kimlab.org/result/49c11e8e/
+SNV_OV_Chunk_21_36.txt,http://elaspic.kimlab.org/result/4d25e749/
+SNV_OV_Chunk_24_26.txt,http://elaspic.kimlab.org/result/7e54dfa8/
+SNV_OV_Chunk_26_20.txt,http://elaspic.kimlab.org/result/c06896c0/ - http://elaspic.kimlab.org/result/663a84e2/
+SNV_OV_Chunk_27_19.txt,http://elaspic.kimlab.org/result/57461be7/ - http://elaspic.kimlab.org/result/9d4bef58/
+SNV_OV_Chunk_28_35.txt,http://elaspic.kimlab.org/result/af7597bf/ - http://elaspic.kimlab.org/result/ada48975/
+SNV_OV_Chunk_35_39.txt,http://elaspic.kimlab.org/result/0f4a8589/ - http://elaspic.kimlab.org/result/dc797e9d/
+SNV_OV_Chunk_35_40.txt,http://elaspic.kimlab.org/result/b072e40f/
+SNV_OV_Chunk_35_41.txt,http://elaspic.kimlab.org/result/70d6da8e/
+SNV_OV_Chunk_21_37.txt,http://elaspic.kimlab.org/result/c5d6cad2/
+SNV_OV_Chunk_21_38.txt,http://elaspic.kimlab.org/result/7e53cef2/
+SNV_OV_Chunk_21_39.txt,http://elaspic.kimlab.org/result/eda980cb/
+SNV_OV_Chunk_25_24.txt,http://elaspic.kimlab.org/result/d7b7c876/ - http://elaspic.kimlab.org/result/7567bd88/
+SNV_OV_Chunk_27_2.txt,http://elaspic.kimlab.org/result/d66c2084/ - http://elaspic.kimlab.org/result/55a48842/
+SNV_OV_Chunk_29_24.txt,http://elaspic.kimlab.org/result/3594532f/ - http://elaspic.kimlab.org/result/ef4364e0/
+SNV_OV_Chunk_19_41.txt,http://elaspic.kimlab.org/result/c4b99cd5/
+SNV_OV_Chunk_19_44.txt,http://elaspic.kimlab.org/result/0a629515/
+SNV_OV_Chunk_19_45.txt,http://elaspic.kimlab.org/result/cfa75a81/
+SNV_OV_Chunk_20_33.txt,http://elaspic.kimlab.org/result/804b1278/ - http://elaspic.kimlab.org/result/d5388340/
+SNV_OV_Chunk_20_34.txt,http://elaspic.kimlab.org/result/028f2ce5/
+SNV_OV_Chunk_20_35.txt,http://elaspic.kimlab.org/result/e0b5e5ae/
+SNV_OV_Chunk_21_40.txt,http://elaspic.kimlab.org/result/fd6bcd74/
+SNV_OV_Chunk_22_25.txt,http://elaspic.kimlab.org/result/9d4ff432/
+SNV_OV_Chunk_22_42.txt,http://elaspic.kimlab.org/result/4bbea341/
+SNV_OV_Chunk_22_46.txt,http://elaspic.kimlab.org/result/bbe271eb/
+SNV_OV_Chunk_23_37.txt,http://elaspic.kimlab.org/result/af0e2044/ - http://elaspic.kimlab.org/result/2464069f/
+SNV_OV_Chunk_23_38.txt,http://elaspic.kimlab.org/result/de61181a/
+SNV_OV_Chunk_23_39.txt,http://elaspic.kimlab.org/result/aea6a1dd/
+SNV_OV_Chunk_25_25.txt,http://elaspic.kimlab.org/result/0b88aad2/
+SNV_OV_Chunk_26_21.txt,http://elaspic.kimlab.org/result/a600b14d/ - http://elaspic.kimlab.org/result/8a471bb4/
+SNV_OV_Chunk_27_20.txt,http://elaspic.kimlab.org/result/e0030de9/ - http://elaspic.kimlab.org/result/711323e1/
+SNV_OV_Chunk_28_36.txt,http://elaspic.kimlab.org/result/ed9a287d/
+SNV_OV_Chunk_29_25.txt,http://elaspic.kimlab.org/result/7cf9a066/ - http://elaspic.kimlab.org/result/338ee152/
+SNV_OV_Chunk_31_19.txt,http://elaspic.kimlab.org/result/9deff0f0/ - http://elaspic.kimlab.org/result/29b7a5fe/
+SNV_OV_Chunk_32_20.txt,http://elaspic.kimlab.org/result/969643d8/ - http://elaspic.kimlab.org/result/796c8fcd/
+SNV_OV_Chunk_32_21.txt,http://elaspic.kimlab.org/result/e3b7a7a7/ - http://elaspic.kimlab.org/result/ee7337ef/
+SNV_OV_Chunk_33_52.txt,http://elaspic.kimlab.org/result/2a61c1f8/
+SNV_OV_Chunk_34_23.txt,http://elaspic.kimlab.org/result/cfd805b0/
+SNV_OV_Chunk_34_24.txt,http://elaspic.kimlab.org/result/d0c4636f/
+SNV_OV_Chunk_35_42.txt,http://elaspic.kimlab.org/result/197859f4/
+SNV_OV_Chunk_36_22.txt,http://elaspic.kimlab.org/result/f6effa40/
+SNV_OV_Chunk_36_23.txt,http://elaspic.kimlab.org/result/1c507fbe/
+SNV_OV_Chunk_37_2.txt,http://elaspic.kimlab.org/result/039bc3f8/ - http://elaspic.kimlab.org/result/3ab625c8/
+SNV_OV_Chunk_37_20.txt,http://elaspic.kimlab.org/result/c8cc556e/
+SNV_OV_Chunk_38_19.txt,http://elaspic.kimlab.org/result/d16b9d3a/
+SNV_OV_Chunk_18_33.txt,http://elaspic.kimlab.org/result/576c3207/
+SNV_OV_Chunk_18_34.txt,http://elaspic.kimlab.org/result/12663b12/
+SNV_OV_Chunk_24_28.txt,http://elaspic.kimlab.org/result/03200420/
+SNV_OV_Chunk_13_5.txt,http://elaspic.kimlab.org/result/1fd6e165/ - http://elaspic.kimlab.org/result/ebb95c50/
+SNV_OV_Chunk_13_50.txt,http://elaspic.kimlab.org/result/9dbc7d08/
+SNV_OV_Chunk_13_51.txt,http://elaspic.kimlab.org/result/8480314d/
+SNV_OV_Chunk_15_53.txt,http://elaspic.kimlab.org/result/4b0532ed/
+SNV_OV_Chunk_15_54.txt,http://elaspic.kimlab.org/result/20b4ded3/
+SNV_OV_Chunk_15_55.txt,http://elaspic.kimlab.org/result/afe5976b/
+SNV_OV_Chunk_15_57.txt,http://elaspic.kimlab.org/result/f66a5193/
+SNV_OV_Chunk_15_58.txt,http://elaspic.kimlab.org/result/2b4cbf5c/
+SNV_OV_Chunk_16_54.txt,http://elaspic.kimlab.org/result/2eaf3c80/
+SNV_OV_Chunk_16_55.txt,http://elaspic.kimlab.org/result/e11f1d18/
+SNV_OV_Chunk_16_56.txt,http://elaspic.kimlab.org/result/2d776791/
+SNV_OV_Chunk_16_58.txt,http://elaspic.kimlab.org/result/e9655104/
+SNV_OV_Chunk_18_35.txt,http://elaspic.kimlab.org/result/a36b5e48/
+SNV_OV_Chunk_18_39.txt,http://elaspic.kimlab.org/result/c8982475/
+SNV_OV_Chunk_19_46.txt,http://elaspic.kimlab.org/result/747f85cb/ - http://elaspic.kimlab.org/result/ce5dd77a/
+SNV_OV_Chunk_19_47.txt,http://elaspic.kimlab.org/result/e5c316c2/
+SNV_OV_Chunk_20_36.txt,http://elaspic.kimlab.org/result/cbb27401/
+SNV_OV_Chunk_20_37.txt,http://elaspic.kimlab.org/result/1c047e30/ - http://elaspic.kimlab.org/result/1e76d648/
+SNV_OV_Chunk_21_49.txt,http://elaspic.kimlab.org/result/131acd3c/
+SNV_OV_Chunk_22_47.txt,http://elaspic.kimlab.org/result/9f46af0d/
+SNV_OV_Chunk_22_50.txt,http://elaspic.kimlab.org/result/1dba526f/
+SNV_OV_Chunk_23_4.txt,http://elaspic.kimlab.org/result/c8de1f58/ - http://elaspic.kimlab.org/result/49747142/
+SNV_OV_Chunk_23_40.txt,http://elaspic.kimlab.org/result/e710b590/ - http://elaspic.kimlab.org/result/096bded0/
+SNV_OV_Chunk_24_29.txt,http://elaspic.kimlab.org/result/0d40dec4/
+SNV_OV_Chunk_25_27.txt,http://elaspic.kimlab.org/result/eb30a74b/
+SNV_OV_Chunk_25_28.txt,http://elaspic.kimlab.org/result/117ebf5b/ - http://elaspic.kimlab.org/result/0fce76f8/
+SNV_OV_Chunk_26_22.txt,http://elaspic.kimlab.org/result/02279b41/ - http://elaspic.kimlab.org/result/e4074876/
+SNV_OV_Chunk_26_23.txt,http://elaspic.kimlab.org/result/6f49a539/ - http://elaspic.kimlab.org/result/d8a032b0/
+SNV_OV_Chunk_27_21.txt,http://elaspic.kimlab.org/result/54661e82/ - http://elaspic.kimlab.org/result/386a0c2a/
+SNV_OV_Chunk_27_22.txt,http://elaspic.kimlab.org/result/a4c62cbb/ - http://elaspic.kimlab.org/result/7ec14a52/
+SNV_OV_Chunk_28_37.txt,http://elaspic.kimlab.org/result/4ccc83e4/ - http://elaspic.kimlab.org/result/d7147000/
+SNV_OV_Chunk_28_38.txt,http://elaspic.kimlab.org/result/c1e6a92a/ - http://elaspic.kimlab.org/result/7db452ab/
+SNV_OV_Chunk_29_26.txt,http://elaspic.kimlab.org/result/62f17659/ - http://elaspic.kimlab.org/result/a6e8d869/
+SNV_OV_Chunk_29_27.txt,http://elaspic.kimlab.org/result/3d52f405/
+SNV_OV_Chunk_31_20.txt,http://elaspic.kimlab.org/result/db62ac87/ - http://elaspic.kimlab.org/result/566142ce/
+SNV_OV_Chunk_31_21.txt,http://elaspic.kimlab.org/result/ccf207c1/ - http://elaspic.kimlab.org/result/afed48b8/
+SNV_OV_Chunk_32_22.txt,http://elaspic.kimlab.org/result/7b2e4436/ - http://elaspic.kimlab.org/result/17b1ac2a/
+SNV_OV_Chunk_32_23.txt,http://elaspic.kimlab.org/result/069c352f/ - http://elaspic.kimlab.org/result/6eaee30c/
+SNV_OV_Chunk_33_53.txt,http://elaspic.kimlab.org/result/18446cf0/
+SNV_OV_Chunk_33_54.txt,http://elaspic.kimlab.org/result/e54c25cb/
+SNV_OV_Chunk_34_25.txt,http://elaspic.kimlab.org/result/5d1cfd0b/
+SNV_OV_Chunk_34_26.txt,http://elaspic.kimlab.org/result/63828423/
+SNV_OV_Chunk_35_43.txt,http://elaspic.kimlab.org/result/4fb44ae5/
+SNV_OV_Chunk_35_44.txt,http://elaspic.kimlab.org/result/467075f2/
+SNV_OV_Chunk_36_24.txt,http://elaspic.kimlab.org/result/29c793f6/
+SNV_OV_Chunk_36_25.txt,http://elaspic.kimlab.org/result/c2c643ea/
+SNV_OV_Chunk_37_29.txt,http://elaspic.kimlab.org/result/1b8e6ada/
+SNV_OV_Chunk_37_3.txt,http://elaspic.kimlab.org/result/5d326898/
+SNV_OV_Chunk_38_2.txt,http://elaspic.kimlab.org/result/0e46054e/
+SNV_OV_Chunk_38_20.txt,http://elaspic.kimlab.org/result/4ed462f0/
+SNV_OV_Chunk_38_22.txt,http://elaspic.kimlab.org/result/5e04d14e/
+SNV_OV_Chunk_11_64.txt,http://elaspic.kimlab.org/result/08c61011/
+SNV_OV_Chunk_11_65.txt,http://elaspic.kimlab.org/result/6396ee55/
+SNV_OV_Chunk_11_66.txt,http://elaspic.kimlab.org/result/9da9122e/
+SNV_OV_Chunk_11_67.txt,http://elaspic.kimlab.org/result/b6a487a4/
+SNV_OV_Chunk_11_69.txt,http://elaspic.kimlab.org/result/e4f75bba/
+SNV_OV_Chunk_11_7.txt,http://elaspic.kimlab.org/result/22762b9c/
+SNV_OV_Chunk_11_70.txt,http://elaspic.kimlab.org/result/ce2a54ab/
+SNV_OV_Chunk_11_71.txt,http://elaspic.kimlab.org/result/6b43eea0/
+SNV_OV_Chunk_12_65.txt,http://elaspic.kimlab.org/result/34852834/
+SNV_OV_Chunk_12_70.txt,http://elaspic.kimlab.org/result/4fc8a389/
+SNV_OV_Chunk_12_71.txt,http://elaspic.kimlab.org/result/0ae64a31/
+SNV_OV_Chunk_12_72.txt,http://elaspic.kimlab.org/result/03c7a638/
+SNV_OV_Chunk_12_73.txt,http://elaspic.kimlab.org/result/1f00367f/
+SNV_OV_Chunk_12_75.txt,http://elaspic.kimlab.org/result/b20b3835/
+SNV_OV_Chunk_12_76.txt,http://elaspic.kimlab.org/result/1b8d6f12/
+SNV_OV_Chunk_12_77.txt,http://elaspic.kimlab.org/result/ce0b7210/
+SNV_OV_Chunk_12_78.txt,http://elaspic.kimlab.org/result/bd66c735/
+SNV_OV_Chunk_12_79.txt,http://elaspic.kimlab.org/result/87afea9a/
+SNV_OV_Chunk_13_38.txt,http://elaspic.kimlab.org/result/29d5e02a/
+SNV_OV_Chunk_13_52.txt,http://elaspic.kimlab.org/result/0ed00691/
+SNV_OV_Chunk_14_47.txt,http://elaspic.kimlab.org/result/812dcb41/ - http://elaspic.kimlab.org/result/a8d1a19c/
+SNV_OV_Chunk_14_48.txt,http://elaspic.kimlab.org/result/0f36b8b2/ - http://elaspic.kimlab.org/result/af3f3af3/
+SNV_OV_Chunk_14_49.txt,http://elaspic.kimlab.org/result/bfda9cee/ - http://elaspic.kimlab.org/result/19acb4f3/
+SNV_OV_Chunk_14_5.txt,http://elaspic.kimlab.org/result/dc50d02a/ - http://elaspic.kimlab.org/result/ff22b40f/
+SNV_OV_Chunk_14_50.txt,http://elaspic.kimlab.org/result/9859a1e7/ - http://elaspic.kimlab.org/result/714f8e2e/
+SNV_OV_Chunk_14_51.txt,http://elaspic.kimlab.org/result/e2780ed2/
+SNV_OV_Chunk_14_52.txt,http://elaspic.kimlab.org/result/75dc447c/
+SNV_OV_Chunk_14_53.txt,http://elaspic.kimlab.org/result/deefffdf/
+SNV_OV_Chunk_14_55.txt,http://elaspic.kimlab.org/result/12c9ace0/
+SNV_OV_Chunk_14_56.txt,http://elaspic.kimlab.org/result/93bf527e/
+SNV_OV_Chunk_15_59.txt,http://elaspic.kimlab.org/result/dde98502/
+SNV_OV_Chunk_15_6.txt,http://elaspic.kimlab.org/result/066e9383/
+SNV_OV_Chunk_15_60.txt,http://elaspic.kimlab.org/result/c0aa5159/
+SNV_OV_Chunk_15_61.txt,http://elaspic.kimlab.org/result/a3b91a1a/
+SNV_OV_Chunk_15_62.txt,http://elaspic.kimlab.org/result/a089a5a2/
+SNV_OV_Chunk_16_48.txt,http://elaspic.kimlab.org/result/ced66bab/
+SNV_OV_Chunk_16_59.txt,http://elaspic.kimlab.org/result/86c67f19/
+SNV_OV_Chunk_16_60.txt,http://elaspic.kimlab.org/result/eda4784d/
+SNV_OV_Chunk_16_62.txt,http://elaspic.kimlab.org/result/2703cd81/
+SNV_OV_Chunk_18_4.txt,http://elaspic.kimlab.org/result/c24383cc/
+SNV_OV_Chunk_18_5.txt,http://elaspic.kimlab.org/result/39dc2605/
+SNV_OV_Chunk_18_50.txt,http://elaspic.kimlab.org/result/755fa7c0/
+SNV_OV_Chunk_18_51.txt,http://elaspic.kimlab.org/result/a31a9088/ - http://elaspic.kimlab.org/result/022196d6/
+SNV_OV_Chunk_18_53.txt,http://elaspic.kimlab.org/result/1e691c6c/
+SNV_OV_Chunk_19_42.txt,http://elaspic.kimlab.org/result/bc9159d5/
+SNV_OV_Chunk_19_48.txt,http://elaspic.kimlab.org/result/cfd68c8d/
+SNV_OV_Chunk_20_38.txt,http://elaspic.kimlab.org/result/1f23ffed/ - http://elaspic.kimlab.org/result/1c9c5e77/
+SNV_OV_Chunk_20_39.txt,http://elaspic.kimlab.org/result/ae824daa/ - http://elaspic.kimlab.org/result/bfd5b35a/
+SNV_OV_Chunk_20_4.txt,http://elaspic.kimlab.org/result/0120b2c6/
+SNV_OV_Chunk_20_40.txt,http://elaspic.kimlab.org/result/68a86d06/
+SNV_OV_Chunk_20_41.txt,http://elaspic.kimlab.org/result/665db8e8/
+SNV_OV_Chunk_21_5.txt,http://elaspic.kimlab.org/result/6b023b04/
+SNV_OV_Chunk_21_50.txt,http://elaspic.kimlab.org/result/8642478f/
+SNV_OV_Chunk_21_51.txt,http://elaspic.kimlab.org/result/5a03faac/ - http://elaspic.kimlab.org/result/410e6c46/
+SNV_OV_Chunk_22_51.txt,http://elaspic.kimlab.org/result/6ad8c24d/
+SNV_OV_Chunk_22_52.txt,http://elaspic.kimlab.org/result/84fbb312/
+SNV_OV_Chunk_22_53.txt,http://elaspic.kimlab.org/result/19eda496/
+SNV_OV_Chunk_22_54.txt,http://elaspic.kimlab.org/result/13a86141/ - http://elaspic.kimlab.org/result/438b9482/
+SNV_OV_Chunk_22_55.txt,http://elaspic.kimlab.org/result/09b0683f/ - http://elaspic.kimlab.org/result/fac87b2d/
+SNV_OV_Chunk_23_5.txt,http://elaspic.kimlab.org/result/01edd711/ - http://elaspic.kimlab.org/result/eb30d750/
+SNV_OV_Chunk_23_51.txt,http://elaspic.kimlab.org/result/b45ab0d8/ - http://elaspic.kimlab.org/result/c9b826da/
+SNV_OV_Chunk_23_52.txt,http://elaspic.kimlab.org/result/6a87d884/
+SNV_OV_Chunk_23_53.txt,http://elaspic.kimlab.org/result/211f3336/
+SNV_OV_Chunk_24_30.txt,http://elaspic.kimlab.org/result/d6eff5e5/
+SNV_OV_Chunk_24_31.txt,http://elaspic.kimlab.org/result/896542ee/ - http://elaspic.kimlab.org/result/f252660c/
+SNV_OV_Chunk_24_32.txt,http://elaspic.kimlab.org/result/15409e48/ - http://elaspic.kimlab.org/result/c71c64c4/
+SNV_OV_Chunk_24_33.txt,http://elaspic.kimlab.org/result/e1baec49/ - http://elaspic.kimlab.org/result/7b10b3e3/
+SNV_OV_Chunk_24_39.txt,http://elaspic.kimlab.org/result/28f3dac1/ - http://elaspic.kimlab.org/result/96ed6ba5/
+SNV_OV_Chunk_25_29.txt,http://elaspic.kimlab.org/result/40a418ad/ - http://elaspic.kimlab.org/result/dd735150/
+SNV_OV_Chunk_25_30.txt,http://elaspic.kimlab.org/result/28fa1afd/ - http://elaspic.kimlab.org/result/5b68b954/
+SNV_OV_Chunk_25_31.txt,http://elaspic.kimlab.org/result/a00fa2e4/ - http://elaspic.kimlab.org/result/cd97b50f/
+SNV_OV_Chunk_25_33.txt,http://elaspic.kimlab.org/result/bd0ad192/
+SNV_OV_Chunk_25_34.txt,http://elaspic.kimlab.org/result/4f71d8a2/
+SNV_OV_Chunk_25_35.txt,http://elaspic.kimlab.org/result/64470eda/
+SNV_OV_Chunk_26_24.txt,http://elaspic.kimlab.org/result/65aca831/ - http://elaspic.kimlab.org/result/970d0d19/
+SNV_OV_Chunk_26_26.txt,http://elaspic.kimlab.org/result/f2e5ef3f/
+SNV_OV_Chunk_26_27.txt,http://elaspic.kimlab.org/result/4b727592/
+SNV_OV_Chunk_27_23.txt,http://elaspic.kimlab.org/result/c02e8d87/ - http://elaspic.kimlab.org/result/88ee477a/
+SNV_OV_Chunk_27_24.txt,http://elaspic.kimlab.org/result/ec36c75c/
+SNV_OV_Chunk_27_25.txt,http://elaspic.kimlab.org/result/a559d440/
+SNV_OV_Chunk_28_40.txt,http://elaspic.kimlab.org/result/ac7d394f/
+SNV_OV_Chunk_28_47.txt,http://elaspic.kimlab.org/result/fb968743/
+SNV_OV_Chunk_28_48.txt,http://elaspic.kimlab.org/result/ae166677/
+SNV_OV_Chunk_28_49.txt,http://elaspic.kimlab.org/result/206183ab/
+SNV_OV_Chunk_29_28.txt,http://elaspic.kimlab.org/result/924bfa1b/
+SNV_OV_Chunk_29_29.txt,http://elaspic.kimlab.org/result/ea915cd7/
+SNV_OV_Chunk_29_31.txt,http://elaspic.kimlab.org/result/47d6e5a3/
+SNV_OV_Chunk_29_32.txt,http://elaspic.kimlab.org/result/f78a245e/
+SNV_OV_Chunk_29_34.txt,http://elaspic.kimlab.org/result/5aa926e3/
+SNV_OV_Chunk_30_45.txt,http://elaspic.kimlab.org/result/2bea2cb4/ - http://elaspic.kimlab.org/result/c98ae574/
+SNV_OV_Chunk_30_46.txt,http://elaspic.kimlab.org/result/b3a01042/ - http://elaspic.kimlab.org/result/523fc5f4/
+SNV_OV_Chunk_30_48.txt,http://elaspic.kimlab.org/result/223bd145/ - http://elaspic.kimlab.org/result/b2396b54/
+SNV_OV_Chunk_30_49.txt,http://elaspic.kimlab.org/result/1422f35f/ - http://elaspic.kimlab.org/result/799e0de7/
+SNV_OV_Chunk_30_5.txt,http://elaspic.kimlab.org/result/9fd51c8b/ - http://elaspic.kimlab.org/result/1c65d672/
+SNV_OV_Chunk_30_50.txt,http://elaspic.kimlab.org/result/454a3494/ - http://elaspic.kimlab.org/result/896aeb76/
+SNV_OV_Chunk_30_51.txt,http://elaspic.kimlab.org/result/f4badcc4/ - http://elaspic.kimlab.org/result/85d6c263/
+SNV_OV_Chunk_30_52.txt,http://elaspic.kimlab.org/result/4bfa552a/ - http://elaspic.kimlab.org/result/23c860bc/
+SNV_OV_Chunk_30_53.txt,http://elaspic.kimlab.org/result/8c861257/ - http://elaspic.kimlab.org/result/e42721a2/
+SNV_OV_Chunk_31_22.txt,http://elaspic.kimlab.org/result/afecaba0/ - http://elaspic.kimlab.org/result/2e9da001/
+SNV_OV_Chunk_31_23.txt,http://elaspic.kimlab.org/result/59174cb5/
+SNV_OV_Chunk_31_24.txt,http://elaspic.kimlab.org/result/92c0a451/
+SNV_OV_Chunk_31_25.txt,http://elaspic.kimlab.org/result/40499e49/
+SNV_OV_Chunk_31_26.txt,http://elaspic.kimlab.org/result/825307fe/
+SNV_OV_Chunk_31_27.txt,http://elaspic.kimlab.org/result/7e33ee00/
+SNV_OV_Chunk_32_24.txt,http://elaspic.kimlab.org/result/6b6ce108/ - http://elaspic.kimlab.org/result/b1459020/
+SNV_OV_Chunk_32_25.txt,http://elaspic.kimlab.org/result/7f3ec009/ - http://elaspic.kimlab.org/result/daef2d6d/
+SNV_OV_Chunk_32_26.txt,http://elaspic.kimlab.org/result/b6da6a33/ - http://elaspic.kimlab.org/result/8fae6d10/
+SNV_OV_Chunk_32_27.txt,http://elaspic.kimlab.org/result/86809b0c/ - http://elaspic.kimlab.org/result/26631d79/
+SNV_OV_Chunk_32_28.txt,http://elaspic.kimlab.org/result/6f7f94a6/
+SNV_OV_Chunk_33_56.txt,http://elaspic.kimlab.org/result/7bef24d0/
+SNV_OV_Chunk_34_27.txt,http://elaspic.kimlab.org/result/ff7ef1b9/
+SNV_OV_Chunk_35_45.txt,http://elaspic.kimlab.org/result/c6140434/
+SNV_OV_Chunk_36_26.txt,http://elaspic.kimlab.org/result/5defc179/
+SNV_OV_Chunk_37_31.txt,http://elaspic.kimlab.org/result/8e9482bb/
+SNV_OV_Chunk_38_23.txt,http://elaspic.kimlab.org/result/8f0f105e/
+SNV_OV_Chunk_24_4.txt,http://elaspic.kimlab.org/result/ea94a202/ - http://elaspic.kimlab.org/result/470dacbd/
+SNV_OV_Chunk_26_35.txt,http://elaspic.kimlab.org/result/fbb6cd52/ - http://elaspic.kimlab.org/result/38ab755d/
+SNV_OV_Chunk_27_26.txt,http://elaspic.kimlab.org/result/7cfac013/
+SNV_OV_Chunk_26_37.txt,http://elaspic.kimlab.org/result/2c8abd09/
+SNV_OV_Chunk_27_27.txt,http://elaspic.kimlab.org/result/fea0b950/
+SNV_OV_Chunk_34_29.txt,http://elaspic.kimlab.org/result/e1dc9c93/
+SNV_OV_Chunk_36_27.txt,http://elaspic.kimlab.org/result/209399a3/
+SNV_OV_Chunk_37_34.txt,http://elaspic.kimlab.org/result/c30a72ba/
+SNV_OV_Chunk_38_27.txt,http://elaspic.kimlab.org/result/661666af/
+SNV_OV_Chunk_19_49.txt,http://elaspic.kimlab.org/result/26d6a500/
+SNV_OV_Chunk_23_57.txt,http://elaspic.kimlab.org/result/34503be7/
+SNV_OV_Chunk_28_51.txt,http://elaspic.kimlab.org/result/275715e4/
+SNV_OV_Chunk_31_28.txt,http://elaspic.kimlab.org/result/b9c028b3/
+SNV_OV_Chunk_13_6.txt,http://elaspic.kimlab.org/result/6001f864/
+SNV_OV_Chunk_13_61.txt,http://elaspic.kimlab.org/result/b690bb6c/
+SNV_OV_Chunk_19_5.txt,http://elaspic.kimlab.org/result/b2d1e264/
+SNV_OV_Chunk_19_50.txt,http://elaspic.kimlab.org/result/8b8d9940/
+SNV_OV_Chunk_21_52.txt,http://elaspic.kimlab.org/result/a4969821/
+SNV_OV_Chunk_24_40.txt,http://elaspic.kimlab.org/result/95ea50b7/
+SNV_OV_Chunk_26_38.txt,http://elaspic.kimlab.org/result/df7ff193/
+SNV_OV_Chunk_11_72.txt,http://elaspic.kimlab.org/result/b27aef00/
+SNV_OV_Chunk_13_62.txt,http://elaspic.kimlab.org/result/5c1deef4/
+SNV_OV_Chunk_13_63.txt,http://elaspic.kimlab.org/result/e69d721e/
+SNV_OV_Chunk_13_65.txt,http://elaspic.kimlab.org/result/8a2f22be/
+SNV_OV_Chunk_13_66.txt,http://elaspic.kimlab.org/result/b3546673/
+SNV_OV_Chunk_13_67.txt,http://elaspic.kimlab.org/result/039f1173/
+SNV_OV_Chunk_13_68.txt,http://elaspic.kimlab.org/result/2cdad82d/
+SNV_OV_Chunk_15_63.txt,http://elaspic.kimlab.org/result/b3e92bfb/
+SNV_OV_Chunk_15_64.txt,http://elaspic.kimlab.org/result/df45a3e3/
+SNV_OV_Chunk_15_65.txt,http://elaspic.kimlab.org/result/4f233b10/
+SNV_OV_Chunk_15_66.txt,http://elaspic.kimlab.org/result/ab56c2cc/
+SNV_OV_Chunk_15_67.txt,http://elaspic.kimlab.org/result/7c2ed070/
+SNV_OV_Chunk_18_55.txt,http://elaspic.kimlab.org/result/5f0b0229/
+SNV_OV_Chunk_18_56.txt,http://elaspic.kimlab.org/result/7a395d0d/
+SNV_OV_Chunk_18_57.txt,http://elaspic.kimlab.org/result/cd8353b5/
+SNV_OV_Chunk_18_58.txt,http://elaspic.kimlab.org/result/e19ea8d5/
+SNV_OV_Chunk_18_59.txt,http://elaspic.kimlab.org/result/ccc1334e/
+SNV_OV_Chunk_19_23.txt,http://elaspic.kimlab.org/result/69547eb2/
+SNV_OV_Chunk_19_51.txt,http://elaspic.kimlab.org/result/cf3bbe07/
+SNV_OV_Chunk_19_52.txt,http://elaspic.kimlab.org/result/99d5af90/
+SNV_OV_Chunk_19_53.txt,http://elaspic.kimlab.org/result/a503cad4/
+SNV_OV_Chunk_19_54.txt,http://elaspic.kimlab.org/result/3e24f631/
+SNV_OV_Chunk_19_55.txt,http://elaspic.kimlab.org/result/afcb686f/
+SNV_OV_Chunk_20_42.txt,http://elaspic.kimlab.org/result/47e3dd19/
+SNV_OV_Chunk_20_43.txt,http://elaspic.kimlab.org/result/bce9e448/
+SNV_OV_Chunk_20_44.txt,http://elaspic.kimlab.org/result/5828aee3/
+SNV_OV_Chunk_20_45.txt,http://elaspic.kimlab.org/result/0e9f8bf0/
+SNV_OV_Chunk_20_46.txt,http://elaspic.kimlab.org/result/6e944aac/
+SNV_OV_Chunk_21_53.txt,http://elaspic.kimlab.org/result/53e3abdd/
+SNV_OV_Chunk_21_54.txt,http://elaspic.kimlab.org/result/036adc21/
+SNV_OV_Chunk_21_55.txt,http://elaspic.kimlab.org/result/53a7397c/
+SNV_OV_Chunk_21_6.txt,http://elaspic.kimlab.org/result/57a39ac6/
+SNV_OV_Chunk_22_56.txt,http://elaspic.kimlab.org/result/ba66f95a/
+SNV_OV_Chunk_22_57.txt,http://elaspic.kimlab.org/result/0362c7f9/
+SNV_OV_Chunk_22_58.txt,http://elaspic.kimlab.org/result/c884628d/
+SNV_OV_Chunk_22_59.txt,http://elaspic.kimlab.org/result/9c1011a9/
+SNV_OV_Chunk_23_56.txt,http://elaspic.kimlab.org/result/343871e6/
+SNV_OV_Chunk_23_58.txt,http://elaspic.kimlab.org/result/cb1bdb49/
+SNV_OV_Chunk_23_59.txt,http://elaspic.kimlab.org/result/5a910169/
+SNV_OV_Chunk_23_6.txt,http://elaspic.kimlab.org/result/4918d5c2/
+SNV_OV_Chunk_23_60.txt,http://elaspic.kimlab.org/result/e4163732/
+SNV_OV_Chunk_24_42.txt,http://elaspic.kimlab.org/result/0b667d28/
+SNV_OV_Chunk_24_43.txt,http://elaspic.kimlab.org/result/ea9777ca/
+SNV_OV_Chunk_25_36.txt,http://elaspic.kimlab.org/result/fd724d15/
+SNV_OV_Chunk_25_37.txt,http://elaspic.kimlab.org/result/561f6c64/
+SNV_OV_Chunk_25_38.txt,http://elaspic.kimlab.org/result/dc39acf2/
+SNV_OV_Chunk_25_39.txt,http://elaspic.kimlab.org/result/eb0f903b/
+SNV_OV_Chunk_26_39.txt,http://elaspic.kimlab.org/result/eadd480d/
+SNV_OV_Chunk_26_41.txt,http://elaspic.kimlab.org/result/9dc23efc/
+SNV_OV_Chunk_26_42.txt,http://elaspic.kimlab.org/result/b1c30f5b/
+SNV_OV_Chunk_27_28.txt,http://elaspic.kimlab.org/result/91a837f3/
+SNV_OV_Chunk_27_29.txt,http://elaspic.kimlab.org/result/cd463d11/ - http://elaspic.kimlab.org/result/d6bc10fa/
+SNV_OV_Chunk_27_3.txt,http://elaspic.kimlab.org/result/52a5b5b0/
+SNV_OV_Chunk_27_30.txt,http://elaspic.kimlab.org/result/b669a11a/
+SNV_OV_Chunk_27_31.txt,http://elaspic.kimlab.org/result/65eda3ff/
+SNV_OV_Chunk_28_52.txt,http://elaspic.kimlab.org/result/0c0d49df/
+SNV_OV_Chunk_28_54.txt,http://elaspic.kimlab.org/result/3df012ed/
+SNV_OV_Chunk_28_55.txt,http://elaspic.kimlab.org/result/efa718ba/
+SNV_OV_Chunk_28_56.txt,http://elaspic.kimlab.org/result/ce60305e/
+SNV_OV_Chunk_28_57.txt,http://elaspic.kimlab.org/result/5032e055/
+SNV_OV_Chunk_29_35.txt,http://elaspic.kimlab.org/result/8bf49917/
+SNV_OV_Chunk_29_39.txt,http://elaspic.kimlab.org/result/7e15700e/
+SNV_OV_Chunk_29_40.txt,http://elaspic.kimlab.org/result/0ea50ae5/
+SNV_OV_Chunk_29_41.txt,http://elaspic.kimlab.org/result/c4763e5d/
+SNV_OV_Chunk_29_42.txt,http://elaspic.kimlab.org/result/fe85b09e/
+SNV_OV_Chunk_30_54.txt,http://elaspic.kimlab.org/result/6d8751d6/
+SNV_OV_Chunk_30_55.txt,http://elaspic.kimlab.org/result/82dd82f1/
+SNV_OV_Chunk_31_2.txt,http://elaspic.kimlab.org/result/3c480466/
+SNV_OV_Chunk_31_29.txt,http://elaspic.kimlab.org/result/171273d3/
+SNV_OV_Chunk_31_3.txt,http://elaspic.kimlab.org/result/f22508e9/
+SNV_OV_Chunk_32_29.txt,http://elaspic.kimlab.org/result/268ea158/
+SNV_OV_Chunk_32_30.txt,http://elaspic.kimlab.org/result/9a50394f/
+SNV_OV_Chunk_32_32.txt,http://elaspic.kimlab.org/result/0241b5ce/
+SNV_OV_Chunk_32_33.txt,http://elaspic.kimlab.org/result/f3436a68/
+SNV_OV_Chunk_11_73.txt,http://elaspic.kimlab.org/result/d9a9661b/
+SNV_OV_Chunk_11_77.txt,http://elaspic.kimlab.org/result/24a6213f/
+SNV_OV_Chunk_12_80.txt,http://elaspic.kimlab.org/result/397a1137/
+SNV_OV_Chunk_12_81.txt,http://elaspic.kimlab.org/result/bff0a11d/
+SNV_OV_Chunk_14_57.txt,http://elaspic.kimlab.org/result/bf1fd054/
+SNV_OV_Chunk_14_6.txt,http://elaspic.kimlab.org/result/bee99478/
+SNV_OV_Chunk_26_43.txt,http://elaspic.kimlab.org/result/009d36bb/
+SNV_OV_Chunk_27_32.txt,http://elaspic.kimlab.org/result/4abc3a63/
+SNV_OV_Chunk_30_56.txt,http://elaspic.kimlab.org/result/b33fc287/
+SNV_OV_Chunk_11_78.txt,http://elaspic.kimlab.org/result/dacdc2dc/
+SNV_OV_Chunk_11_79.txt,http://elaspic.kimlab.org/result/b2d399d0/
+SNV_OV_Chunk_11_80.txt,http://elaspic.kimlab.org/result/842662ce/
+SNV_OV_Chunk_11_81.txt,http://elaspic.kimlab.org/result/9366c66e/
+SNV_OV_Chunk_33_57.txt,http://elaspic.kimlab.org/result/e3bf6f14/
+SNV_OV_Chunk_33_58.txt,http://elaspic.kimlab.org/result/e6959c93/
+SNV_OV_Chunk_33_60.txt,http://elaspic.kimlab.org/result/b0d2b9a1/
+SNV_OV_Chunk_33_61.txt,http://elaspic.kimlab.org/result/2270d089/
+SNV_OV_Chunk_33_62.txt,http://elaspic.kimlab.org/result/5e0ddc64/
+SNV_OV_Chunk_33_63.txt,http://elaspic.kimlab.org/result/6db02621/
+SNV_OV_Chunk_33_64.txt,http://elaspic.kimlab.org/result/1bb5617a/
+SNV_OV_Chunk_33_65.txt,http://elaspic.kimlab.org/result/dc6243e9/
+SNV_OV_Chunk_33_66.txt,http://elaspic.kimlab.org/result/8935da8b/
+SNV_OV_Chunk_34_28.txt,http://elaspic.kimlab.org/result/d72b95bb/
+SNV_OV_Chunk_34_3.txt,http://elaspic.kimlab.org/result/c84db8ec/
+SNV_OV_Chunk_34_30.txt,http://elaspic.kimlab.org/result/5b213644/
+SNV_OV_Chunk_34_31.txt,http://elaspic.kimlab.org/result/89cda672/
+SNV_OV_Chunk_34_32.txt,http://elaspic.kimlab.org/result/af3fd6cd/
+SNV_OV_Chunk_34_33.txt,http://elaspic.kimlab.org/result/c48f9ce8/
+SNV_OV_Chunk_34_34.txt,http://elaspic.kimlab.org/result/42370831/
+SNV_OV_Chunk_34_35.txt,http://elaspic.kimlab.org/result/734bfcba/
+SNV_OV_Chunk_34_36.txt,http://elaspic.kimlab.org/result/53279850/
+SNV_OV_Chunk_35_46.txt,http://elaspic.kimlab.org/result/e73dd5ba/
+SNV_OV_Chunk_35_47.txt,http://elaspic.kimlab.org/result/ada6ff76/
+SNV_OV_Chunk_35_48.txt,http://elaspic.kimlab.org/result/7fb2e264/
+SNV_OV_Chunk_35_49.txt,http://elaspic.kimlab.org/result/4cdde462/
+SNV_OV_Chunk_35_50.txt,http://elaspic.kimlab.org/result/f8fc8153/
+SNV_OV_Chunk_35_51.txt,http://elaspic.kimlab.org/result/bf53a8d5/
+SNV_OV_Chunk_35_52.txt,http://elaspic.kimlab.org/result/5e4461f1/
+SNV_OV_Chunk_35_53.txt,http://elaspic.kimlab.org/result/945c394b/
+SNV_OV_Chunk_35_54.txt,http://elaspic.kimlab.org/result/59775ec1/
+SNV_OV_Chunk_36_3.txt,http://elaspic.kimlab.org/result/a021ed18/
+SNV_OV_Chunk_36_4.txt,http://elaspic.kimlab.org/result/667e7e39/
+SNV_OV_Chunk_36_40.txt,http://elaspic.kimlab.org/result/e791b50f/
+SNV_OV_Chunk_36_41.txt,http://elaspic.kimlab.org/result/b897c627/
+SNV_OV_Chunk_36_43.txt,http://elaspic.kimlab.org/result/f094d265/
+SNV_OV_Chunk_36_44.txt,http://elaspic.kimlab.org/result/64e6d1fa/
+SNV_OV_Chunk_36_49.txt,http://elaspic.kimlab.org/result/5c031403/
+SNV_OV_Chunk_36_5.txt,http://elaspic.kimlab.org/result/1de0e0a6/
+SNV_OV_Chunk_36_51.txt,http://elaspic.kimlab.org/result/db0ce298/
+SNV_OV_Chunk_37_36.txt,http://elaspic.kimlab.org/result/1a8d7f14/
+SNV_OV_Chunk_37_38.txt,http://elaspic.kimlab.org/result/3cd73def/
+SNV_OV_Chunk_37_39.txt,http://elaspic.kimlab.org/result/08830265/
+SNV_OV_Chunk_37_4.txt,http://elaspic.kimlab.org/result/253a8822/
+SNV_OV_Chunk_37_40.txt,http://elaspic.kimlab.org/result/96b7984b/
+SNV_OV_Chunk_37_42.txt,http://elaspic.kimlab.org/result/ed721d6f/
+SNV_OV_Chunk_37_43.txt,http://elaspic.kimlab.org/result/8df74b49/
+SNV_OV_Chunk_37_44.txt,http://elaspic.kimlab.org/result/a9dc3769/
+SNV_OV_Chunk_38_24.txt,http://elaspic.kimlab.org/result/3df2b1c5/
+SNV_OV_Chunk_38_26.txt,http://elaspic.kimlab.org/result/98a8ac4a/
+SNV_OV_Chunk_38_28.txt,http://elaspic.kimlab.org/result/9a394bdd/
+SNV_OV_Chunk_38_29.txt,http://elaspic.kimlab.org/result/e2e8234e/
+SNV_OV_Chunk_38_3.txt,http://elaspic.kimlab.org/result/115f24ba/
+SNV_OV_Chunk_38_30.txt,http://elaspic.kimlab.org/result/9028ac7f/
+SNV_OV_Chunk_38_31.txt,http://elaspic.kimlab.org/result/acfc5c60/
+SNV_OV_Chunk_38_32.txt,http://elaspic.kimlab.org/result/8bc8e096/
+SNV_OV_Chunk_38_33.txt,http://elaspic.kimlab.org/result/89f93126/
+SNV_OV_Chunk_11_82.txt,http://elaspic.kimlab.org/result/a877b222/
+SNV_OV_Chunk_11_83.txt,http://elaspic.kimlab.org/result/35990d2e/
+SNV_OV_Chunk_11_84.txt,http://elaspic.kimlab.org/result/8761f83a/
+SNV_OV_Chunk_11_85.txt,http://elaspic.kimlab.org/result/01404874/
+SNV_OV_Chunk_11_86.txt,http://elaspic.kimlab.org/result/794e577f/
+SNV_OV_Chunk_14_61.txt,http://elaspic.kimlab.org/result/899ea0bb/
+SNV_OV_Chunk_14_62.txt,http://elaspic.kimlab.org/result/05e15dbd/
+SNV_OV_Chunk_15_68.txt,http://elaspic.kimlab.org/result/26789775/
+SNV_OV_Chunk_15_69.txt,http://elaspic.kimlab.org/result/186bc6fa/
+SNV_OV_Chunk_15_7.txt,http://elaspic.kimlab.org/result/ab2be6ed/
+SNV_OV_Chunk_15_71.txt,http://elaspic.kimlab.org/result/5b8dc92d/
+SNV_OV_Chunk_18_6.txt,http://elaspic.kimlab.org/result/171dbe0d/
+SNV_OV_Chunk_18_60.txt,http://elaspic.kimlab.org/result/be644748/
+SNV_OV_Chunk_18_62.txt,http://elaspic.kimlab.org/result/40103689/
+SNV_OV_Chunk_18_63.txt,http://elaspic.kimlab.org/result/ffe802d5/
+SNV_OV_Chunk_18_64.txt,http://elaspic.kimlab.org/result/731af97f/
+SNV_OV_Chunk_18_65.txt,http://elaspic.kimlab.org/result/88a94784/
+SNV_OV_Chunk_19_56.txt,http://elaspic.kimlab.org/result/0a857054/
+SNV_OV_Chunk_19_57.txt,http://elaspic.kimlab.org/result/ebc536a9/
+SNV_OV_Chunk_19_58.txt,http://elaspic.kimlab.org/result/7a94476f/
+SNV_OV_Chunk_21_67.txt,http://elaspic.kimlab.org/result/7ecb9b85/
+SNV_OV_Chunk_21_68.txt,http://elaspic.kimlab.org/result/08b87daa/
+SNV_OV_Chunk_21_69.txt,http://elaspic.kimlab.org/result/b03967ae/
+SNV_OV_Chunk_21_7.txt,http://elaspic.kimlab.org/result/e015cf5b/
+SNV_OV_Chunk_21_70.txt,http://elaspic.kimlab.org/result/31615c62/
+SNV_OV_Chunk_21_71.txt,http://elaspic.kimlab.org/result/6d8cedcb/
+SNV_OV_Chunk_21_72.txt,http://elaspic.kimlab.org/result/11038df3/
+SNV_OV_Chunk_22_60.txt,http://elaspic.kimlab.org/result/9e643a9b/
+SNV_OV_Chunk_22_61.txt,http://elaspic.kimlab.org/result/ee11f793/
+SNV_OV_Chunk_22_72.txt,http://elaspic.kimlab.org/result/417f56ad/
+SNV_OV_Chunk_23_61.txt,http://elaspic.kimlab.org/result/7f86f763/
+SNV_OV_Chunk_24_44.txt,http://elaspic.kimlab.org/result/47921cbb/
+SNV_OV_Chunk_24_46.txt,http://elaspic.kimlab.org/result/7a911e52/
+SNV_OV_Chunk_24_47.txt,http://elaspic.kimlab.org/result/c6b3e123/
+SNV_OV_Chunk_24_48.txt,http://elaspic.kimlab.org/result/b32e2c46/
+SNV_OV_Chunk_28_58.txt,http://elaspic.kimlab.org/result/013bcdd8/
+SNV_OV_Chunk_31_30.txt,http://elaspic.kimlab.org/result/5d19ed94/
+SNV_OV_Chunk_13_69.txt,http://elaspic.kimlab.org/result/d9554e00/
+SNV_OV_Chunk_13_7.txt,http://elaspic.kimlab.org/result/c4227937/
+SNV_OV_Chunk_13_70.txt,http://elaspic.kimlab.org/result/8cd2eecf/
+SNV_OV_Chunk_13_71.txt,http://elaspic.kimlab.org/result/158b875e/
+SNV_OV_Chunk_13_72.txt,http://elaspic.kimlab.org/result/57a3ec11/
+SNV_OV_Chunk_13_73.txt,http://elaspic.kimlab.org/result/e4310c7c/
+SNV_OV_Chunk_13_74.txt,http://elaspic.kimlab.org/result/e03667eb/
+SNV_OV_Chunk_13_75.txt,http://elaspic.kimlab.org/result/ed87b29c/
+SNV_OV_Chunk_14_63.txt,http://elaspic.kimlab.org/result/53a13356/
+SNV_OV_Chunk_14_64.txt,http://elaspic.kimlab.org/result/278462de/
+SNV_OV_Chunk_14_65.txt,http://elaspic.kimlab.org/result/c6c63ca0/
+SNV_OV_Chunk_15_72.txt,http://elaspic.kimlab.org/result/97a861aa/
+SNV_OV_Chunk_15_73.txt,http://elaspic.kimlab.org/result/59fface3/
+SNV_OV_Chunk_15_74.txt,http://elaspic.kimlab.org/result/337efe5e/
+SNV_OV_Chunk_15_75.txt,http://elaspic.kimlab.org/result/267e4d72/
+SNV_OV_Chunk_15_76.txt,http://elaspic.kimlab.org/result/ecac81f5/
+SNV_OV_Chunk_15_77.txt,http://elaspic.kimlab.org/result/a8d18a14/
+SNV_OV_Chunk_15_78.txt,http://elaspic.kimlab.org/result/606de953/
+SNV_OV_Chunk_15_79.txt,http://elaspic.kimlab.org/result/0724b3bc/
+SNV_OV_Chunk_18_67.txt,http://elaspic.kimlab.org/result/b1770079/
+SNV_OV_Chunk_18_68.txt,http://elaspic.kimlab.org/result/d9be2713/
+SNV_OV_Chunk_18_69.txt,http://elaspic.kimlab.org/result/7eaa751f/
+SNV_OV_Chunk_18_7.txt,http://elaspic.kimlab.org/result/28a3bcb1/
+SNV_OV_Chunk_18_70.txt,http://elaspic.kimlab.org/result/2b1e0817/
+SNV_OV_Chunk_19_59.txt,http://elaspic.kimlab.org/result/dc2f047c/
+SNV_OV_Chunk_19_6.txt,http://elaspic.kimlab.org/result/b7da2104/
+SNV_OV_Chunk_19_61.txt,http://elaspic.kimlab.org/result/1fe274b5/
+SNV_OV_Chunk_19_62.txt,http://elaspic.kimlab.org/result/428cc7d3/
+SNV_OV_Chunk_19_64.txt,http://elaspic.kimlab.org/result/ac6c6af6/
+SNV_OV_Chunk_20_47.txt,http://elaspic.kimlab.org/result/0e8516c1/
+SNV_OV_Chunk_20_48.txt,http://elaspic.kimlab.org/result/54462583/
+SNV_OV_Chunk_20_49.txt,http://elaspic.kimlab.org/result/7f342c63/
+SNV_OV_Chunk_20_5.txt,http://elaspic.kimlab.org/result/b8efb836/
+SNV_OV_Chunk_20_51.txt,http://elaspic.kimlab.org/result/7077b020/
+SNV_OV_Chunk_20_52.txt,http://elaspic.kimlab.org/result/ef096836/
+SNV_OV_Chunk_20_53.txt,http://elaspic.kimlab.org/result/8cea2a97/
+SNV_OV_Chunk_20_54.txt,http://elaspic.kimlab.org/result/533447e5/
+SNV_OV_Chunk_21_77.txt,http://elaspic.kimlab.org/result/6ccafd30/
+SNV_OV_Chunk_21_78.txt,http://elaspic.kimlab.org/result/e1d31c15/
+SNV_OV_Chunk_21_8.txt,http://elaspic.kimlab.org/result/0c815f8b/
+SNV_OV_Chunk_22_73.txt,http://elaspic.kimlab.org/result/56618b64/
+SNV_OV_Chunk_22_75.txt,http://elaspic.kimlab.org/result/bf359751/
+SNV_OV_Chunk_22_76.txt,http://elaspic.kimlab.org/result/4de19dd9/
+SNV_OV_Chunk_22_77.txt,http://elaspic.kimlab.org/result/7328b0a0/
+SNV_OV_Chunk_22_78.txt,http://elaspic.kimlab.org/result/93858496/
+SNV_OV_Chunk_22_79.txt,http://elaspic.kimlab.org/result/e4434223/
+SNV_OV_Chunk_23_63.txt,http://elaspic.kimlab.org/result/3ad112cc/
+SNV_OV_Chunk_23_64.txt,http://elaspic.kimlab.org/result/135a96b8/
+SNV_OV_Chunk_23_65.txt,http://elaspic.kimlab.org/result/f0e76a51/
+SNV_OV_Chunk_23_66.txt,http://elaspic.kimlab.org/result/03561880/
+SNV_OV_Chunk_24_49.txt,http://elaspic.kimlab.org/result/e2ca35e6/
+SNV_OV_Chunk_24_5.txt,http://elaspic.kimlab.org/result/8d31bfc6/
+SNV_OV_Chunk_11_87.txt,http://elaspic.kimlab.org/result/ef73eb84/
+SNV_OV_Chunk_11_89.txt,http://elaspic.kimlab.org/result/eeb2beba/
+SNV_OV_Chunk_11_9.txt,http://elaspic.kimlab.org/result/4aa4af6d/
+SNV_OV_Chunk_12_82.txt,http://elaspic.kimlab.org/result/0c3850a8/
+SNV_OV_Chunk_12_83.txt,http://elaspic.kimlab.org/result/2b1fae12/
+SNV_OV_Chunk_12_84.txt,http://elaspic.kimlab.org/result/516c125a/
+SNV_OV_Chunk_12_85.txt,http://elaspic.kimlab.org/result/da9364bd/
+SNV_OV_Chunk_12_86.txt,http://elaspic.kimlab.org/result/7fd751bb/
+SNV_OV_Chunk_12_87.txt,http://elaspic.kimlab.org/result/46cdccc2/
+SNV_OV_Chunk_12_88.txt,http://elaspic.kimlab.org/result/a3ffd726/
+SNV_OV_Chunk_12_89.txt,http://elaspic.kimlab.org/result/3a0ac820/
+SNV_OV_Chunk_12_90.txt,http://elaspic.kimlab.org/result/bd0d3070/
+SNV_OV_Chunk_12_91.txt,http://elaspic.kimlab.org/result/b490bafc/
+SNV_OV_Chunk_14_66.txt,http://elaspic.kimlab.org/result/534e9e49/
+SNV_OV_Chunk_14_67.txt,http://elaspic.kimlab.org/result/37b1d4e7/
+SNV_OV_Chunk_19_65.txt,http://elaspic.kimlab.org/result/60da22c8/
+SNV_OV_Chunk_22_86.txt,http://elaspic.kimlab.org/result/07d26ed5/
+SNV_OV_Chunk_25_40.txt,http://elaspic.kimlab.org/result/e5cc9be0/
+SNV_OV_Chunk_25_41.txt,http://elaspic.kimlab.org/result/6acad607/
+SNV_OV_Chunk_26_44.txt,http://elaspic.kimlab.org/result/a7ccb0ec/
+SNV_OV_Chunk_26_45.txt,http://elaspic.kimlab.org/result/98b5243a/
+SNV_OV_Chunk_26_46.txt,http://elaspic.kimlab.org/result/18e8612e/
+SNV_OV_Chunk_26_47.txt,http://elaspic.kimlab.org/result/c02f83bd/
+SNV_OV_Chunk_26_48.txt,http://elaspic.kimlab.org/result/003719cf/
+SNV_OV_Chunk_27_33.txt,http://elaspic.kimlab.org/result/f6e21f99/
+SNV_OV_Chunk_27_34.txt,http://elaspic.kimlab.org/result/b13a39b3/
+SNV_OV_Chunk_27_35.txt,http://elaspic.kimlab.org/result/9034de78/
+SNV_OV_Chunk_27_36.txt,http://elaspic.kimlab.org/result/a34feee5/
+SNV_OV_Chunk_27_37.txt,http://elaspic.kimlab.org/result/5f1f707e/
+SNV_OV_Chunk_27_38.txt,http://elaspic.kimlab.org/result/b78dc387/
+SNV_OV_Chunk_28_59.txt,http://elaspic.kimlab.org/result/cea15f9d/
+SNV_OV_Chunk_28_6.txt,http://elaspic.kimlab.org/result/a358f8d7/
+SNV_OV_Chunk_28_60.txt,http://elaspic.kimlab.org/result/33bffd9c/
+SNV_OV_Chunk_28_63.txt,http://elaspic.kimlab.org/result/77a0c9b5/
+SNV_OV_Chunk_28_64.txt,http://elaspic.kimlab.org/result/ed7307e2/
+SNV_OV_Chunk_29_43.txt,http://elaspic.kimlab.org/result/5cb900b1/
+SNV_OV_Chunk_29_45.txt,http://elaspic.kimlab.org/result/890383c4/
+SNV_OV_Chunk_29_46.txt,http://elaspic.kimlab.org/result/775e4dbf/
+SNV_OV_Chunk_29_59.txt,http://elaspic.kimlab.org/result/f402016e/
+SNV_OV_Chunk_30_57.txt,http://elaspic.kimlab.org/result/5fb7877a/
+SNV_OV_Chunk_30_58.txt,http://elaspic.kimlab.org/result/06c7e0be/
+SNV_OV_Chunk_30_59.txt,http://elaspic.kimlab.org/result/7012b6c7/
+SNV_OV_Chunk_30_6.txt,http://elaspic.kimlab.org/result/fb156c06/
+SNV_OV_Chunk_30_60.txt,http://elaspic.kimlab.org/result/2a229706/
+SNV_OV_Chunk_30_61.txt,http://elaspic.kimlab.org/result/c069bb2e/
+SNV_OV_Chunk_30_62.txt,http://elaspic.kimlab.org/result/a04631e6/
+SNV_OV_Chunk_30_63.txt,http://elaspic.kimlab.org/result/9c0d7706/
+SNV_OV_Chunk_30_64.txt,http://elaspic.kimlab.org/result/c62e4f26/
+SNV_OV_Chunk_30_65.txt,http://elaspic.kimlab.org/result/0428ef0b/
+SNV_OV_Chunk_31_31.txt,http://elaspic.kimlab.org/result/133afe18/
+SNV_OV_Chunk_31_32.txt,http://elaspic.kimlab.org/result/6389edc2/
+SNV_OV_Chunk_31_33.txt,http://elaspic.kimlab.org/result/68c52a8f/
+SNV_OV_Chunk_11_90.txt,http://elaspic.kimlab.org/result/c122e078/
+SNV_OV_Chunk_14_69.txt,http://elaspic.kimlab.org/result/d57fc8d6/
+SNV_OV_Chunk_14_7.txt,http://elaspic.kimlab.org/result/9d25b1b5/
+SNV_OV_Chunk_14_70.txt,http://elaspic.kimlab.org/result/6bd4aaab/
+SNV_OV_Chunk_21_9.txt,http://elaspic.kimlab.org/result/8b1e43e0/
+SNV_OV_Chunk_23_67.txt,http://elaspic.kimlab.org/result/942a4d21/
+SNV_OV_Chunk_23_68.txt,http://elaspic.kimlab.org/result/2a3c5a38/
+SNV_OV_Chunk_25_58.txt,http://elaspic.kimlab.org/result/dc1ad1c1/
+SNV_OV_Chunk_25_59.txt,http://elaspic.kimlab.org/result/221760c1/
+SNV_OV_Chunk_25_60.txt,http://elaspic.kimlab.org/result/c94dffb4/
+SNV_OV_Chunk_25_67.txt,http://elaspic.kimlab.org/result/a0cbc158/
+SNV_OV_Chunk_25_68.txt,http://elaspic.kimlab.org/result/2395371d/
+SNV_OV_Chunk_25_69.txt,http://elaspic.kimlab.org/result/06c4fd29/
+SNV_OV_Chunk_26_49.txt,http://elaspic.kimlab.org/result/31629d72/
+SNV_OV_Chunk_26_52.txt,http://elaspic.kimlab.org/result/bb809c9f/
+SNV_OV_Chunk_26_53.txt,http://elaspic.kimlab.org/result/a75579e7/
+SNV_OV_Chunk_26_54.txt,http://elaspic.kimlab.org/result/ea48bc0f/
+SNV_OV_Chunk_27_4.txt,http://elaspic.kimlab.org/result/78c10005/
+SNV_OV_Chunk_29_60.txt,http://elaspic.kimlab.org/result/5258a34f/
+SNV_OV_Chunk_29_61.txt,http://elaspic.kimlab.org/result/eb2217b7/
+SNV_OV_Chunk_29_63.txt,http://elaspic.kimlab.org/result/055a4637/
+SNV_OV_Chunk_30_66.txt,http://elaspic.kimlab.org/result/bb8bfc4c/
+SNV_OV_Chunk_31_34.txt,http://elaspic.kimlab.org/result/5148e52a/
+SNV_OV_Chunk_31_35.txt,http://elaspic.kimlab.org/result/40622cd9/
+SNV_OV_Chunk_31_36.txt,http://elaspic.kimlab.org/result/4201fdcd/
+SNV_OV_Chunk_31_37.txt,http://elaspic.kimlab.org/result/7e9efad3/
+SNV_OV_Chunk_31_38.txt,http://elaspic.kimlab.org/result/985bbd03/
+SNV_OV_Chunk_31_39.txt,http://elaspic.kimlab.org/result/19b6823f/
+SNV_OV_Chunk_31_4.txt,http://elaspic.kimlab.org/result/09c5a619/
+SNV_OV_Chunk_32_36.txt,http://elaspic.kimlab.org/result/dbe53e33/
+SNV_OV_Chunk_32_37.txt,http://elaspic.kimlab.org/result/2f4d0599/
+SNV_OV_Chunk_32_4.txt,http://elaspic.kimlab.org/result/d4984362/
+SNV_OV_Chunk_32_42.txt,http://elaspic.kimlab.org/result/f16a4132/
+SNV_OV_Chunk_32_43.txt,http://elaspic.kimlab.org/result/e54d4274/
+SNV_OV_Chunk_33_67.txt,http://elaspic.kimlab.org/result/ae9b8fd1/
+SNV_OV_Chunk_33_68.txt,http://elaspic.kimlab.org/result/7609ea47/
+SNV_OV_Chunk_33_74.txt,http://elaspic.kimlab.org/result/d0c17b65/
+SNV_OV_Chunk_33_75.txt,http://elaspic.kimlab.org/result/d391b8e4/
+SNV_OV_Chunk_33_76.txt,http://elaspic.kimlab.org/result/600eb2c6/
+SNV_OV_Chunk_33_77.txt,http://elaspic.kimlab.org/result/c83f19a2/
+SNV_OV_Chunk_33_78.txt,http://elaspic.kimlab.org/result/2856374d/
+SNV_OV_Chunk_33_79.txt,http://elaspic.kimlab.org/result/5e8e992a/
+SNV_OV_Chunk_33_80.txt,http://elaspic.kimlab.org/result/6c7552d3/
+SNV_OV_Chunk_34_37.txt,http://elaspic.kimlab.org/result/d8cefb37/
+SNV_OV_Chunk_34_38.txt,http://elaspic.kimlab.org/result/1626b89f/
+SNV_OV_Chunk_34_4.txt,http://elaspic.kimlab.org/result/07d19f8c/
+SNV_OV_Chunk_34_46.txt,http://elaspic.kimlab.org/result/ef7a9c12/
+SNV_OV_Chunk_34_47.txt,http://elaspic.kimlab.org/result/11fe5095/
+SNV_OV_Chunk_34_48.txt,http://elaspic.kimlab.org/result/d25b7a25/
+SNV_OV_Chunk_35_55.txt,http://elaspic.kimlab.org/result/7143490e/
+SNV_OV_Chunk_35_56.txt,http://elaspic.kimlab.org/result/8435183c/
+SNV_OV_Chunk_35_57.txt,http://elaspic.kimlab.org/result/2df714bc/
+SNV_OV_Chunk_35_58.txt,http://elaspic.kimlab.org/result/509d883c/
+SNV_OV_Chunk_35_59.txt,http://elaspic.kimlab.org/result/2c07fbd7/
+SNV_OV_Chunk_35_62.txt,http://elaspic.kimlab.org/result/7a7cf2cf/
+SNV_OV_Chunk_35_63.txt,http://elaspic.kimlab.org/result/efafe099/
+SNV_OV_Chunk_35_64.txt,http://elaspic.kimlab.org/result/248a257a/
+SNV_OV_Chunk_36_52.txt,http://elaspic.kimlab.org/result/d0c539d0/
+SNV_OV_Chunk_36_53.txt,http://elaspic.kimlab.org/result/fe7bb224/
+SNV_OV_Chunk_36_54.txt,http://elaspic.kimlab.org/result/5a1d4ae2/
+SNV_OV_Chunk_36_55.txt,http://elaspic.kimlab.org/result/8d2229f1/
+SNV_OV_Chunk_36_56.txt,http://elaspic.kimlab.org/result/cc194224/
+SNV_OV_Chunk_36_57.txt,http://elaspic.kimlab.org/result/e10fb25c/
+SNV_OV_Chunk_36_58.txt,http://elaspic.kimlab.org/result/eb286763/
+SNV_OV_Chunk_36_59.txt,http://elaspic.kimlab.org/result/8ac62526/
+SNV_OV_Chunk_36_6.txt,http://elaspic.kimlab.org/result/fb1ddd61/
+SNV_OV_Chunk_37_45.txt,http://elaspic.kimlab.org/result/642fcad6/
+SNV_OV_Chunk_37_47.txt,http://elaspic.kimlab.org/result/d391c96b/
+SNV_OV_Chunk_37_48.txt,http://elaspic.kimlab.org/result/64c0518f/
+SNV_OV_Chunk_37_49.txt,http://elaspic.kimlab.org/result/44d07647/
+SNV_OV_Chunk_37_50.txt,http://elaspic.kimlab.org/result/a7793867/
+SNV_OV_Chunk_37_53.txt,http://elaspic.kimlab.org/result/20a49200/
+SNV_OV_Chunk_37_54.txt,http://elaspic.kimlab.org/result/3ccee1cc/
+SNV_OV_Chunk_38_34.txt,http://elaspic.kimlab.org/result/60295e5b/
+SNV_OV_Chunk_38_35.txt,http://elaspic.kimlab.org/result/4ee3ecbe/
+SNV_OV_Chunk_38_36.txt,http://elaspic.kimlab.org/result/bd0816d3/
+SNV_OV_Chunk_38_37.txt,http://elaspic.kimlab.org/result/d6bce5a7/
+SNV_OV_Chunk_38_38.txt,http://elaspic.kimlab.org/result/47262de9/
+SNV_OV_Chunk_38_4.txt,http://elaspic.kimlab.org/result/d26f4c5b/
+SNV_OV_Chunk_18_100.txt,http://elaspic.kimlab.org/result/6463a593/
+SNV_OV_Chunk_18_28.txt,http://elaspic.kimlab.org/result/c2ca8437/
+SNV_OV_Chunk_21_48.txt,http://elaspic.kimlab.org/result/8a40c442/
+SNV_OV_Chunk_22_48.txt,http://elaspic.kimlab.org/result/cbfdcae0/
+SNV_OV_Chunk_22_49.txt,http://elaspic.kimlab.org/result/f28c4925/
+SNV_OV_Chunk_24_50.txt,http://elaspic.kimlab.org/result/da7ac87e/
+SNV_OV_Chunk_32_44.txt,http://elaspic.kimlab.org/result/ddc89dd6/
+SNV_OV_Chunk_32_46.txt,http://elaspic.kimlab.org/result/e012aeeb/
+SNV_OV_Chunk_32_47.txt,http://elaspic.kimlab.org/result/df5564e5/
+SNV_OV_Chunk_32_48.txt,http://elaspic.kimlab.org/result/8d12ec77/
+SNV_OV_Chunk_32_49.txt,http://elaspic.kimlab.org/result/172abb14/
+SNV_OV_Chunk_32_5.txt,http://elaspic.kimlab.org/result/b7f3ea89/
+SNV_OV_Chunk_32_50.txt,http://elaspic.kimlab.org/result/85c58e35/
+SNV_OV_Chunk_18_82.txt,http://elaspic.kimlab.org/result/19fbad32/ - http://elaspic.kimlab.org/result/f43b2350/
+SNV_OV_Chunk_13_79.txt,http://elaspic.kimlab.org/result/b3d2a086/
+SNV_OV_Chunk_13_81.txt,http://elaspic.kimlab.org/result/5624c768/
+SNV_OV_Chunk_14_71.txt,http://elaspic.kimlab.org/result/3bf4cccf/
+SNV_OV_Chunk_18_71.txt,http://elaspic.kimlab.org/result/843afde8/
+SNV_OV_Chunk_18_72.txt,http://elaspic.kimlab.org/result/1959b779/
+SNV_OV_Chunk_18_73.txt,http://elaspic.kimlab.org/result/8ae4f011/
+SNV_OV_Chunk_18_74.txt,http://elaspic.kimlab.org/result/4d908c1f/
+SNV_OV_Chunk_18_75.txt,http://elaspic.kimlab.org/result/7140a686/
+SNV_OV_Chunk_20_55.txt,http://elaspic.kimlab.org/result/6ab95cff/
+SNV_OV_Chunk_20_59.txt,http://elaspic.kimlab.org/result/7fd32505/
+SNV_OV_Chunk_20_6.txt,http://elaspic.kimlab.org/result/83a0fb8b/
+SNV_OV_Chunk_20_60.txt,http://elaspic.kimlab.org/result/371c08f6/
+SNV_OV_Chunk_21_91.txt,http://elaspic.kimlab.org/result/96aef52c/
+SNV_OV_Chunk_21_93.txt,http://elaspic.kimlab.org/result/307abebe/
+SNV_OV_Chunk_21_94.txt,http://elaspic.kimlab.org/result/d944c010/
+SNV_OV_Chunk_21_95.txt,http://elaspic.kimlab.org/result/fcee1326/
+SNV_OV_Chunk_23_69.txt,http://elaspic.kimlab.org/result/2c061b68/
+SNV_OV_Chunk_23_7.txt,http://elaspic.kimlab.org/result/2a4b3962/
+SNV_OV_Chunk_23_70.txt,http://elaspic.kimlab.org/result/6a663395/
+SNV_OV_Chunk_23_71.txt,http://elaspic.kimlab.org/result/6c53548b/
+SNV_OV_Chunk_23_72.txt,http://elaspic.kimlab.org/result/2e53956a/
+SNV_OV_Chunk_24_51.txt,http://elaspic.kimlab.org/result/8c3a0ade/
+SNV_OV_Chunk_24_52.txt,http://elaspic.kimlab.org/result/457e2bb4/
+SNV_OV_Chunk_24_53.txt,http://elaspic.kimlab.org/result/22e29e76/
+SNV_OV_Chunk_24_54.txt,http://elaspic.kimlab.org/result/d277123c/
+SNV_OV_Chunk_24_55.txt,http://elaspic.kimlab.org/result/246d6ea1/
+SNV_OV_Chunk_12_92.txt,http://elaspic.kimlab.org/result/56bca327/
+SNV_OV_Chunk_12_93.txt,http://elaspic.kimlab.org/result/c14bf3be/
+SNV_OV_Chunk_13_82.txt,http://elaspic.kimlab.org/result/d5552f59/
+SNV_OV_Chunk_13_83.txt,http://elaspic.kimlab.org/result/82105996/
+SNV_OV_Chunk_13_84.txt,http://elaspic.kimlab.org/result/3dbe19cd/
+SNV_OV_Chunk_13_85.txt,http://elaspic.kimlab.org/result/ce81bd48/
+SNV_OV_Chunk_13_86.txt,http://elaspic.kimlab.org/result/6eaf6290/
+SNV_OV_Chunk_13_87.txt,http://elaspic.kimlab.org/result/1f18e9f0/
+SNV_OV_Chunk_14_72.txt,http://elaspic.kimlab.org/result/7838f2c0/
+SNV_OV_Chunk_14_73.txt,http://elaspic.kimlab.org/result/8cc21b3a/
+SNV_OV_Chunk_14_74.txt,http://elaspic.kimlab.org/result/8f15faab/
+SNV_OV_Chunk_14_75.txt,http://elaspic.kimlab.org/result/010f3d6e/
+SNV_OV_Chunk_14_76.txt,http://elaspic.kimlab.org/result/df2f9b36/
+SNV_OV_Chunk_14_77.txt,http://elaspic.kimlab.org/result/ababa096/
+SNV_OV_Chunk_15_8.txt,http://elaspic.kimlab.org/result/e3ae6557/
+SNV_OV_Chunk_15_80.txt,http://elaspic.kimlab.org/result/28b6c2f8/
+SNV_OV_Chunk_15_81.txt,http://elaspic.kimlab.org/result/3bf13250/
+SNV_OV_Chunk_15_82.txt,http://elaspic.kimlab.org/result/9cd06671/
+SNV_OV_Chunk_15_83.txt,http://elaspic.kimlab.org/result/3ed5875b/
+SNV_OV_Chunk_15_84.txt,http://elaspic.kimlab.org/result/486a35dc/
+SNV_OV_Chunk_15_85.txt,http://elaspic.kimlab.org/result/37d0b68f/
+SNV_OV_Chunk_15_9.txt,http://elaspic.kimlab.org/result/31d8d789/
+SNV_OV_Chunk_18_76.txt,http://elaspic.kimlab.org/result/4242e19f/
+SNV_OV_Chunk_18_77.txt,http://elaspic.kimlab.org/result/d959c6d3/
+SNV_OV_Chunk_18_78.txt,http://elaspic.kimlab.org/result/47b73b3c/
+SNV_OV_Chunk_18_79.txt,http://elaspic.kimlab.org/result/e50101d3/
+SNV_OV_Chunk_18_8.txt,http://elaspic.kimlab.org/result/32efc7fb/
+SNV_OV_Chunk_20_61.txt,http://elaspic.kimlab.org/result/ba51deb1/
+SNV_OV_Chunk_20_62.txt,http://elaspic.kimlab.org/result/bcd7c708/
+SNV_OV_Chunk_20_63.txt,http://elaspic.kimlab.org/result/342d381a/
+SNV_OV_Chunk_20_64.txt,http://elaspic.kimlab.org/result/12d18764/
+SNV_OV_Chunk_20_65.txt,http://elaspic.kimlab.org/result/a2f74670/
+SNV_OV_Chunk_20_66.txt,http://elaspic.kimlab.org/result/c73281fa/
+SNV_OV_Chunk_20_68.txt,http://elaspic.kimlab.org/result/e7324737/
+SNV_OV_Chunk_20_7.txt,http://elaspic.kimlab.org/result/460ba19e/
+SNV_OV_Chunk_21_96.txt,http://elaspic.kimlab.org/result/d2dce1dc/
+SNV_OV_Chunk_21_97.txt,http://elaspic.kimlab.org/result/5be0c1a8/
+SNV_OV_Chunk_21_98.txt,http://elaspic.kimlab.org/result/611293e2/
+SNV_OV_Chunk_21_99.txt,http://elaspic.kimlab.org/result/2c28779c/
+SNV_OV_Chunk_22_87.txt,http://elaspic.kimlab.org/result/a14e474f/
+SNV_OV_Chunk_22_88.txt,http://elaspic.kimlab.org/result/3b4719bb/
+SNV_OV_Chunk_22_89.txt,http://elaspic.kimlab.org/result/890b862e/
+SNV_OV_Chunk_22_90.txt,http://elaspic.kimlab.org/result/3992ec78/
+SNV_OV_Chunk_22_91.txt,http://elaspic.kimlab.org/result/4567b077/
+SNV_OV_Chunk_22_92.txt,http://elaspic.kimlab.org/result/c0452cbd/
+SNV_OV_Chunk_23_73.txt,http://elaspic.kimlab.org/result/a35e0b85/
+SNV_OV_Chunk_23_74.txt,http://elaspic.kimlab.org/result/a4f5e9ce/
+SNV_OV_Chunk_23_75.txt,http://elaspic.kimlab.org/result/b1d2bfa4/
+SNV_OV_Chunk_23_76.txt,http://elaspic.kimlab.org/result/c5fbfcee/
+SNV_OV_Chunk_24_56.txt,http://elaspic.kimlab.org/result/8a63feef/
+SNV_OV_Chunk_24_57.txt,http://elaspic.kimlab.org/result/a49ff776/
+SNV_OV_Chunk_24_58.txt,http://elaspic.kimlab.org/result/f3977cdc/
+SNV_OV_Chunk_24_59.txt,http://elaspic.kimlab.org/result/bb41ca87/
+SNV_OV_Chunk_24_6.txt,http://elaspic.kimlab.org/result/c09d2456/
+SNV_OV_Chunk_24_60.txt,http://elaspic.kimlab.org/result/c97bd756/
+SNV_OV_Chunk_25_70.txt,http://elaspic.kimlab.org/result/efea24da/
+SNV_OV_Chunk_25_71.txt,http://elaspic.kimlab.org/result/89611b65/
+SNV_OV_Chunk_25_72.txt,http://elaspic.kimlab.org/result/c3e0e678/
+SNV_OV_Chunk_27_40.txt,http://elaspic.kimlab.org/result/c426080d/
+SNV_OV_Chunk_27_41.txt,http://elaspic.kimlab.org/result/8989d343/
+SNV_OV_Chunk_27_42.txt,http://elaspic.kimlab.org/result/e82ecaf0/
+SNV_OV_Chunk_28_65.txt,http://elaspic.kimlab.org/result/16be2214/
+SNV_OV_Chunk_28_66.txt,http://elaspic.kimlab.org/result/34339b1f/
+SNV_OV_Chunk_28_67.txt,http://elaspic.kimlab.org/result/5b6a76a0/
+SNV_OV_Chunk_28_68.txt,http://elaspic.kimlab.org/result/a869777c/
+SNV_OV_Chunk_28_69.txt,http://elaspic.kimlab.org/result/f6f0a554/
+SNV_OV_Chunk_28_70.txt,http://elaspic.kimlab.org/result/bb455198/
+SNV_OV_Chunk_28_71.txt,http://elaspic.kimlab.org/result/55afd1bf/
+SNV_OV_Chunk_29_64.txt,http://elaspic.kimlab.org/result/8f576551/
+SNV_OV_Chunk_29_65.txt,http://elaspic.kimlab.org/result/fed81d3a/
+SNV_OV_Chunk_29_66.txt,http://elaspic.kimlab.org/result/3e34cac7/
+SNV_OV_Chunk_29_67.txt,http://elaspic.kimlab.org/result/36cb82ed/
+SNV_OV_Chunk_29_68.txt,http://elaspic.kimlab.org/result/c0d6e46e/
+SNV_OV_Chunk_34_49.txt,http://elaspic.kimlab.org/result/ac67ad63/
+SNV_OV_Chunk_34_5.txt,http://elaspic.kimlab.org/result/db9efaeb/
+SNV_OV_Chunk_34_50.txt,http://elaspic.kimlab.org/result/549949ef/
