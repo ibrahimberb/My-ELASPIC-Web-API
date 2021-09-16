@@ -2,7 +2,7 @@ import pathlib
 
 test_mode = False
 
-ALLOWED_RAM_PERCENTAGE: int = 90
+ALLOWED_RAM_PERCENTAGE: int = 93
 
 if test_mode:
     RECORDS_FOLDER_PATH = r"test_files\Records_Test"
@@ -24,14 +24,15 @@ else:
 COMPUTATION_TIME_ALLOWED = 1  # 3 # 10  # in seconds.
 
 # Paths
+CHUNKS_TO_RUN_FOLDER_PATH = "Chunks_to_run"
 DRIVER_PATH = r"C:\webdrivers\geckodriver.exe"
 TEMP_DOWNLOAD_FOLDER_PATH = pathlib.Path().resolve() / 'Firefox_download'
 ELASPIC_MANY_URL = 'http://elaspic.kimlab.org/many/'
 # ELASPIC_MANY_URL = 'about:neterror?e=netReset&u=http%3A//elaspic.kimlab.org/many/&c=UTF-8&d=The%20connection%20to%20the%20server%20was%20reset%20while%20the%20page%20was%20loading.'
 
 HEADLESS = True
-# coad=6 ov=12
-ELASPIC_NUM_PARALLEL_COMPUTATION = 6
+# brca=3 coad=6 ov=5 (12)
+ELASPIC_NUM_PARALLEL_COMPUTATION = 15
 
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\mutations_input_test.txt"

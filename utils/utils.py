@@ -4,7 +4,14 @@ import time
 from typing import Union
 
 from tqdm import tqdm
-from config import UPLOAD_FAILED_PATH, UNEXPECTED_FAILED_PATH, ALLMUTATIONS_FAILED_PATH, TEMP_DOWNLOAD_FOLDER_PATH
+from config import (
+    UPLOAD_FAILED_PATH,
+    UNEXPECTED_FAILED_PATH,
+    ALLMUTATIONS_FAILED_PATH,
+    TEMP_DOWNLOAD_FOLDER_PATH,
+    CHUNKS_TO_RUN_FOLDER_PATH
+)
+
 import glob
 from utils.organizer import parse_filename
 import pandas as pd
@@ -122,3 +129,11 @@ def record_bad_states(filename, bad_state, bad_state_path):
     with open(bad_state_path, 'a') as file:
         logging.info(f"Recording {filename} as failed ..")
         file.write(f"{filename}\n")
+
+
+def read_chunks_to_run(tcga):
+    filepath = os.path.join(CHUNKS_TO_RUN_FOLDER_PATH, f"chunks_to_run_{tcga.upper()}.txt")
+    with open(filepath, 'r') as file:
+        chunks = [int(line.strip()) for line in file.readlines()]
+
+    return chunks

@@ -25,6 +25,7 @@ from utils.utils import (
     record_unexpected_failed,
     get_subchunk_files,
     get_current_time,
+    read_chunks_to_run
 )
 from utils.page_utils import (
     page_computation,
@@ -117,7 +118,7 @@ class MyScraper:
 
     # todo handle_allmutations_not_reachable
     # def handle_allmutations_not_reachable(self, new_chunk):
-    #     # new_chunk because it now handles 'allresuts are done' page.
+    #     # new_chunk because it now handles 'allresults are done' page.
     #     log.warning('[WARNING] Allresult download clickable object not reachable, skipping ..')
     #     return
 
@@ -319,24 +320,27 @@ def run_multiple_chunks(
             )
             terminate_firefox_processes()
             wait(cool_down_btw_chunks * 60, "[COOL DOWN BEFORE MOVING ON NEXT CHUNK.]")
-        wait(cool_down_cycle * 60, f"[RECHARCHING .. ({cool_down_cycle} mins)]")
+        wait(cool_down_cycle * 60, f"[RECHARGING .. ({cool_down_cycle} mins)]")
     log.debug("<END>")
 
 
 # BRCA
+# TCGA = "BRCA"
+# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+# CHUNKS_TO_RUN = [4, 53, 54, 58]
 
 # OV
-# TCGA = "OV"
-# CHUNKS_TO_RUN = list(range(1, 40))
-# EXCLUDED = list(range(1, 13)) + [15, 16, 17, 19, 21, 22]
-# CHUNKS_TO_RUN = [e for e in CHUNKS_TO_RUN if e not in EXCLUDED]
+TCGA = "OV"
+CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+# CHUNKS_TO_RUN = [26, 27, 29, 30, 31, 34, 35, 36, 37]
+
 
 # COAD
-TCGA = 'COAD'
-CHUNKS_TO_RUN = list(range(1, 128))
-EXCLUDED = list(range(1, 25)) + \
-           [27, 29, 30, 31] + [36, 44, 57, 59, 112, 113, 114, 115]
-CHUNKS_TO_RUN = [e for e in CHUNKS_TO_RUN if e not in EXCLUDED]
+# TCGA = 'COAD'
+# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+# CHUNKS_TO_RUN = list(range(1, 128))  # list(range(1, 128))
+# EXCLUDED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31, 36, 44, 57, 58, 59, 112, 113, 114, 115]
+# CHUNKS_TO_RUN = [e for e in CHUNKS_TO_RUN if e not in EXCLUDED]
 
 if __name__ == "__main__":
     fail_count = 0
@@ -353,11 +357,12 @@ if __name__ == "__main__":
                 repeat_chunk_cool_down=0.1,
                 num_chunk_repeat=1,
                 num_cycles=15,
-                cool_down_cycle=60,  # 60
+                cool_down_cycle=60 * 3,  # 60
             )
 
-            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\93\SNV_COAD_Chunk_93_2.txt"
+            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\BRCA\4\SNV_BRCA_Chunk_4_82.txt"
             # MyScraper(debug_file, run_mode=RunMode.FAST)
+            # exit()
 
         except Exception as e:
             if "Reached error page" in str(e):
@@ -366,7 +371,7 @@ if __name__ == "__main__":
                 wait(15 * 60)
                 fail_count += 1
             else:
-                log.error("=== UNEXPECTED ERROR, TRYING AGAIN .. ===")
+                log.error("=== UNEXPECTED ERROR ===")  # break?
                 print(traceback.format_exc())
                 notify_error("unexpected-error", repeat_inf=True)
 
