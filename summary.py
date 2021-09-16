@@ -1,14 +1,26 @@
 # August 16, 2021
+from typing import List
 
-from config import (RECORDS_FOLDER_PATH,
-                    ELASPIC_RESULTS_FOLDER_PATH, INPUT_FILES_PATH)
+from config import (
+    RECORDS_FOLDER_PATH,
+    ELASPIC_RESULTS_FOLDER_PATH,
+    INPUT_FILES_PATH,
+    CHUNKS_TO_RUN_FOLDER_PATH,
+)
 
 import os
 import pandas as pd
 
+pd.set_option('display.max_rows', 500)
 
-class Summary:
-    pass
+
+def write_to_file(tcga: str, chunks: List[int]):
+    filepath = os.path.join(CHUNKS_TO_RUN_FOLDER_PATH, f'chunks_to_run_{tcga}.txt')
+    with open(filepath, 'w') as file:
+        for chunk in chunks[:-1]:  # Exclude the last chunk
+            file.write(f"{chunk}\n")
+
+    print(f"Chunks for {tcga} are exported to file {filepath}")
 
 
 class TCGA:
@@ -63,7 +75,13 @@ class TCGA:
 
         return table
 
-    def get_summary(self, print_table=True, subchunks_of=None, filter=None):
+    def get_summary(
+            self,
+            print_table=True,
+            subchunks_of=None,
+            filter_=None,
+            threshold=90
+    ):
         print(f"SUMMARY FOR TCGA   : \t {self.cohort_name}")
         table = self.get_summary_table()
         chunks_remaining = len(table[table['Downloaded_subchunk'] == 0])
@@ -76,27 +94,52 @@ class TCGA:
             table_all = table.copy()
             table_print = table.copy()
             print("SUMMARY TABLE      :\n")
-            if filter:
+            if filter_:
+                filter_ = [e - 1 for e in filter_]
                 print("\t  - - -  (FILTERED) - - - ")
-                table_print = table_print.iloc[filter, :]
+                table_print = table_print.iloc[filter_, :]
             print(table_print)
             downloaded = table_all['Downloaded_subchunk'].sum()
             total = len(self.chunks) * 100
             print(f"Number of total downloaded subchunk files [{self.cohort_name}]: "
                   f"{downloaded} of {total}"
-                  f" ({round((downloaded / total) * 100, 2)}%)")
+                  f" ({round((downloaded / total) * 100, 2)} %)")
+
+            table_above_thr = table_all[table_all["Downloaded_subchunk"] >= threshold]
+            table_above_thr_chunks = list(map(int, table_above_thr.index))
+            table_below_thr = table_all[table_all["Downloaded_subchunk"] < threshold]
+            table_below_thr_chunks = list(map(int, table_below_thr.index))
+            print(f"Chunks with downloaded sub-chunk {threshold} or above:\n"
+                  f"{table_above_thr_chunks}")
+            print(f"Chunks with downloaded sub-chunk below {threshold}:\n"
+                  f"{table_below_thr_chunks}")
+            print(f"\n\t  - - -  (BELOW THRESHOLD {threshold}) - - - ")
+            below_thr_ix = [e - 1 for e in table_below_thr_chunks]
+            table_print_below_thr = table_all.iloc[below_thr_ix, :]
+            print(table_print_below_thr)
+
+            write_to_file(self.cohort_name, table_below_thr_chunks)
 
 
-# ov = TCGA('OV')
-# filter_chunks = list(range(18, 22))
-# ov.get_summary(print_table=True)
+# brca = TCGA('BRCA')
+# brca.get_summary(
+#     print_table=True,
+#     filter_=None,
+#     threshold=85
+# )
 
-coad = TCGA('COAD')
-filter_chunks = list(range(0, 51))
-# filter_chunks = list(range(51, 101))
-# filter_chunks = list(range(90, 127))
-coad.get_summary(print_table=True, filter=filter_chunks)
-# coad.get_summary(print_table=True)
+ov = TCGA('OV')
+ov.get_summary(
+    print_table=True,
+    threshold=90
+)
 
-# OV    :  2995 of 3900  (76.79%)
-# COAD  :  4655 of 12700 (36.65%)
+# coad = TCGA('COAD')
+# coad.get_summary(
+#     print_table=True,
+#     threshold=90
+# )
+
+# BRCA  :  5508 of  6100 (90.30 %)
+# OV    :  3395 of  3900 (87.05 %)
+# COAD  :  5233 of 12700 (41.20 %)
