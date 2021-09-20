@@ -327,20 +327,14 @@ def run_multiple_chunks(
 # BRCA
 # TCGA = "BRCA"
 # CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
-# CHUNKS_TO_RUN = [4, 53, 54, 58]
 
 # OV
-TCGA = "OV"
-CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
-# CHUNKS_TO_RUN = [26, 27, 29, 30, 31, 34, 35, 36, 37]
-
+# TCGA = "OV"
+# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
 
 # COAD
-# TCGA = 'COAD'
-# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
-# CHUNKS_TO_RUN = list(range(1, 128))  # list(range(1, 128))
-# EXCLUDED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 28, 29, 30, 31, 36, 44, 57, 58, 59, 112, 113, 114, 115]
-# CHUNKS_TO_RUN = [e for e in CHUNKS_TO_RUN if e not in EXCLUDED]
+TCGA = 'COAD'
+CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
 
 if __name__ == "__main__":
     fail_count = 0
