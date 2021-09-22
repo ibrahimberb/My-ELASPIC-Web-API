@@ -29,3 +29,5 @@ SNV_OV_Chunk_23_56.txt
 SNV_OV_Chunk_28_36.txt
 SNV_OV_Chunk_22_8.txt
 SNV_OV_Chunk_36_61.txt
+SNV_OV_Chunk_25_90.txt
+SNV_OV_Chunk_35_89.txt
