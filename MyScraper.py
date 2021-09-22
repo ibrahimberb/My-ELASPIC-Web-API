@@ -354,7 +354,7 @@ if __name__ == "__main__":
                 cool_down_cycle=60 * 3,  # 60
             )
 
-            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\BRCA\4\SNV_BRCA_Chunk_4_82.txt"
+            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\61\SNV_COAD_Chunk_61_32.txt"
             # MyScraper(debug_file, run_mode=RunMode.FAST)
             # exit()
 
