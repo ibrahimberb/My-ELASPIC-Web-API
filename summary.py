@@ -1,5 +1,6 @@
 # August 16, 2021
 from typing import List
+import logging
 
 from config import (
     RECORDS_FOLDER_PATH,
@@ -10,6 +11,9 @@ from config import (
 
 import os
 import pandas as pd
+
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+
 
 pd.set_option('display.max_rows', 500)
 
@@ -125,21 +129,21 @@ class TCGA:
 # brca.get_summary(
 #     print_table=True,
 #     filter_=None,
-#     threshold=85
+#     threshold=95
 # )
 
-ov = TCGA('OV')
-ov.get_summary(
+# ov = TCGA('OV')
+# ov.get_summary(
+#     print_table=True,
+#     threshold=95
+# )
+
+coad = TCGA('COAD')
+coad.get_summary(
     print_table=True,
     threshold=90
 )
 
-# coad = TCGA('COAD')
-# coad.get_summary(
-#     print_table=True,
-#     threshold=90
-# )
-
-# BRCA  :  5508 of  6100 (90.30 %)
-# OV    :  3395 of  3900 (87.05 %)
-# COAD  :  5233 of 12700 (41.20 %)
+# BRCA  :  5700 of  6100 (93.44 %)
+# OV    :  3640 of  3900 (93.33 %)
+# COAD  :  5877 of 12700 (46.28 %)
