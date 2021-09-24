@@ -48,3 +48,6 @@ SNV_COAD_Chunk_118_21.txt
 SNV_COAD_Chunk_125_25.txt
 SNV_COAD_Chunk_116_28.txt
 SNV_COAD_Chunk_99_33.txt
+SNV_COAD_Chunk_45_32.txt
+SNV_COAD_Chunk_100_40.txt
+SNV_COAD_Chunk_107_37.txt
