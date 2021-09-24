@@ -329,12 +329,12 @@ def run_multiple_chunks(
 # CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
 
 # OV
-# TCGA = "OV"
-# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+TCGA = "OV"
+CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
 
 # COAD
-TCGA = 'COAD'
-CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+# TCGA = 'COAD'
+# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
 
 if __name__ == "__main__":
     fail_count = 0
@@ -354,7 +354,7 @@ if __name__ == "__main__":
                 cool_down_cycle=60 * 3,  # 60
             )
 
-            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\61\SNV_COAD_Chunk_61_32.txt"
+            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\61\SNV_COAD_Chunk_61_20.txt"
             # MyScraper(debug_file, run_mode=RunMode.FAST)
             # exit()
 
