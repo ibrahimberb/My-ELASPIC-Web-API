@@ -144,3 +144,12 @@ SNV_COAD_Chunk_32_40.txt
 SNV_COAD_Chunk_37_29.txt
 SNV_COAD_Chunk_95_26.txt
 SNV_COAD_Chunk_41_45.txt
+SNV_COAD_Chunk_40_42.txt
+SNV_COAD_Chunk_43_49.txt
+SNV_COAD_Chunk_43_5.txt
+SNV_COAD_Chunk_48_40.txt
+SNV_COAD_Chunk_37_65.txt
+SNV_COAD_Chunk_68_45.txt
+SNV_COAD_Chunk_83_42.txt
+SNV_COAD_Chunk_85_39.txt
+SNV_COAD_Chunk_126_40.txt
