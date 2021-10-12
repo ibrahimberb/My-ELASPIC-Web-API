@@ -268,7 +268,7 @@ def log_run_options(
     log.debug(f"num_cycles: {num_cycles}")
     log.debug(f"cool_down_cycle: {cool_down_cycle}")
     log.debug(f"ELASPIC_NUM_PARALLEL_COMPUTATION: {ELASPIC_NUM_PARALLEL_COMPUTATION}")
-    log.debug("+------------------------+")
+    log.debug("+---------------------------------------+")
 
 
 def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repeat=1):
@@ -326,15 +326,18 @@ def run_multiple_chunks(
 
 # BRCA
 # TCGA = "BRCA"
-# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
-
-# OV
-TCGA = "OV"
-CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
 
 # COAD
-# TCGA = 'COAD'
-# CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+TCGA = "COAD"
+
+# ESCA
+# TCGA = "ESCA"
+
+# OV
+# TCGA = "OV"
+
+CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
+# CHUNKS_TO_RUN = list(range(20, 21))
 
 if __name__ == "__main__":
     fail_count = 0
@@ -351,10 +354,10 @@ if __name__ == "__main__":
                 repeat_chunk_cool_down=0.1,
                 num_chunk_repeat=1,
                 num_cycles=15,
-                cool_down_cycle=60 * 3,  # 60
+                cool_down_cycle=60,  # 60 * 3 = 180min
             )
 
-            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\61\SNV_COAD_Chunk_61_20.txt"
+            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\82\SNV_COAD_Chunk_82_5.txt"
             # MyScraper(debug_file, run_mode=RunMode.FAST)
             # exit()
 

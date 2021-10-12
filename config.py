@@ -32,7 +32,7 @@ ELASPIC_MANY_URL = 'http://elaspic.kimlab.org/many/'
 
 HEADLESS = True
 # brca=3 coad=6 ov=5 (12)
-ELASPIC_NUM_PARALLEL_COMPUTATION = 4
+ELASPIC_NUM_PARALLEL_COMPUTATION = 2
 
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\mutations_input_test.txt"
@@ -48,3 +48,6 @@ NOTIFY_NETWORK_ERROR_TRY_AUDIO_PATH = "utils/alert_sounds/network-error-trying-a
 NOTIFY_PROGRAM_NOT_WORKING_AUDIO_PATH = "utils/alert_sounds/program-not-working.mp3"
 
 ALLOWED_ATTEMPTS = 5
+
+# Firefox Log output disabled
+PATH_TO_DEV_NULL = 'nul'

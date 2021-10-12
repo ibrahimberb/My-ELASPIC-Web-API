@@ -1,5 +1,5 @@
 from selenium import webdriver
-from config import TEMP_DOWNLOAD_FOLDER_PATH, DRIVER_PATH, HEADLESS
+from config import TEMP_DOWNLOAD_FOLDER_PATH, DRIVER_PATH, HEADLESS, PATH_TO_DEV_NULL
 
 
 def initialize_driver():
@@ -14,7 +14,12 @@ def initialize_driver():
     options.headless = HEADLESS
 
     # Set the driver
-    driver = webdriver.Firefox(options=options, executable_path=DRIVER_PATH, firefox_profile=profile)
+    driver = webdriver.Firefox(
+        options=options,
+        executable_path=DRIVER_PATH,
+        firefox_profile=profile,
+        service_log_path=PATH_TO_DEV_NULL
+    )
     driver.set_window_position(1024, 0)
     driver.set_window_size(1920 - 1024, 1040)
 
