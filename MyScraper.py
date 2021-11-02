@@ -324,20 +324,21 @@ def run_multiple_chunks(
     log.debug("<END>")
 
 
-# BRCA
+# Completed.
 # TCGA = "BRCA"
-
-# COAD
-TCGA = "COAD"
-
-# ESCA
-# TCGA = "ESCA"
-
-# OV
 # TCGA = "OV"
+# TCGA = "ESCA"
+# - - - - - - -
+
+# HNSC
+TCGA = "HNSC"
 
 CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
-# CHUNKS_TO_RUN = list(range(20, 21))
+# CHUNKS_TO_RUN = list(range(1, 20 + 1))
+# CHUNKS_TO_RUN = [55]
+
+if TCGA == "COAD":
+    assert ELASPIC_NUM_PARALLEL_COMPUTATION == 0
 
 if __name__ == "__main__":
     fail_count = 0
@@ -353,8 +354,8 @@ if __name__ == "__main__":
                 cool_down_btw_chunks=0.5,  # 0.3
                 repeat_chunk_cool_down=0.1,
                 num_chunk_repeat=1,
-                num_cycles=15,
-                cool_down_cycle=60,  # 60 * 3 = 180min
+                num_cycles=5,
+                cool_down_cycle=60 * 2,  # 60 * 3 = 180min
             )
 
             # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\82\SNV_COAD_Chunk_82_5.txt"
