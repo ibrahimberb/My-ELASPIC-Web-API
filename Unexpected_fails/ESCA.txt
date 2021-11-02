@@ -1,0 +1,17 @@
+SNV_ESCA_Chunk_10_100.txt
+SNV_ESCA_Chunk_16_19.txt
+SNV_ESCA_Chunk_2_27.txt
+SNV_ESCA_Chunk_15_22.txt
+SNV_ESCA_Chunk_2_41.txt
+SNV_ESCA_Chunk_15_37.txt
+SNV_ESCA_Chunk_1_38.txt
+SNV_ESCA_Chunk_1_39.txt
+SNV_ESCA_Chunk_1_4.txt
+SNV_ESCA_Chunk_1_40.txt
+SNV_ESCA_Chunk_2_39.txt
+SNV_ESCA_Chunk_2_4.txt
+SNV_ESCA_Chunk_2_40.txt
+SNV_ESCA_Chunk_2_42.txt
+SNV_ESCA_Chunk_1_97.txt
+SNV_ESCA_Chunk_12_96.txt
+SNV_ESCA_Chunk_12_99.txt
