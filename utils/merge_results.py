@@ -42,15 +42,18 @@ class ResultsMerger:
         self.core_data = core_data
         self.interface_data = interface_data
 
+        # Handle core mutations
         self.core_data_dropped = self.drop_duplicates(self.core_data)
 
+        # Handle interface mutations
         self.interface_data_no_self_interactions = self.drop_self_interactions(self.interface_data)
         self.interface_data_dropped = self.drop_duplicates(self.interface_data_no_self_interactions)
 
-        self.export(self.core_data_dropped, f"{self.tcga}_Core")
-        self.export(self.interface_data_dropped, f"{self.tcga}_Interface")
+        raise Exception("uncomment export functions!")
+        # self.export(self.core_data_dropped, f"{self.tcga}_Core")
+        # self.export(self.interface_data_dropped, f"{self.tcga}_Interface")
 
-        log.info("Results are merged and exported successfully.")
+        log.info("Results are merged and exported successfully.\n")
 
     def concatenate_results(self):
         """
@@ -82,9 +85,9 @@ class ResultsMerger:
 
         log.info("Datasets are concatenated.")
 
-        log.warning(f"concated_data.shape: {concated_data.shape}")
-        log.warning(f"First five rows in concated_data: \n{concated_data.head()}")
-        log.warning(f"Unique values in concated_data['Type']: {list(concated_data['Type'].unique())}")
+        log.debug(f"concated_data.shape: {concated_data.shape}")
+        log.debug(f"First five rows in concated_data: \n{concated_data.head()}")
+        log.debug(f"Unique values in concated_data['Type']: {list(concated_data['Type'].unique())}")
 
         return concated_data
 
@@ -171,9 +174,13 @@ class ResultsMerger:
     def export(self, data, data_name):
         current_date = datetime.today().strftime('%Y-%m-%d')
         filename = f"{data_name}_{current_date}.txt"
-        folderpath = os.path.join(self.ELASPIC_RESULTS_FOLDER_PATH, "Merged_Results")
-        Path(folderpath).mkdir(parents=True, exist_ok=True)
-        filepath = os.path.join(folderpath, filename)
+        folder_path = os.path.join(self.ELASPIC_RESULTS_FOLDER_PATH, "Merged_Results")
+        Path(folder_path).mkdir(parents=True, exist_ok=True)
+        filepath = os.path.join(folder_path, filename)
+
+        if os.path.isfile(filepath):
+            raise FileExistsError("You have already exported predictions! Clear the folder.")
+
         data.to_csv(filepath, sep='\t', index=False)
         log.info(f"Data {filename} is exported in directory {filepath}.")
 
@@ -192,3 +199,4 @@ class ResultsMerger:
 
 
 ResultsMerger(tcga="BRCA")
+ResultsMerger(tcga="OV")
