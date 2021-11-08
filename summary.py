@@ -136,7 +136,10 @@ class Summary:
             print(table_print_below_thr)
 
             if export:
-                write_to_file(self.tcga, table_below_thr_chunks)
+                if active_computations_only:
+                    write_to_file(self.tcga, table_print_below_thr.index)
+                else:
+                    write_to_file(self.tcga, table_below_thr_chunks)
 
     def bring_record(self, chunk_no):
         record_path = op.join(
@@ -149,7 +152,7 @@ class Summary:
         active_urls = record[
             (record["UPLOADED_STATUS"] == 1) &
             (record["DOWNLOADED_STATUS"] == 0)
-        ]["ELASPIC_URL"]
+            ]["ELASPIC_URL"]
         print(f"ACTIVE URLS: \n{active_urls}")
 
 
@@ -168,27 +171,34 @@ class Summary:
 # don't worry about remaining active inputs if above 90 %
 # BRCA  :  5761 of  6100 (94.44 %)
 # OV    :  3654 of  3900 (93.69 %)
-
+# ESCA  :  1872 of  2000 (93.6 %)
+# - - - - - - - - - - - - - - - - - - - -
 # COAD  :  8580 of 12700 (67.56 %)
-
-# ESCA  :  1872 of 2000 (93.6 %)
-# HNSC  :  4741 of 5500 (86.2 %)
+# HNSC  :  5039 of  5500 (91.62 %)
+# GBM   :  4112 of 4700 (87.49 %)
+# - - - - - - - - - - - - - - - - - - - -
 
 #####################
 # # # COMPLETED # # #
 # tcga = "BRCA"
 # tcga = "OV"
 # tcga = "ESCA"
+# tcga = "HNSC"
 #####################
 
 # tcga = "COAD"
-tcga = "HNSC"
+tcga = "GBM"
 
 Summary(tcga).get_summary(
     print_table=True,
-    threshold=90,
+    threshold=101,
     export=False,
     active_computations_only=True
 )
 
-# Summary(tcga).bring_record(20)
+# Summary(tcga).bring_record(55)
+#
+# # next cohort??
+#
+# LOOK_UP_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\HNSC\55"
+# print(f"Number of subchunks {len(os.listdir(LOOK_UP_PATH))}")
