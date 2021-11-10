@@ -49,9 +49,8 @@ class ResultsMerger:
         self.interface_data_no_self_interactions = self.drop_self_interactions(self.interface_data)
         self.interface_data_dropped = self.drop_duplicates(self.interface_data_no_self_interactions)
 
-        raise Exception("uncomment export functions!")
-        # self.export(self.core_data_dropped, f"{self.tcga}_Core")
-        # self.export(self.interface_data_dropped, f"{self.tcga}_Interface")
+        self.export(self.core_data_dropped, f"{self.tcga}_Core")
+        self.export(self.interface_data_dropped, f"{self.tcga}_Interface")
 
         log.info("Results are merged and exported successfully.\n")
 
@@ -198,5 +197,18 @@ class ResultsMerger:
         plt.show()
 
 
-ResultsMerger(tcga="BRCA")
-ResultsMerger(tcga="OV")
+# 1. BRCA
+# ResultsMerger(tcga="BRCA")
+
+# 2. OV
+# ResultsMerger(tcga="OV")
+
+# 3. ESCA
+# ResultsMerger(tcga="ESCA")
+
+# 4. HNSC
+# ResultsMerger(tcga="HNSC")
+
+# 5. GBM
+# ResultsMerger(tcga="GBM")
+
