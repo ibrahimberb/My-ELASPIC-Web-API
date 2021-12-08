@@ -9,5 +9,6 @@ to retrieve features for my own inputs.
 The ELASPIC Webserver:
 ```python
 http://elaspic.kimlab.org
+https://gitlab.com/elaspic
 ```
 
