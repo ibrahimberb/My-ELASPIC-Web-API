@@ -7,7 +7,7 @@ program is officially associated with ELASPIC. I use it only for my own convenie
 to retrieve features for my own inputs.
 
 The ELASPIC Webserver:
-```python
+```
 http://elaspic.kimlab.org
 https://gitlab.com/elaspic
 ```
