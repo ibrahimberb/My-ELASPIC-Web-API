@@ -275,7 +275,7 @@ def run_single_chunk(subchunk_files, run_speed, repeat_cool_down, num_chunk_repe
     for i in range(num_chunk_repeat):
         log.debug(f"\tREPEAT #{i + 1}")
         for subchunk_file in subchunk_files:
-            log.debug(f"\tRUNNING SUB-CHUNK: {subchunk_file} ")
+            log.debug(f"\nRUNNING SUB-CHUNK: {subchunk_file} ")
             MyScraper(subchunk_file, run_mode=run_speed)
             wait(0.1)
         log.debug("\t- - - ")
@@ -328,17 +328,24 @@ def run_multiple_chunks(
 # TCGA = "BRCA"
 # TCGA = "OV"
 # TCGA = "ESCA"
+# TCGA = "HNSC"
+# TCGA = "GBM"
+# - - - - - - -
+# TCGA = "BLCA"
 # - - - - - - -
 
-# HNSC
-TCGA = "HNSC"
+# COAD
+TCGA = "COAD"
 
-CHUNKS_TO_RUN = read_chunks_to_run(TCGA)
-# CHUNKS_TO_RUN = list(range(1, 20 + 1))
-# CHUNKS_TO_RUN = [55]
+CHUNKS_TO_RUN = read_chunks_to_run(TCGA) + [127]
+# CHUNKS_TO_RUN = [127]
+# CHUNKS_TO_RUN = sorted(CHUNKS_TO_RUN, reverse=False)
+# CHUNKS_TO_RUN = list(range(1, 73 + 1))
+# CHUNKS_TO_RUN = [2, 3, 4, 6, 8, 9, 10, 25, 26, 39, 46]
+# CHUNKS_TO_RUN = [44]
 
 if TCGA == "COAD":
-    assert ELASPIC_NUM_PARALLEL_COMPUTATION == 0
+    assert ELASPIC_NUM_PARALLEL_COMPUTATION <= 4
 
 if __name__ == "__main__":
     fail_count = 0
@@ -358,7 +365,7 @@ if __name__ == "__main__":
                 cool_down_cycle=60 * 2,  # 60 * 3 = 180min
             )
 
-            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\COAD\82\SNV_COAD_Chunk_82_5.txt"
+            # debug_file = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\GBM\19\SNV_GBM_Chunk_19_52.txt"
             # MyScraper(debug_file, run_mode=RunMode.FAST)
             # exit()
 
