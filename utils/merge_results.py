@@ -212,3 +212,8 @@ class ResultsMerger:
 # 5. GBM
 # ResultsMerger(tcga="GBM")
 
+# # 6. BLCA
+# ResultsMerger(tcga="BLCA")
+
+# 7. COAD
+# ResultsMerger(tcga="COAD")
