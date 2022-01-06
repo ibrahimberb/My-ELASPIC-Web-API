@@ -31,8 +31,8 @@ ELASPIC_MANY_URL = 'http://elaspic.kimlab.org/many/'
 # ELASPIC_MANY_URL = 'about:neterror?e=netReset&u=http%3A//elaspic.kimlab.org/many/&c=UTF-8&d=The%20connection%20to%20the%20server%20was%20reset%20while%20the%20page%20was%20loading.'
 
 HEADLESS = True
-# brca=3 coad=6 ov=5 (12) ESCA: ALL
-ELASPIC_NUM_PARALLEL_COMPUTATION = 3  # HNSC 3 → 4
+
+ELASPIC_NUM_PARALLEL_COMPUTATION = 4
 
 # r"C:\Users\ibrah\Desktop\Spaceship\ELASPIC_cancer_data_smaller_chunks\ELASPIC_Input\BRCA_10\SNV_BRCA_Chunk_22_0_test.txt"
 # UPLOAD_FILE_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\input_files_test\mutations_input_test.txt"
