@@ -173,10 +173,9 @@ class Summary:
 # OV    :  3654 of  3900 (93.69 %)
 # ESCA  :  1872 of  2000 (93.6 %)
 # HNSC  :  5039 of  5500 (91.62 %)
-# GBM   :  4539 of 4700 (96.57 %)
-# - - - - - - - - - - - - - - - - - - - -
-# COAD  :  8580 of 12700 (67.56 %)
-# BLCA  :  31 of 7300 (0.42 %)
+# GBM   :  4539 of  4700 (96.57 %)
+# BLCA  :  6988 of  7300 (95.73 %)
+# COAD  :  11438 of 12700 (90.06 %)
 # - - - - - - - - - - - - - - - - - - - -
 
 #####################
@@ -185,17 +184,19 @@ class Summary:
 # tcga = "OV"
 # tcga = "ESCA"
 # tcga = "HNSC"
-#####################
-
-# tcga = "COAD"
-tcga = "GBM"
+# tcga = "GBM"
 # tcga = "BLCA"
+# tcga = "COAD"
+# ---------------
+####################
+
+tcga = "BLCA"
 
 Summary(tcga).get_summary(
     print_table=True,
-    threshold=101,
+    threshold=90,  # 90
     export=True,
-    active_computations_only=True
+    active_computations_only=False
 )
 
 # Summary(tcga).bring_record(20)
@@ -204,5 +205,5 @@ Summary(tcga).get_summary(
 #
 # # next cohort??
 #
-LOOK_UP_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\GBM\20"
-print(f"Number of subchunks {len(os.listdir(LOOK_UP_PATH))}")
+# LOOK_UP_PATH = r"C:\Users\ibrah\Documents\GitHub\My-ELASPIC-Web-API\ELASPIC_Input\GBM\20"
+# print(f"Number of subchunks {len(os.listdir(LOOK_UP_PATH))}")
